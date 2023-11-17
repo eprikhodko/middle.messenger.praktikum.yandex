@@ -5,6 +5,9 @@ import handlebars from "vite-plugin-handlebars";
 const root = resolve(__dirname, "src");
 
 export default defineConfig({
+  server: {
+    port: 3000,
+  },
   root,
   build: {
     outDir: resolve(__dirname, "dist"),
