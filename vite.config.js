@@ -2,14 +2,16 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import handlebars from "vite-plugin-handlebars";
 
+const root = resolve(__dirname, "src");
+
 export default defineConfig({
-  root: resolve(__dirname, "src"),
+  root,
   build: {
     outDir: resolve(__dirname, "dist"),
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "src/index.html"),
-        signIn: resolve(__dirname, "src/sign-in.html"),
+        main: resolve(root, "index.html"),
+        signIn: resolve(root, "sign-in.html"),
       },
     },
   },
