@@ -1,6 +1,7 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import handlebars from "vite-plugin-handlebars";
+import postcssNesting from 'postcss-nesting';
 
 const root = resolve(__dirname, "src");
 
@@ -14,7 +15,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(root, "index.html"),
-        signIn: resolve(root, "sign-in.html"),
+        signIn: resolve(root, "pages/sign-in/sign-in.html"),
       },
     },
   },
@@ -25,4 +26,11 @@ export default defineConfig({
       },
     }),
   ],
+  css: {
+    postcss: {
+        plugins: [
+            postcssNesting
+        ],
+    },
+},
 });
