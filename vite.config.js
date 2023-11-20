@@ -21,7 +21,7 @@ export default defineConfig({
   },
   plugins: [
     handlebars({
-      partialDirectory: resolve(root, 'partials'),
+      partialDirectory: resolve(root, 'components'),
       context: {
         username: "John",
       },
