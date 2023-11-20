@@ -1,9 +1,24 @@
 /* variables */
+
 :root {
   --color-text-primary: #1e1e1e;
   --color-text-secondary: #7f7f7f;
   --color-text-snow: #ffffff;
   --color-ui-primary: #3369f3;
+}
+
+/* fonts */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  src: local('Inter-Medium'), url(../static/fonts/Inter-Medium.woff2) format('woff2');
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 500;
 }
 
 /* css reset */
@@ -12,12 +27,6 @@
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
-
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-}
 
 *,
 ::before,
@@ -40,7 +49,6 @@
 */
 
 html {
-  line-height: 1.5; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -moz-tab-size: 4; /* 3 */
   tab-size: 4; /* 3 */
