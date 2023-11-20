@@ -1,7 +1,7 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import handlebars from "vite-plugin-handlebars";
-import postcssNesting from 'postcss-nesting';
+import postcssNesting from "postcss-nesting";
 
 const root = resolve(__dirname, "src");
 
@@ -21,7 +21,7 @@ export default defineConfig({
   },
   plugins: [
     handlebars({
-      partialDirectory: resolve(root, 'components'),
+      partialDirectory: resolve(root, "components"),
       context: {
         username: "John",
       },
@@ -29,9 +29,7 @@ export default defineConfig({
   ],
   css: {
     postcss: {
-        plugins: [
-            postcssNesting
-        ],
+      plugins: [postcssNesting],
     },
-},
+  },
 });
