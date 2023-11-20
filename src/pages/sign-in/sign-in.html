@@ -10,7 +10,10 @@
   </head>
 
   <body>
-    <script type="module" src="./index.js"></script> 
+    <script
+      type="module"
+      src="./index.js"
+    ></script>
 
     <main>
       <div class="form-container">
@@ -52,13 +55,8 @@
           </div>
         </form>
 
-        <div class="form-buttons">
-          <button
-            type="button"
-            class="button-primary"
-          >
-            Sign in
-          </button>
+        <div class="form-buttons custom-button">
+          {{> button/button label="Sign in"}}
 
           <a
             href="#"
