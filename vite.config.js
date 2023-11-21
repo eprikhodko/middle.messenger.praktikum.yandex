@@ -20,6 +20,11 @@ export default defineConfig({
       },
     },
   },
+  resolve: {
+    alias: {
+      "@components": resolve(__dirname, "src/components"),
+    },
+  },
   plugins: [
     handlebars({
       partialDirectory: resolve(root, "components"),
@@ -27,12 +32,18 @@ export default defineConfig({
         username: "John",
       },
       helpers: {
-        capitalize: (value) => value === undefined ? value : value.toUpperCase(),
-        link: (text, url) => {
-          const handleBarsUrl = Handlebars.escapeExpression(url)
-          const handleBarsText = Handlebars.escapeExpression(text)
+        link: (text, options) => {
+          const attributes = [];
 
-          return new Handlebars.SafeString("<a href='" + handleBarsUrl + "'>" + handleBarsText +"</a>");
+          Object.keys(options.hash).forEach(key => {
+              const escapedKey = Handlebars.escapeExpression(key);
+              const escapedValue = Handlebars.escapeExpression(options.hash[key]);
+              attributes.push(escapedKey + '="' + escapedValue + '"');
+          })
+          const escapedText = Handlebars.escapeExpression(text);
+          
+          const escapedOutput ="<a " + attributes.join(" ") + ">" + escapedText + "</a>";
+          return new Handlebars.SafeString(escapedOutput);
         }
       },
     }),
