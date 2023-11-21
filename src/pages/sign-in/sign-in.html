@@ -1,9 +1,4 @@
 {{#> layout/default/defaultLayout title="Sign in" pageScript="./index.js"}}
-<!-- <script
-  type="module"
-  src="./index.js"
-></script> -->
-
 <div class="form-container">
   <h1 class="form-title form-title_margin-large">Вход</h1>
 
@@ -44,13 +39,14 @@
   </form>
 
   <div class="form-buttons">
-    {{> button/button label="Sign in"}}
+    {{> button/button text="Sign in"}}
 
-    <a
+    <!-- <a
       href="#"
       class="link-primary"
-      >Sign up</a
-    >
+      >{{ capitalize sign up}}</a
+    > -->
+    {{link "See Website" "/some-url"}}
   </div>
 </div>
 {{/layout/default/defaultLayout}}
