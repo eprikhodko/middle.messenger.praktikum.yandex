@@ -17,6 +17,7 @@ export default defineConfig({
       input: {
         main: resolve(root, "index.html"),
         signIn: resolve(root, "pages/sign-in/sign-in.html"),
+        signUp: resolve(root, "pages/sign-up/sign-up.html"),
       },
     },
   },
