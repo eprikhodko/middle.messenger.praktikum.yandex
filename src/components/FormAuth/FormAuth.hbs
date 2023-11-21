@@ -1,0 +1,10 @@
+{{#> layout/formCommonLayout/formCommonLayout title="Вход"}}
+  {{>FormInput/FormInput label="Логин" type="text" id="login"}}
+  {{>FormInput/FormInput label="Пароль" type="password" id="password"}}
+
+  <div class="form-buttons">
+    {{> ButtonCommon/ButtonCommon text="Sign in" type="submit"}}
+
+    {{LinkCommon "Sign up" href="/some-url" class="link-primary"}}
+  </div>
+{{/layout/formCommonLayout/formCommonLayout}}

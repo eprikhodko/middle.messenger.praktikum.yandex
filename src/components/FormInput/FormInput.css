@@ -3,6 +3,12 @@
   flex-direction: column;
 }
 
+.form-common__label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
 .form-common__input {
   font-size: 13px;
   font-weight: 500;
