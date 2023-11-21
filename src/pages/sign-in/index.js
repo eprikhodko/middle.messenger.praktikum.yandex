@@ -4,5 +4,6 @@ import "../../main.css";
 import "./sign-in.css";
 // page and layout components
 import "@components/layout/default"
-import "@components/button";
-import "@components/link"
+import "@components/ButtonCommon";
+import "@components/LinkCommon"
+import "@components/FormInput"

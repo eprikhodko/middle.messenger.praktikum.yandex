@@ -1,0 +1,2 @@
+import "./LinkCommon.css";
+

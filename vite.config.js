@@ -32,7 +32,7 @@ export default defineConfig({
         username: "John",
       },
       helpers: {
-        link: (text, options) => {
+        LinkCommon: (text, options) => {
           const attributes = [];
 
           Object.keys(options.hash).forEach(key => {

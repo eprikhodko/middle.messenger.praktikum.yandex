@@ -7,41 +7,14 @@
     action=""
     method="post"
   >
-    <div class="form-common__input-container">
-      <label
-        for="login"
-        class="form-common__label"
-        >Логин</label
-      >
-      <input
-        class="form-common__input"
-        type="text"
-        name="login"
-        id="login"
-        required
-      />
-    </div>
-
-    <div class="form-common__input-container">
-      <label
-        class="form-common__label"
-        for="password"
-        >Пароль</label
-      >
-      <input
-        class="form-common__input"
-        type="password"
-        name="password"
-        id="password"
-        required
-      />
-    </div>
+    {{>FormInput/FormInput label="Логин" type="text" id="login"}}
+    {{>FormInput/FormInput label="Пароль" type="password" id="password"}}
   </form>
 
   <div class="form-buttons">
-    {{> button/button text="Sign in"}}
+    {{> ButtonCommon/ButtonCommon text="Sign in"}}
 
-    {{link "Sign up" href="/some-url" class="link-primary"}}
+    {{LinkCommon "Sign up" href="/some-url" class="link-primary"}}
   </div>
 </div>
 {{/layout/default/defaultLayout}}
