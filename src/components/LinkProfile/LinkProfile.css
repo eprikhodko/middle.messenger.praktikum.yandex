@@ -1,0 +1,9 @@
+.link-profile {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.link-profile__icon {
+  width: 20px;
+}

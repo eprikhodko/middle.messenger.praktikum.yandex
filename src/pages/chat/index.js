@@ -7,5 +7,5 @@ import "@components/layout/default";
 import "@components/layout/formCommonLayout";
 import "@components/FormSignUp";
 import "@components/ButtonCommon";
-import "@components/LinkCommon";
+import "@components/LinkProfile";
 import "@components/FormInput";
