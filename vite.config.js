@@ -23,6 +23,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "@src": root,
       "@components": resolve(__dirname, "src/components"),
     },
   },

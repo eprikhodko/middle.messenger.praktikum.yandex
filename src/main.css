@@ -64,8 +64,6 @@ body {
   margin: 0; /* 1 */
   line-height: inherit; /* 2 */
   -webkit-font-smoothing: antialiased;
-  background-color: $color-bg-primary-new;
-  font-family: $font-family;
 }
 
 /*

@@ -1,5 +1,5 @@
 // global style
-import "../../main.css";
+import "@src/main.css";
 // page style
 import "./sign-up.css";
 // page and layout components
