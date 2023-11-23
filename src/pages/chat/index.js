@@ -5,7 +5,6 @@ import "./chat.css";
 // layouts, components, modules
 import "@components/layout/default";
 import "@components/layout/formCommonLayout";
-import "@components/FormSignUp";
-import "@components/ButtonCommon";
-import "@components/FormInput";
+import "@modules/Chat/components/SearchInput";
 import "@modules/Chat/components/LinkProfile";
+
