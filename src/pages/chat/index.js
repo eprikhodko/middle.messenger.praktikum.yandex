@@ -8,4 +8,4 @@ import "@components/layout/formCommonLayout";
 import "@components/FormSignUp";
 import "@components/ButtonCommon";
 import "@components/FormInput";
-import "@modules/Chat/LinkProfile";
+import "@modules/Chat/components/LinkProfile";
