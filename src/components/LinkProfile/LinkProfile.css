@@ -1,9 +1,11 @@
 .link-profile {
+  display: flex;
+  gap: 6px;
   font-size: 12px;
   font-weight: 500;
   color: var(--color-text-secondary);
 }
 
 .link-profile__icon {
-  width: 20px;
+  width: 6px;
 }
