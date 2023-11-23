@@ -25,12 +25,13 @@ export default defineConfig({
   resolve: {
     alias: {
       "@src": root,
-      "@components": resolve(__dirname, "src/components"),
+      "@components": resolve(__dirname, `${root}/components`),
+      "@modules": resolve(__dirname, `${root}/modules`),
     },
   },
   plugins: [
     handlebars({
-      partialDirectory: resolve(root, "components"),
+      partialDirectory: [resolve(root, "components"), resolve(root, "modules")],
       context: {
         username: "John",
       },
@@ -38,16 +39,17 @@ export default defineConfig({
         LinkCommon: (text, options) => {
           const attributes = [];
 
-          Object.keys(options.hash).forEach(key => {
-              const escapedKey = Handlebars.escapeExpression(key);
-              const escapedValue = Handlebars.escapeExpression(options.hash[key]);
-              attributes.push(escapedKey + '="' + escapedValue + '"');
-          })
+          Object.keys(options.hash).forEach((key) => {
+            const escapedKey = Handlebars.escapeExpression(key);
+            const escapedValue = Handlebars.escapeExpression(options.hash[key]);
+            attributes.push(escapedKey + '="' + escapedValue + '"');
+          });
           const escapedText = Handlebars.escapeExpression(text);
-          
-          const escapedOutput ="<a " + attributes.join(" ") + ">" + escapedText + "</a>";
+
+          const escapedOutput =
+            "<a " + attributes.join(" ") + ">" + escapedText + "</a>";
           return new Handlebars.SafeString(escapedOutput);
-        }
+        },
       },
     }),
   ],
