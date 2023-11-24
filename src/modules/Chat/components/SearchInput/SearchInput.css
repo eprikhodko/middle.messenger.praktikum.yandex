@@ -4,7 +4,7 @@
   gap: 8px;
   background: var(--color-ui-placeholder);
   border-radius: 4px;
-  padding: 8px;
+  padding-left: 8px;
 
   .search-form__icon {
     width: 16px;
@@ -12,5 +12,6 @@
 
   .search-form__input {
     background: transparent;
+    padding: 8px;
   }
 }

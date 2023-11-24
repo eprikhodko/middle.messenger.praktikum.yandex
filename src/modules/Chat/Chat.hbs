@@ -1,8 +1,16 @@
 <div class="chat-container">
   <aside class="chat-sidebar">
-    {{> Chat/components/LinkProfile/LinkProfile }}
+    <div class="chat-link-profile">
+      {{> Chat/components/LinkProfile/LinkProfile }}
+    </div>
+    
     {{> Chat/components/SearchInput/SearchInput }}
-      chats items
+    
+    <ul class="chat-list">
+     {{> Chat/components/ChatListItem/ChatListItem}}
+     {{> Chat/components/ChatListItem/ChatListItem}}
+     {{> Chat/components/ChatListItem/ChatListItem}}      
+    </ul>
   </aside>
 
   <div class="chat-body">

@@ -1,9 +1,0 @@
-.chat-container {
-    display: flex;
-}
-
-.chat-sidebar {
-    display: flex;
-    flex-direction: column;
-}
-
