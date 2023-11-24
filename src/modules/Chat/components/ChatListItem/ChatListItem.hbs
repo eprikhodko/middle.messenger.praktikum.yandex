@@ -1,20 +1,22 @@
 <li class="chat-list-item">
-  <div class="chat-list-item__avatar-container">
-    <img
-      class="chat-list-item__avatar"
-      src="/path-to-chat-image"
-      alt=""
-      onerror="this.style.display='none'"
-    />
-  </div>
+  <div class="chat-list-item-inner-content {{#if isActive}}chat-list-item--active{{/if}}">
+    <div class="chat-list-item__avatar-container">
+      <img
+        class="chat-list-item__avatar"
+        src="/path-to-chat-image"
+        alt=""
+        onerror="this.style.display='none'"
+      />
+    </div>
 
-  <div class="chat-list-item__details">
-    <p class="chat-list-item__name">Chat name</p>
-    <p class="chat-list-item__last-message-preview">Last message preview...</p>
-  </div>
+    <div class="chat-list-item__details">
+      <p class="chat-list-item__name">Chat name</p>
+      <p class="chat-list-item__last-message-preview">Last message preview...</p>
+    </div>
 
-  <div class="chat-list-item__metadata">
-    <p class="chat-list-item__timestamp">1 Мая 2020</p>
-    <p class="chat-list-item__unread-messages-count">4</p>
+    <div class="chat-list-item__metadata">
+      <p class="chat-list-item__timestamp">1 Мая 2020</p>
+      <p class="chat-list-item__unread-messages-count">4</p>
+    </div>
   </div>
 </li>

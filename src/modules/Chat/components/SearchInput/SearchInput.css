@@ -13,5 +13,6 @@
   .search-form__input {
     background: transparent;
     padding: 8px;
+    width: 100%;
   }
 }
