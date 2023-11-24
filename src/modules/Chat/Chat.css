@@ -15,3 +15,62 @@
   align-self: flex-end;
   margin: 16px 0 24px;
 }
+
+.chat-body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 20px 20px;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+
+  .chat-messages__date-separator {
+    align-self: center;
+    margin: 48px 0 32px;
+  }
+
+  .chat-messages__date-text {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+  }
+}
+
+.chat-message--received {
+  align-self: flex-start;
+  background: var(--color-ui-bg-message-received);
+}
+
+.chat-message--sent {
+  align-self: flex-end;
+  background: var(--color-ui-bg-message-sent);
+  min-width: 120px;
+}
+
+.chat-message {
+  padding: 12px;
+  border-radius: 12px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+
+  .chat-message__text {
+    font-size: 12px;
+    color: var(--color-text-primary);
+  }
+
+  .chat-message__timestamp {
+    font-size: 9px;
+    align-self: flex-end;
+  }
+
+  .chat-message__timestamp--received {
+    color: var(--color-text-secondary);
+  }
+
+  .chat-message__timestamp--sent {
+    color: var(--color-ui-primary);
+  }
+}

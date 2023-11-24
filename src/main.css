@@ -9,6 +9,8 @@
   --color-ui-chat-active: #e4edfd;
   --color-ui-chat-sidebar-bg: #fbfbfb;
   --color-ui-placeholder: #efefef;
+  --color-ui-bg-message-received: #f8f8f8;
+  --color-ui-bg-message-sent: #e4edfd;
 }
 
 /* fonts */
