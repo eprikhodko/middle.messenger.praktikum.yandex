@@ -19,6 +19,8 @@ export default defineConfig({
         signIn: resolve(root, "pages/sign-in/sign-in.html"),
         signUp: resolve(root, "pages/sign-up/sign-up.html"),
         chat: resolve(root, "pages/chat/chat.html"),
+        userProfile: resolve(root, "pages/profile/profile.html"),
+        changePassword: resolve(root, "pages/change-password/change-password.html"),
       },
     },
   },
