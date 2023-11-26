@@ -1,5 +1,6 @@
 .settings-container {
   display: flex;
+  min-height: 100vh;
 }
 
 .settings-main-content {
