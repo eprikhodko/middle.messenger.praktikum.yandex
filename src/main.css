@@ -4,15 +4,23 @@
   --color-text-primary: #1e1e1e;
   --color-text-secondary: #7f7f7f;
   --color-text-snow: #ffffff;
+  --color-text-placeholder: #999999;
   --color-ui-primary: #3369f3;
+  --color-ui-secondary: #eaeaea;
+  --color-ui-chat-active: #e4edfd;
+  --color-ui-chat-sidebar-bg: #fbfbfb;
+  --color-ui-placeholder: #efefef;
+  --color-ui-bg-message-received: #f8f8f8;
+  --color-ui-bg-message-sent: #e4edfd;
 }
 
 /* fonts */
 
 @font-face {
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
-  src: local('Inter-Medium'), url(../static/fonts/Inter-Medium.woff2) format('woff2');
+  src: local("Inter-Medium"),
+    url(../static/fonts/Inter-Medium.woff2) format("woff2");
 }
 
 :root {

@@ -1,0 +1,2 @@
+import "./LinkProfile.css";
+
