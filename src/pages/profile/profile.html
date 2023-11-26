@@ -1,0 +1,30 @@
+<!-- I can probably create new setting page layout? or it will be overcomplication instead
+or I can probably just use aside component and a component with the main content of the setting page and thats all
+
+  alright. I can just create sidebar component for now, and another wrapper component? and then reuse it
+  at profile and at chat settings page. 
+
+  So. Just create a sidebar now and overall layout, and then I can reuse it.
+-->
+{{#> layout/default/defaultLayout title="User profile" pageScript="./index.js"}}
+  <div class="settings-container">
+    <aside class="sidebar-back-button">
+      {{> ButtonArrow/ButtonArrow type="button" buttonBack=true}}
+    </aside>
+
+    <main class="settings-main-content">
+      <div class="settings-avatar">
+        <label for="avatar-input" class="settings-avatar__label">
+          <img class="settings-avatar__img" src="path-to-image" alt="Avatar" 
+          onerror="this.onerror=null; this.src='/avatar-placeholder.svg';"
+          >
+        </label>
+        <input id="avatar-input" type="file" onchange="loadFile(event)" style="display: none;">
+      </div>
+
+      <p class="settings__username">Ivan</p>
+
+      
+    </main>
+  </div>
+{{/layout/default/defaultLayout}}
