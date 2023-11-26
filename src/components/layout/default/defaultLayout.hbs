@@ -6,12 +6,12 @@
   </head>
 
   <body>
-    {{#if pageScript}}
-    <script type="module" src={{pageScript}}></script>
-    {{/if}}
-
     <div class="default-layout-container">
       {{> @partial-block}}
     </div>
+
+    {{#if pageScript}}
+      <script type="module" src={{pageScript}}></script>
+    {{/if}}
   </body>
 </html>
