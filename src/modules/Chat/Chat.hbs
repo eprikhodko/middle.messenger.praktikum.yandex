@@ -1,0 +1,58 @@
+<div class="chat-container">
+  <aside class="chat-sidebar">
+    <div class="chat-link-profile">
+      {{> Chat/components/LinkProfile/LinkProfile }}
+    </div>
+    
+    {{> Chat/components/SearchInput/SearchInput }}
+    
+    <ul class="chat-list">
+     {{> Chat/components/ChatListItem/ChatListItem}}
+     {{> Chat/components/ChatListItem/ChatListItem}}
+     {{> Chat/components/ChatListItem/ChatListItem}}
+     {{> Chat/components/ChatListItem/ChatListItem isActive=true}} 
+     {{> Chat/components/ChatListItem/ChatListItem}} 
+     {{> Chat/components/ChatListItem/ChatListItem}} 
+     {{> Chat/components/ChatListItem/ChatListItem}}    
+    </ul>
+  </aside>
+
+  <div class="chat-body">
+    {{> Chat/components/ChatHeader/ChatHeader}}
+
+    <div class="chat-messages">
+      <div class="chat-messages__date-separator">
+          <p class="chat-messages__date-text">June 19</p>
+      </div>
+
+      <div class="chat-message chat-message--received">
+          <div class="chat-message__text">
+            Hi! Look, an interesting piece of lunar space history has surfaced - NASA at some point asked Hasselblad to adapt the SWC model for lunar missions. Now we all know that the astronauts flew with the 500 EL model - and by the way, all of those camera bodies are still on the lunar surface, as the astronauts only took the film cassettes with them.
+            
+            Hasselblad eventually adapted the SWC for space, but something went wrong and they never made it onto the rocket. Only 25 of them were produced, one of them was recently sold at auction for 45,000 euros.
+            </div>
+          <div class="chat-message__timestamp chat-message__timestamp--received">11:56</div>
+      </div>
+
+      <div class="chat-message chat-message--sent">
+          <div class="chat-message__text">Cool! Thanks for sharing.</div>
+          <div class="chat-message__timestamp chat-message__timestamp--sent">12:00</div>
+      </div>
+    </div>
+
+    <footer class="chat-footer">
+      <form class="send-message-form">
+        <input
+          class="send-message-form__input"
+          autocomplete="off"
+          type="text"
+          id="message"
+          name="message"
+          placeholder="Сообщение"
+        />
+
+        {{> ButtonArrow/ButtonArrow type="submit" }}
+      </form>
+    </footer>
+  </div>
+</div>

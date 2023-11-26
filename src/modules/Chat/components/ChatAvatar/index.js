@@ -1,0 +1,2 @@
+import "./ChatAvatar.css";
+
