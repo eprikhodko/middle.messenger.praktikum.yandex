@@ -9,4 +9,6 @@ import "@modules/Chat";
 import "@modules/Chat/components/SearchInput";
 import "@modules/Chat/components/LinkProfile";
 import "@components/ButtonArrow"
+import "@components/ButtonSetting"
+import "@components/SettingsFormInput"
 
