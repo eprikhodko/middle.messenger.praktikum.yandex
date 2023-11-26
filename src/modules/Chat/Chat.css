@@ -13,19 +13,21 @@
 
 .chat-link-profile {
   align-self: flex-end;
-  margin: 16px 0 24px;
+  margin: 6px 0 24px;
 }
 
 .chat-body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 20px 20px;
+  padding: 0 20px 12px;
 }
 
 .chat-messages {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
 
   .chat-messages__date-separator {
     align-self: center;
@@ -72,5 +74,44 @@
 
   .chat-message__timestamp--sent {
     color: var(--color-ui-primary);
+  }
+}
+
+.chat-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--color-ui-secondary);
+  padding-top: 12px;
+  margin-top: 32px;
+
+  .send-message-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  .send-message-form__input {
+    font-size: 12px;
+    background: var(--color-ui-placeholder);
+    padding: 10px 20px;
+    border-radius: 9999px;
+    width: 100%;
+    margin-right: 12px;
+  }
+
+  .send-message-form__button-send-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-ui-primary);
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    border-radius: 9999px;
+
+    .menu-button-arrow {
+      width: 16px;
+      height: 16px;
+    }
   }
 }

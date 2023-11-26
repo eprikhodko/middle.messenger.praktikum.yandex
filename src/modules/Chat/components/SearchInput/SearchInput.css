@@ -11,6 +11,7 @@
   }
 
   .search-form__input {
+    font-size: 12px;
     background: transparent;
     padding: 8px;
     width: 100%;
