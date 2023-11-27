@@ -20,7 +20,8 @@
 @font-face {
   font-family: "Inter";
   font-style: normal;
-  src: local("Inter-Medium"),
+  src:
+    local("Inter-Medium"),
     url(../static/fonts/Inter-Medium.woff2) format("woff2");
 }
 

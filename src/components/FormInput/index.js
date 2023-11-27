@@ -1,2 +1,1 @@
 import "./FormInput.css";
-

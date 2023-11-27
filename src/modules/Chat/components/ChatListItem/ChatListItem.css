@@ -40,5 +40,5 @@
 }
 
 .chat-list-item--active {
-    background: var(--color-ui-chat-active);
+  background: var(--color-ui-chat-active);
 }

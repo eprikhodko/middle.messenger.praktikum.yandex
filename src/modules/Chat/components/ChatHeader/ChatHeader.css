@@ -20,7 +20,6 @@
     border-radius: 9999px;
     transition: 200ms background;
 
-
     &:hover {
       background: var(--color-ui-secondary);
     }

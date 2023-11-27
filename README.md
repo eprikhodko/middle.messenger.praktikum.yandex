@@ -14,8 +14,8 @@
 - 404 page: https://eloquent-arithmetic-ee6077.netlify.app/pages/404/404
 - 500 page: https://eloquent-arithmetic-ee6077.netlify.app/pages/500/500
 
-
 #### Стэк:
+
 - Handlebars
 - Vite
 - Express
@@ -25,22 +25,23 @@
 Для запуска проекта потребуется версия **Node.JS как минимум 18.7.0**
 
 Чтобы запустить проект, выполните следующие команды:
-   ```
-   git clone git@github.com:eprikhodko/middle.messenger.praktikum.yandex.git
-   cd middle.messenger.praktikum.yandex
-   npm install
-   ```
 
-Запуск dev сервера: 
-```npm run dev```
+```
+git clone git@github.com:eprikhodko/middle.messenger.praktikum.yandex.git
+cd middle.messenger.praktikum.yandex
+npm install
+```
 
-В этом случае проект будет доступен по адресу ```http://localhost:3000/```
+Запуск dev сервера:
+`npm run dev`
+
+В этом случае проект будет доступен по адресу `http://localhost:3000/`
 
 Сборка production билда:
-```npm run build```
+`npm run build`
 
 Чтобы проверить собранный билд локально, выполните команду:
-```npm run start```
+`npm run start`
 
-Проект будет запущен при помощи express и доступен по адресу 
-```http://localhost:3000/```
+Проект будет запущен при помощи express и доступен по адресу
+`http://localhost:3000/`

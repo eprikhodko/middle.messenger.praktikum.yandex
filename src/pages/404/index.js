@@ -4,6 +4,4 @@ import "@src/main.css";
 import "./404.css";
 // layouts, components, modules
 import "@components/layout/default";
-import "@components/LinkCommon"
-
-
+import "@components/LinkCommon";
