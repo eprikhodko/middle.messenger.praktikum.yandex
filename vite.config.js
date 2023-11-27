@@ -20,7 +20,10 @@ export default defineConfig({
         signUp: resolve(root, "pages/sign-up/sign-up.html"),
         chat: resolve(root, "pages/chat/chat.html"),
         userProfile: resolve(root, "pages/profile/profile.html"),
-        changePassword: resolve(root, "pages/change-password/change-password.html"),
+        changePassword: resolve(
+          root,
+          "pages/change-password/change-password.html",
+        ),
         notFoundPage: resolve(root, "pages/404/404.html"),
         serverErrorPage: resolve(root, "pages/500/500.html"),
       },

@@ -4,9 +4,7 @@ import "@src/main.css";
 import "./change-password.css";
 // layouts, components, modules
 import "@components/layout/default";
-import "@components/ButtonArrow"
-import "@components/ButtonSetting"
-import "@components/SettingsFormInput"
-import "@components/ButtonCommon"
-
-
+import "@components/ButtonArrow";
+import "@components/ButtonSetting";
+import "@components/SettingsFormInput";
+import "@components/ButtonCommon";
