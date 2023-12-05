@@ -1,0 +1,15 @@
+{{#> layout/formCommonLayout/formCommonLayout title="Регистрация"}}
+  {{>FormInput/FormInput label="Почта" type="email" id="email"}}
+  {{>FormInput/FormInput label="Логин" type="text" id="login"}}
+  {{>FormInput/FormInput label="Имя" type="text" id="first_name"}}
+  {{>FormInput/FormInput label="Фамилия" type="text" id="second_name"}}
+  {{>FormInput/FormInput label="Телефон" type="phone" id="phone"}}
+  {{>FormInput/FormInput label="Пароль" type="password" id="password"}}
+  {{>FormInput/FormInput label="Пароль (еще раз)" type="password" id="passwordRepeat"}}
+
+  <div class="form-buttons form-buttons_sign-up">
+    {{> ButtonCommon/ButtonCommon text="Sign up" type="submit"}}
+
+    {{LinkCommon "Sign in" href="/pages/sign-in/sign-in.html" class="link-primary"}}
+  </div>
+{{/layout/formCommonLayout/formCommonLayout}}
