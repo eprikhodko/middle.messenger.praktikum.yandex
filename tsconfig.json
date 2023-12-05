@@ -10,10 +10,13 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "noEmit": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "skipLibCheck": true
+    "sourceMap": true,
   },
   "include": ["src"]
 }
