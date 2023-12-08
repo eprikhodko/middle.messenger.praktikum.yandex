@@ -1,8 +1,12 @@
 <div>
-        {{#FormLayout title=this.signInForm.title}}
-TEST
-            {{{Button ref="button" type=type label=label onClick=this.onClick}}}
-
-        {{/FormLayout}}
-
+  {{#FormCommonLayout title=this.signInForm.title}}
+    <form class="form-common" action="" method="post">
+      {{{FormInput
+        ref="forminput"
+        type=this.loginInput.type
+        label=this.loginInput.label
+        id=this.loginInput.id
+      }}}
+    </form>
+  {{/FormCommonLayout}}
 </div>

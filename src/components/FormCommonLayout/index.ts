@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import template from './FormLayout.hbs';
+import template from './FormCommonLayout.hbs';
 import './formCommonLayout.css'
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
   };
 }
 
-export class FormLayout extends Block {
+export class FormCommonLayout extends Block {
   constructor(props: Props) {
     super({
       ...props,

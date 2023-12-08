@@ -8,14 +8,14 @@ import {render} from "../../utils/render";
 export class SignInPage extends Block {
   constructor() {
     super({
-      type: 'btn',
-      label: 'root label',
-      onClick: () => {
-        console.log("hello from root button")
-      },
-
       signInForm: {
         title: 'Sign In'
+      },
+
+      loginInput: {
+        type: "text",
+        label: "Логин",
+        id: "login"
       },
 
       customButton: {

@@ -3,14 +3,15 @@ import "./index.css";
 
 import {HomePage} from './pages/home';
 import {Button} from './components/Button';
-import {FormLayout} from './components/FormLayout'
+import {FormCommonLayout} from './components/FormCommonLayout'
+import {FormInput} from './components/FormInput'
 import {registerComponent} from "./utils/registerComponent";
 // import Card from "./components/Card";
 import {render} from "./utils/render";
 
 registerComponent('Button', Button);
-registerComponent('FormLayout', FormLayout);
-// registerComponent('Card', Card);
+registerComponent('FormCommonLayout', FormCommonLayout);
+registerComponent('FormInput', FormInput);
 
 window.addEventListener('DOMContentLoaded', () => {
   render('home')
