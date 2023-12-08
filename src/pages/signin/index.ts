@@ -14,6 +14,10 @@ export class SignInPage extends Block {
         console.log("hello from root button")
       },
 
+      signInForm: {
+        title: 'Sign In'
+      },
+
       customButton: {
         label: 'CUSTOM BUTTON',
         type: 'submit',

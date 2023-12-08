@@ -1,8 +1,9 @@
 import Block from '../../utils/Block';
 import template from './FormLayout.hbs';
+import './formCommonLayout.css'
 
-interface ButtonProps {
-  label: string;
+interface Props {
+  title: string;
   type?: 'submit' | 'button',
   onClick?: () => void;
   events: {
@@ -11,7 +12,7 @@ interface ButtonProps {
 }
 
 export class FormLayout extends Block {
-  constructor(props: ButtonProps) {
+  constructor(props: Props) {
     super({
       ...props,
       events: {
@@ -21,7 +22,8 @@ export class FormLayout extends Block {
   }
 
   render() {
-    console.log(this)
+    // console.log(formCommonLayout)
+    // console.log(this)
     // console.log(this.compile(template, this.props))
     return this.compile(template, this.props);
   }
