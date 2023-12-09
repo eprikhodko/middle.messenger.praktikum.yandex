@@ -1,19 +1,22 @@
 <div>
   {{#FormCommonLayout title=this.signInForm.title}}
     <form class="form-common" action="" method="post">
-      {{{FormInput
-        ref="forminput"
-        type=this.loginInput.type
-        label=this.loginInput.label
-        id=this.loginInput.id
-      }}}
+      {{#FormInputContainer label=this.loginInput.label for=this.loginInput.id}}
+        {{{FormInput
+          ref="forminput"
+          type=this.loginInput.type
+          id=this.loginInput.id
+        }}}
+      {{/FormInputContainer}}
 
-      {{{FormInput
-        ref="forminput"
-        type=this.passwordInput.type
-        label=this.passwordInput.label
-        id=this.passwordInput.id
-      }}}
+      {{#FormInputContainer label=this.passwordInput.label for=this.passwordInput.id}}
+        {{{FormInput
+          ref="forminput"
+          type=this.passwordInput.type
+          label=this.passwordInput.label
+          id=this.passwordInput.id
+        }}}
+      {{/FormInputContainer}}
     </form>
 
     <div class="form-buttons form-buttons_sign-in">
@@ -24,7 +27,7 @@
         onClick=this.buttonSignIn.onClick
       }}}
 
-        {{{ButtonCommon
+      {{{ButtonCommon
         text=this.buttonSignUp.text
         propClass=this.buttonSignUp.class
         type=this.buttonSignUp.type
