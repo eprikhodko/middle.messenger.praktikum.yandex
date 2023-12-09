@@ -1,48 +1,51 @@
-import Block from '../../utils/Block';
+import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
-import {render} from "../../utils/render";
-
-// console.log(template)
-
+import { render } from "../../utils/render";
 
 export class SignInPage extends Block {
   constructor() {
     super({
       signInForm: {
-        title: 'Sign In'
+        title: "Sign In",
       },
 
       loginInput: {
         type: "text",
-        label: "Логин",
-        id: "login"
+        label: "Login",
+        id: "login",
+      },
+
+      passwordInput: {
+        type: "password",
+        label: "Password",
+        id: "password",
       },
 
       customButton: {
-        label: 'CUSTOM BUTTON',
-        type: 'submit',
+        label: "CUSTOM BUTTON",
+        type: "submit",
         onClick: () => {
-            console.log("hello from custom button")
-          }
-        }, 
+          console.log("hello from custom button");
+        },
+      },
 
       buttons: [
         {
-          label: 'Login', 
-          type: 'sub',
+          label: "Login",
+          type: "sub",
           onClick: () => {
-            render('login');
-            console.log("render login page")
-          }
+            render("login");
+            console.log("render login page");
+          },
         },
         {
-          label: 'Button 2',
-          type: 'some-type'
+          label: "Button 2",
+          type: "some-type",
         },
         {
-          label: 'Button 3',
+          label: "Button 3",
         },
-      ]
+      ],
     });
   }
 

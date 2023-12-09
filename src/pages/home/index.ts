@@ -2,9 +2,6 @@ import Block from '../../utils/Block';
 import template from "./home.hbs";
 import {render} from "../../utils/render";
 
-console.log(template)
-
-
 export class HomePage extends Block {
   constructor() {
     super({
