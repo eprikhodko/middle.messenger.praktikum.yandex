@@ -1,7 +1,7 @@
 import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
 import { render } from "../../utils/render";
-import { InputType } from "../../utils/enums";
+import { InputType, ValidationPattern } from "../../utils/enums";
 import "./sign-in.css"
 
 export class SignInPage extends Block {
@@ -15,12 +15,14 @@ export class SignInPage extends Block {
         type: InputType.TEXT,
         label: "Login",
         id: "login",
+        pattern: ValidationPattern.LOGIN
       },
 
       passwordInput: {
         type: InputType.PASSWORD,
         label: "Password",
         id: "password",
+        pattern: ValidationPattern.LOGIN
       },
 
       buttonSignIn: {

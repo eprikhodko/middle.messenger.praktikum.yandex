@@ -1,17 +1,15 @@
 import Block from '../../utils/Block';
 import template from './FormInput.hbs';
 import "./FormInput.css"
-import { InputType } from '../../utils/enums';
+import { InputType, ValidationPattern } from '../../utils/enums';
 
 interface Props {
-  label: string;
   type: InputType,
   id: string;
+  pattern: ValidationPattern,
   onClick?: () => void;
-  // onInputBlur?: (event: Event) => void;
   events: {
     click: () => void;
-    // blur?: (event: Event) => void;
   };
 }
 
@@ -21,8 +19,7 @@ export class FormInput extends Block {
       ...props,
       events: {
         click: props.onClick,
-        // blur: props.onInputBlur
-        blur: (event) => this.handleBlur(event)
+        blur: (event) => this.handleBlur(event, props)
       }
     });
   }
@@ -31,8 +28,17 @@ export class FormInput extends Block {
     return this.compile(template, this.props);
   }
 
-  handleBlur(event) {
+  handleBlur(event, props) {
     // Validation logic goes here
-    console.log("testing blur event")
+    const val = event.target.value
+    const regexp = new RegExp(props.pattern);
+
+    if (regexp.test(val)) { 
+      console.log("passed")
+    } else {
+      console.log("error")
+    }
+
+    console.log(props.pattern)
   }
 }
