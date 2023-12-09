@@ -11,7 +11,7 @@ export class HomePage extends Block {
       type: 'btn',
       label: 'root label',
       onClick: () => {
-        render('signin');
+        render('sign-in');
         console.log("hello from root button")
       },
 

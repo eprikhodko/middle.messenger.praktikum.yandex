@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import template from "./signin.hbs";
+import template from "./sign-in.hbs";
 import {render} from "../../utils/render";
 
 // console.log(template)
