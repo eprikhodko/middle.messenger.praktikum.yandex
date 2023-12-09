@@ -1,6 +1,7 @@
 import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
 import { render } from "../../utils/render";
+import { InputType } from "../../utils/enums";
 import "./sign-in.css"
 
 export class SignInPage extends Block {
@@ -11,13 +12,13 @@ export class SignInPage extends Block {
       },
 
       loginInput: {
-        type: "text",
+        type: InputType.TEXT,
         label: "Login",
         id: "login",
       },
 
       passwordInput: {
-        type: "password",
+        type: InputType.PASSWORD,
         label: "Password",
         id: "password",
       },
