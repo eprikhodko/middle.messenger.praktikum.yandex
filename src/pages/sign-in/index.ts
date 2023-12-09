@@ -1,6 +1,7 @@
 import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
 import { render } from "../../utils/render";
+import "./sign-in.css"
 
 export class SignInPage extends Block {
   constructor() {
@@ -21,11 +22,21 @@ export class SignInPage extends Block {
         id: "password",
       },
 
-      customButton: {
-        label: "CUSTOM BUTTON",
+      buttonSignIn: {
+        text: "Sign in",
         type: "submit",
+        class: "button--primary",
         onClick: () => {
-          console.log("hello from custom button");
+          console.log("submit");
+        },
+      },
+
+      buttonSignUp: {
+        text: "Sign up",
+        type: "button",
+        class: "button--link-primary",
+        onClick: () => {
+          render("login");
         },
       },
 

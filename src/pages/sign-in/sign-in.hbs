@@ -8,12 +8,28 @@
         id=this.loginInput.id
       }}}
 
-       {{{FormInput
+      {{{FormInput
         ref="forminput"
         type=this.passwordInput.type
         label=this.passwordInput.label
         id=this.passwordInput.id
       }}}
     </form>
+
+    <div class="form-buttons form-buttons_sign-in">
+      {{{ButtonCommon
+        text=this.buttonSignIn.text
+        propClass=this.buttonSignIn.class
+        type=this.buttonSignIn.type
+        onClick=this.buttonSignIn.onClick
+      }}}
+
+        {{{ButtonCommon
+        text=this.buttonSignUp.text
+        propClass=this.buttonSignUp.class
+        type=this.buttonSignUp.type
+        onClick=this.buttonSignUp.onClick
+      }}}
+    </div>
   {{/FormCommonLayout}}
 </div>

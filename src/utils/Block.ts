@@ -25,7 +25,6 @@ class Block {
    * @returns {void}
    */
   constructor(propsWithChildren: any = {}) {
-    // console.log(propsWithChildren)
     const eventBus = new EventBus();
 
     const {props, children} = this._getChildrenAndProps(propsWithChildren);
