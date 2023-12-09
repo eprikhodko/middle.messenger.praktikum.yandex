@@ -8,8 +8,10 @@ interface Props {
   type: InputType,
   id: string;
   onClick?: () => void;
+  // onInputBlur?: (event: Event) => void;
   events: {
     click: () => void;
+    // blur?: (event: Event) => void;
   };
 }
 
@@ -18,12 +20,19 @@ export class FormInput extends Block {
     super({
       ...props,
       events: {
-        click: props.onClick
+        click: props.onClick,
+        // blur: props.onInputBlur
+        blur: (event) => this.handleBlur(event)
       }
     });
   }
 
   render() {
     return this.compile(template, this.props);
+  }
+
+  handleBlur(event) {
+    // Validation logic goes here
+    console.log("testing blur event")
   }
 }
