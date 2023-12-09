@@ -1,10 +1,11 @@
 import Block from '../../utils/Block';
 import template from './FormInput.hbs';
 import "./FormInput.css"
+import { InputType } from '../../utils/enums';
 
 interface Props {
   label: string;
-  type: 'submit' | 'button',
+  type: InputType,
   id: string;
   onClick?: () => void;
   events: {
