@@ -33,21 +33,17 @@ export class FormInput extends Block {
     const regexp = new RegExp(props.pattern);
     const isError = !regexp.test(val);
     const errorMessage = document.getElementById(`${props.id}-error-message`);
-    const showErrorMessage = () => {
-      errorMessage.setAttribute(
-        "class",
-        "form-common__input-error form-common__input-error--visible"
-      );
-    };
-    const hideErrorMessage = () => {
-      errorMessage.setAttribute("class", "form-common__input-error");
-    };
+
+
+    const toggleErrorMessage = (isError) => {
+      errorMessage.classList.toggle("form-common__input-error--visible", isError);
+    }
 
     if (isError) {
-      showErrorMessage();
+      toggleErrorMessage(true)
     } else {
       console.log("passed");
-      hideErrorMessage();
+      toggleErrorMessage(false)
     }
 
     console.log(props.pattern);
