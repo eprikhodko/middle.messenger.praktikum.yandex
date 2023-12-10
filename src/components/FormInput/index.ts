@@ -36,9 +36,9 @@ export class FormInput extends Block {
   }
 
   handleBlur(event, props) {
-    const val = event.target.value;
+    const inputVal = event.target.value;
     const regexp = new RegExp(props.pattern);
-    const isError = !regexp.test(val);
+    const isError = !regexp.test(inputVal);
     const errorMessageEl = document.getElementById(`${props.id}-error-message`);
 
     if (isError) {

@@ -23,7 +23,7 @@ export class SignInPage extends Block {
         type: InputType.PASSWORD,
         label: "Password",
         id: "password",
-        pattern: ValidationPattern.LOGIN,
+        pattern: ValidationPattern.PASSWORD,
         errorText: "incorrect password"
       },
 
