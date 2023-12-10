@@ -28,57 +28,43 @@ export class SignInPage extends Block {
           errorText: ErrorMessages.PASSWORD,
         },
       ],
-      // loginInput: {
-      //   type: InputType.TEXT,
-      //   label: "Login",
-      //   id: "login",
-      //   pattern: ValidationPattern.LOGIN,
-      //   errorText: ErrorMessages.LOGIN,
-      // },
 
-      // passwordInput: {
-      //   type: InputType.PASSWORD,
-      //   label: "Password",
-      //   id: "password",
-      //   pattern: ValidationPattern.PASSWORD,
-      //   errorText: ErrorMessages.PASSWORD,
-      // },
-
-      buttonSignIn: {
-        text: "Sign in",
-        type: "submit",
-        class: "button--primary",
-        onClick: () => {
-          this.submitForm();
-        },
-      },
-
-      buttonSignUp: {
-        text: "Sign up",
-        type: "button",
-        class: "button--link-primary",
-        onClick: () => {
-          render("login");
-        },
-      },
-
-      buttons: [
+      formButtons: [
         {
-          label: "Login",
-          type: "sub",
+          text: "Sign in",
+          type: "submit",
+          class: "button--primary",
           onClick: () => {
-            render("login");
-            console.log("render login page");
+            this.submitForm();
           },
         },
         {
-          label: "Button 2",
-          type: "some-type",
-        },
-        {
-          label: "Button 3",
+          text: "Sign up",
+          type: "button",
+          class: "button--link-primary",
+          onClick: () => {
+            render("login");
+          },
         },
       ],
+
+      // buttonSignIn: {
+      //   text: "Sign in",
+      //   type: "submit",
+      //   class: "button--primary",
+      //   onClick: () => {
+      //     this.submitForm();
+      //   },
+      // },
+
+      // buttonSignUp: {
+      //   text: "Sign up",
+      //   type: "button",
+      //   class: "button--link-primary",
+      //   onClick: () => {
+      //     render("login");
+      //   },
+      // },
     });
   }
 

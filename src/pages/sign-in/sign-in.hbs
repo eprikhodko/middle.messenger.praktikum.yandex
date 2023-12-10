@@ -1,35 +1,6 @@
 <div>
   {{#FormCommonLayout title=this.signInForm.title}}
     <form class="form-common" action="" method="post">
-      {{#FormInputContainer label=this.loginInput.label for=this.loginInput.id}}
-        {{{FormInput
-          ref="forminput"
-          type=this.loginInput.type
-          id=this.loginInput.id
-          pattern=this.loginInput.pattern
-        }}}
-        {{{FormInputError
-          text=this.loginInput.errorText
-          for=this.loginInput.id
-        }}}
-      {{/FormInputContainer}}
-
-      {{#FormInputContainer
-        label=this.passwordInput.label for=this.passwordInput.id
-      }}
-        {{{FormInput
-          ref="forminput"
-          type=this.passwordInput.type
-          label=this.passwordInput.label
-          id=this.passwordInput.id
-          pattern=this.passwordInput.pattern
-        }}}
-        {{{FormInputError
-          text=this.passwordInput.errorText
-          for=this.passwordInput.id
-        }}}
-      {{/FormInputContainer}}
-
       {{#each formInputs}}
         {{#FormInputContainer label=this.label for=this.id}}
           {{{FormInput
@@ -45,19 +16,14 @@
     </form>
 
     <div class="form-buttons form-buttons_sign-in">
-      {{{ButtonCommon
-        text=this.buttonSignIn.text
-        propClass=this.buttonSignIn.class
-        type=this.buttonSignIn.type
-        onClick=this.buttonSignIn.onClick
-      }}}
-
-      {{{ButtonCommon
-        text=this.buttonSignUp.text
-        propClass=this.buttonSignUp.class
-        type=this.buttonSignUp.type
-        onClick=this.buttonSignUp.onClick
-      }}}
+      {{#each formButtons}}
+        {{{ButtonCommon
+          text=this.text
+          propClass=this.class
+          type=this.type
+          onClick=this.onClick
+        }}}
+      {{/each}}
     </div>
   {{/FormCommonLayout}}
 </div>
