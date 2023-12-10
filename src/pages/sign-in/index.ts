@@ -1,7 +1,8 @@
 import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
 import { render } from "../../utils/render";
-import { InputType, ValidationPattern } from "../../utils/enums";
+import validateInput from "../../utils/validateInput";
+import { InputType, ValidationPattern, ErrorMessages } from "../../utils/enums";
 import "./sign-in.css";
 
 export class SignInPage extends Block {
@@ -16,7 +17,7 @@ export class SignInPage extends Block {
         label: "Login",
         id: "login",
         pattern: ValidationPattern.LOGIN,
-        errorText: "incorrect login",
+        errorText: ErrorMessages.LOGIN,
       },
 
       passwordInput: {
@@ -24,7 +25,7 @@ export class SignInPage extends Block {
         label: "Password",
         id: "password",
         pattern: ValidationPattern.PASSWORD,
-        errorText: "incorrect password",
+        errorText: ErrorMessages.PASSWORD,
       },
 
       buttonSignIn: {
@@ -76,17 +77,9 @@ export class SignInPage extends Block {
 
   validate() {
     const inputs = this._getFormInputs();
-    // validate inputs
-    inputs.forEach((i) => {
-      const regexp = new RegExp(i.pattern);
-      const isError = !regexp.test(i.value);
-      const errorMessageEl = document.getElementById(`${i.id}-error-message`);
 
-      if (isError) {
-        this.toggleErrorMessage(errorMessageEl, true);
-      } else {
-        this.toggleErrorMessage(errorMessageEl, false);
-      }
+    inputs.forEach((i) => {
+      validateInput(i.pattern, i.value, i.id)
     });
   }
 
@@ -104,12 +97,5 @@ export class SignInPage extends Block {
     });
 
     console.log(formData);
-  }
-
-  toggleErrorMessage(errorMessageEl, isError) {
-    errorMessageEl.classList.toggle(
-      "form-common__input-error--visible",
-      isError
-    );
   }
 }
