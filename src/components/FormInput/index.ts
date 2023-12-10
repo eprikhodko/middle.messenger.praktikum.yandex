@@ -28,22 +28,24 @@ export class FormInput extends Block {
     return this.compile(template, this.props);
   }
 
+  toggleErrorMessage(errorMessageEl, isError) {
+    errorMessageEl.classList.toggle(
+      "form-common__input-error--visible",
+      isError
+    );
+  }
+
   handleBlur(event, props) {
     const val = event.target.value;
     const regexp = new RegExp(props.pattern);
     const isError = !regexp.test(val);
-    const errorMessage = document.getElementById(`${props.id}-error-message`);
-
-
-    const toggleErrorMessage = (isError) => {
-      errorMessage.classList.toggle("form-common__input-error--visible", isError);
-    }
+    const errorMessageEl = document.getElementById(`${props.id}-error-message`);
 
     if (isError) {
-      toggleErrorMessage(true)
+      this.toggleErrorMessage(errorMessageEl, true);
     } else {
       console.log("passed");
-      toggleErrorMessage(false)
+      this.toggleErrorMessage(errorMessageEl, false);
     }
 
     console.log(props.pattern);
