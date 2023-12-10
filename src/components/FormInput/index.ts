@@ -44,10 +44,7 @@ export class FormInput extends Block {
     if (isError) {
       this.toggleErrorMessage(errorMessageEl, true);
     } else {
-      console.log("passed");
       this.toggleErrorMessage(errorMessageEl, false);
     }
-
-    console.log(props.pattern);
   }
 }

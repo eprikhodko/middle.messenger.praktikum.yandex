@@ -2,7 +2,7 @@ import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
 import { render } from "../../utils/render";
 import { InputType, ValidationPattern } from "../../utils/enums";
-import "./sign-in.css"
+import "./sign-in.css";
 
 export class SignInPage extends Block {
   constructor() {
@@ -16,7 +16,7 @@ export class SignInPage extends Block {
         label: "Login",
         id: "login",
         pattern: ValidationPattern.LOGIN,
-        errorText: "incorrect login"
+        errorText: "incorrect login",
       },
 
       passwordInput: {
@@ -24,7 +24,7 @@ export class SignInPage extends Block {
         label: "Password",
         id: "password",
         pattern: ValidationPattern.PASSWORD,
-        errorText: "incorrect password"
+        errorText: "incorrect password",
       },
 
       buttonSignIn: {
@@ -32,7 +32,7 @@ export class SignInPage extends Block {
         type: "submit",
         class: "button--primary",
         onClick: () => {
-          console.log("submit");
+          this.submitForm();
         },
       },
 
@@ -67,5 +67,49 @@ export class SignInPage extends Block {
 
   render() {
     return this.compile(template, this.props);
+  }
+
+  submitForm() {
+    this.getFormData();
+    this.validate();
+  }
+
+  validate() {
+    const inputs = this._getFormInputs();
+    // validate inputs
+    inputs.forEach((i) => {
+      const regexp = new RegExp(i.pattern);
+      const isError = !regexp.test(i.value);
+      const errorMessageEl = document.getElementById(`${i.id}-error-message`);
+
+      if (isError) {
+        this.toggleErrorMessage(errorMessageEl, true);
+      } else {
+        this.toggleErrorMessage(errorMessageEl, false);
+      }
+    });
+  }
+
+  private _getFormInputs() {
+    return document.querySelectorAll(".form-common__input");
+  }
+
+  getFormData() {
+    const inputs = this._getFormInputs();
+    // create object with inputs data
+    const formData = {};
+
+    inputs.forEach((i) => {
+      formData[i.name] = i.value;
+    });
+
+    console.log(formData);
+  }
+
+  toggleErrorMessage(errorMessageEl, isError) {
+    errorMessageEl.classList.toggle(
+      "form-common__input-error--visible",
+      isError
+    );
   }
 }
