@@ -8,10 +8,15 @@
           id=this.loginInput.id
           pattern=this.loginInput.pattern
         }}}
-      {{{FormInputError text=this.loginInput.errorText for=this.loginInput.id}}}
+        {{{FormInputError
+          text=this.loginInput.errorText
+          for=this.loginInput.id
+        }}}
       {{/FormInputContainer}}
 
-      {{#FormInputContainer label=this.passwordInput.label for=this.passwordInput.id}}
+      {{#FormInputContainer
+        label=this.passwordInput.label for=this.passwordInput.id
+      }}
         {{{FormInput
           ref="forminput"
           type=this.passwordInput.type
@@ -19,8 +24,24 @@
           id=this.passwordInput.id
           pattern=this.passwordInput.pattern
         }}}
-      {{{FormInputError text=this.passwordInput.errorText for=this.passwordInput.id}}}
+        {{{FormInputError
+          text=this.passwordInput.errorText
+          for=this.passwordInput.id
+        }}}
       {{/FormInputContainer}}
+
+      {{#each formInputs}}
+        {{#FormInputContainer label=this.label for=this.id}}
+          {{{FormInput
+            ref="forminput"
+            type=this.type
+            label=this.label
+            id=this.id
+            pattern=this.pattern
+          }}}
+          {{{FormInputError text=this.errorText for=this.id}}}
+        {{/FormInputContainer}}
+      {{/each}}
     </form>
 
     <div class="form-buttons form-buttons_sign-in">

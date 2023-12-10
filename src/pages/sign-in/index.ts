@@ -12,21 +12,37 @@ export class SignInPage extends Block {
         title: "Sign In",
       },
 
-      loginInput: {
-        type: InputType.TEXT,
-        label: "Login",
-        id: "login",
-        pattern: ValidationPattern.LOGIN,
-        errorText: ErrorMessages.LOGIN,
-      },
+      formInputs: [
+        {
+          type: InputType.TEXT,
+          label: "Login",
+          id: "login",
+          pattern: ValidationPattern.LOGIN,
+          errorText: ErrorMessages.LOGIN,
+        },
+        {
+          type: InputType.PASSWORD,
+          label: "Password",
+          id: "password",
+          pattern: ValidationPattern.PASSWORD,
+          errorText: ErrorMessages.PASSWORD,
+        },
+      ],
+      // loginInput: {
+      //   type: InputType.TEXT,
+      //   label: "Login",
+      //   id: "login",
+      //   pattern: ValidationPattern.LOGIN,
+      //   errorText: ErrorMessages.LOGIN,
+      // },
 
-      passwordInput: {
-        type: InputType.PASSWORD,
-        label: "Password",
-        id: "password",
-        pattern: ValidationPattern.PASSWORD,
-        errorText: ErrorMessages.PASSWORD,
-      },
+      // passwordInput: {
+      //   type: InputType.PASSWORD,
+      //   label: "Password",
+      //   id: "password",
+      //   pattern: ValidationPattern.PASSWORD,
+      //   errorText: ErrorMessages.PASSWORD,
+      // },
 
       buttonSignIn: {
         text: "Sign in",
@@ -79,7 +95,7 @@ export class SignInPage extends Block {
     const inputs = this._getFormInputs();
 
     inputs.forEach((i) => {
-      validateInput(i.pattern, i.value, i.id)
+      validateInput(i.pattern, i.value, i.id);
     });
   }
 
