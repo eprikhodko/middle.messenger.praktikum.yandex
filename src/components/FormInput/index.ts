@@ -1,12 +1,12 @@
-import Block from '../../utils/Block';
-import template from './FormInput.hbs';
-import "./FormInput.css"
-import { InputType, ValidationPattern } from '../../utils/enums';
+import Block from "../../utils/Block";
+import template from "./FormInput.hbs";
+import "./FormInput.css";
+import { InputType, ValidationPattern } from "../../utils/enums";
 
 interface Props {
-  type: InputType,
+  type: InputType;
   id: string;
-  pattern: ValidationPattern,
+  pattern: ValidationPattern;
   onClick?: () => void;
   events: {
     click: () => void;
@@ -19,8 +19,8 @@ export class FormInput extends Block {
       ...props,
       events: {
         click: props.onClick,
-        blur: (event) => this.handleBlur(event, props)
-      }
+        blur: (event) => this.handleBlur(event, props),
+      },
     });
   }
 
@@ -29,16 +29,27 @@ export class FormInput extends Block {
   }
 
   handleBlur(event, props) {
-    // Validation logic goes here
-    const val = event.target.value
+    const val = event.target.value;
     const regexp = new RegExp(props.pattern);
+    const isError = !regexp.test(val);
+    const errorMessage = document.getElementById(`${props.id}-error-message`);
+    const showErrorMessage = () => {
+      errorMessage.setAttribute(
+        "class",
+        "form-common__input-error form-common__input-error--visible"
+      );
+    };
+    const hideErrorMessage = () => {
+      errorMessage.setAttribute("class", "form-common__input-error");
+    };
 
-    if (regexp.test(val)) { 
-      console.log("passed")
+    if (isError) {
+      showErrorMessage();
     } else {
-      console.log("error")
+      console.log("passed");
+      hideErrorMessage();
     }
 
-    console.log(props.pattern)
+    console.log(props.pattern);
   }
 }

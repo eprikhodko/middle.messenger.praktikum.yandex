@@ -15,14 +15,16 @@ export class SignInPage extends Block {
         type: InputType.TEXT,
         label: "Login",
         id: "login",
-        pattern: ValidationPattern.LOGIN
+        pattern: ValidationPattern.LOGIN,
+        errorText: "incorrect login"
       },
 
       passwordInput: {
         type: InputType.PASSWORD,
         label: "Password",
         id: "password",
-        pattern: ValidationPattern.LOGIN
+        pattern: ValidationPattern.LOGIN,
+        errorText: "incorrect password"
       },
 
       buttonSignIn: {

@@ -1,0 +1,11 @@
+.form-common__input-error {
+  font-size: 8px;
+  font-weight: 500;
+  color: var(--color-ui-warning);
+  padding: 8px 0;
+  visibility: hidden;
+}
+
+.form-common__input-error--visible {
+  visibility: visible;
+}
