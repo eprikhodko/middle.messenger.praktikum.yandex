@@ -1,10 +1,14 @@
 import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
 import { render } from "../../utils/render";
-import validateInput from "../../utils/validateInput";
-import getFormInputs from "../../utils/getFormInputs";
-import { InputType, InputName, ValidationPattern, ErrorMessage } from "../../utils/enums";
+import {
+  InputType,
+  InputName,
+  ValidationPattern,
+  ErrorMessage,
+} from "../../utils/enums";
 import "./sign-in.css";
+import handleFormSubmit from "../../utils/handleFormSubmit";
 
 export class SignInPage extends Block {
   constructor() {
@@ -40,7 +44,7 @@ export class SignInPage extends Block {
           type: "submit",
           class: "button--primary",
           onClick: () => {
-            this.submitForm();
+            handleFormSubmit();
           },
         },
         {
@@ -57,29 +61,5 @@ export class SignInPage extends Block {
 
   render() {
     return this.compile(template, this.props);
-  }
-
-  submitForm() {
-    this.getFormData();
-    this.validate();
-  }
-
-  validate() {
-    const inputs = getFormInputs();
-
-    inputs.forEach((i) => {
-      validateInput(i.pattern, i.value, i.id);
-    });
-  }
-
-  getFormData() {
-    const inputs = getFormInputs();
-    const formData = {};
-
-    inputs.forEach((i) => {
-      formData[i.name] = i.value;
-    });
-
-    console.log(formData);
   }
 }
