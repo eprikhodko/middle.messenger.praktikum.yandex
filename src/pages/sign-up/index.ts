@@ -3,6 +3,7 @@ import template from "./sign-up.hbs";
 import "./sign-up.css";
 import { render } from "../../utils/render";
 import validateInput from "../../utils/validateInput";
+import getFormInputs from "../../utils/getFormInputs";
 import {
   InputType,
   InputName,
@@ -101,19 +102,15 @@ export class SignUpPage extends Block {
   }
 
   validate() {
-    const inputs = this._getFormInputs();
+    const inputs = getFormInputs();
 
     inputs.forEach((i) => {
       validateInput(i.pattern, i.value, i.id);
     });
   }
 
-  private _getFormInputs() {
-    return document.querySelectorAll(".form-common__input");
-  }
-
   getFormData() {
-    const inputs = this._getFormInputs();
+    const inputs = getFormInputs();
     const formData = {};
 
     inputs.forEach((i) => {

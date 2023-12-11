@@ -57,7 +57,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   align-self: flex-start;
   gap: 8px;
 }

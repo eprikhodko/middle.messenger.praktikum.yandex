@@ -2,6 +2,7 @@
   font-size: 13px;
   font-weight: 500;
   width: 100%;
+  max-width: 280px;
   padding: 8px 0;
   border-radius: 8px;
 }
@@ -13,4 +14,8 @@
 
 .button--link-primary {
   color: var(--color-ui-primary);
+}
+
+.button--link-warning {
+  color: var(--color-ui-warning);
 }

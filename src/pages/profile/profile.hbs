@@ -49,17 +49,14 @@
     </form>
 
     <div class="settings-buttons">
-      <button type="submit" class="button-setting button-setting--primary">
-        Save changes
-      </button>
-      <span class="separator-line"></span>
-      <button type="button" class="button-setting button-setting--primary">
-        Change password
-      </button>
-      <span class="separator-line"></span>
-      <button type="button" class="button-setting button-setting--warning">
-        Cancel
-      </button>
+      {{#each formButtons}}
+        {{{ButtonCommon
+          text=this.text
+          propClass=this.propClass
+          type=this.type
+          onClick=this.onClick
+        }}}
+      {{/each}}
     </div>
   </main>
 </div>

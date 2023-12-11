@@ -2,6 +2,7 @@ import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
 import { render } from "../../utils/render";
 import validateInput from "../../utils/validateInput";
+import getFormInputs from "../../utils/getFormInputs";
 import { InputType, InputName, ValidationPattern, ErrorMessage } from "../../utils/enums";
 import "./sign-in.css";
 
@@ -64,19 +65,15 @@ export class SignInPage extends Block {
   }
 
   validate() {
-    const inputs = this._getFormInputs();
+    const inputs = getFormInputs();
 
     inputs.forEach((i) => {
       validateInput(i.pattern, i.value, i.id);
     });
   }
 
-  private _getFormInputs() {
-    return document.querySelectorAll(".form-common__input");
-  }
-
   getFormData() {
-    const inputs = this._getFormInputs();
+    const inputs = getFormInputs();
     const formData = {};
 
     inputs.forEach((i) => {

@@ -3,6 +3,7 @@ import template from "./profile.hbs";
 import "./profile.css";
 import { render } from "../../utils/render";
 import validateInput from "../../utils/validateInput";
+import getFormInputs from "../../utils/getFormInputs";
 import {
   InputType,
   InputName,
@@ -79,20 +80,22 @@ export class ProfilePage extends Block {
 
       formButtons: [
         {
-          text: "Sign up",
-          type: "button",
-          class: "button--primary",
+          text: "Save changes",
+          type: "submit",
+          propClass: "button--primary",
           onClick: () => {
             this.submitForm();
           },
         },
         {
-          text: "Sign in",
-          type: "submit",
-          class: "button--link-primary",
-          onClick: () => {
-            render("login");
-          },
+          text: "Change password",
+          type: "button",
+          propClass: "button--primary",
+        },
+        {
+          text: "Cancel",
+          type: "button",
+          propClass: "button--link-warning",
         },
       ],
     });
@@ -108,19 +111,15 @@ export class ProfilePage extends Block {
   }
 
   validate() {
-    const inputs = this._getFormInputs();
+    const inputs = getFormInputs();
 
     inputs.forEach((i) => {
       validateInput(i.pattern, i.value, i.id);
     });
   }
 
-  private _getFormInputs() {
-    return document.querySelectorAll(".form-common__input");
-  }
-
   getFormData() {
-    const inputs = this._getFormInputs();
+    const inputs = getFormInputs();
     const formData = {};
 
     inputs.forEach((i) => {
