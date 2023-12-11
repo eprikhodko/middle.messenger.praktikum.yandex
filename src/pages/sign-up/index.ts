@@ -23,8 +23,8 @@ export class SignUpPage extends Block {
           name: InputName.EMAIL,
           label: "Email",
           id: "email",
-          pattern: ValidationPattern.PASSWORD, // todo
-          errorText: ErrorMessage.PASSWORD, // todo
+          pattern: ValidationPattern.EMAIL,
+          errorText: ErrorMessage.EMAIL,
         },
         {
           type: InputType.TEXT,
@@ -39,24 +39,24 @@ export class SignUpPage extends Block {
           name: InputName.FIRSTNAME,
           label: "First name",
           id: "first_name",
-          pattern: ValidationPattern.LOGIN, // todo
-          errorText: ErrorMessage.LOGIN, // todo
+          pattern: ValidationPattern.NAME,
+          errorText: ErrorMessage.FIRSTNAME,
         },
         {
           type: InputType.TEXT,
           name: InputName.SECONDNAME,
           label: "Second name",
           id: "second_name",
-          pattern: ValidationPattern.LOGIN, // todo
-          errorText: ErrorMessage.LOGIN, // todo
+          pattern: ValidationPattern.NAME,
+          errorText: ErrorMessage.SECONDNAME,
         },
         {
           type: InputType.TEL,
           name: InputName.PHONE,
           label: "Phone",
           id: "phone",
-          pattern: ValidationPattern.LOGIN, // todo
-          errorText: ErrorMessage.LOGIN, // todo
+          pattern: ValidationPattern.PHONE,
+          errorText: ErrorMessage.PHONE,
         },
         {
           type: InputType.PASSWORD,
@@ -70,16 +70,16 @@ export class SignUpPage extends Block {
 
       formButtons: [
         {
-          text: "Sign in",
-          type: "submit",
+          text: "Sign up",
+          type: "button",
           class: "button--primary",
           onClick: () => {
             this.submitForm();
           },
         },
         {
-          text: "Sign up",
-          type: "button",
+          text: "Sign in",
+          type: "submit",
           class: "button--link-primary",
           onClick: () => {
             render("login");
