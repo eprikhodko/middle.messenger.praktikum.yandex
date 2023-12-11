@@ -19,5 +19,5 @@ registerComponent("FormInputError", FormInputError);
 registerComponent("FormInputContainer", FormInputContainer);
 
 window.addEventListener("DOMContentLoaded", () => {
-  render("sign-up");
+  render("profile");
 });

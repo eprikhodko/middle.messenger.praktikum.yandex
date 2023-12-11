@@ -2,10 +2,12 @@ import { HomePage } from "../pages/home";
 import { LoginPage } from "../pages/login";
 import { SignInPage } from "../pages/sign-in";
 import { SignUpPage } from "../pages/sign-up";
+import { ProfilePage } from "../pages/profile";
 
 const ROUTES = {
   home: HomePage,
   login: LoginPage,
+  profile: ProfilePage,
   "sign-in": SignInPage,
   "sign-up": SignUpPage,
 };
