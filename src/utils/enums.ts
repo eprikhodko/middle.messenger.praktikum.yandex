@@ -13,6 +13,9 @@ export enum InputName {
   DISPLAYNAME = "display_name",
   EMAIL = "email",
   PHONE = "phone",
+  OLDPASSWORD = "old_password",
+  NEWPASSWORD = "new_password",
+  REPEATPASSWORD = "repeat_password",
 }
 
 export enum ValidationPattern {
