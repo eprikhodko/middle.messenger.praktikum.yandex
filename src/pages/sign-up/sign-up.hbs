@@ -1,0 +1,29 @@
+<div>
+  {{#FormCommonLayout title=this.signInForm.title}}
+    <form class="form-common" action="" method="post">
+      {{#each formInputs}}
+        {{#FormInputContainer label=this.label for=this.id}}
+          {{{FormInput
+            ref="forminput"
+            type=this.type
+            label=this.label
+            id=this.id
+            pattern=this.pattern
+          }}}
+          {{{FormInputError text=this.errorText for=this.id}}}
+        {{/FormInputContainer}}
+      {{/each}}
+    </form>
+
+    <div class="form-buttons form-buttons_sign-in">
+      {{#each formButtons}}
+        {{{ButtonCommon
+          text=this.text
+          propClass=this.class
+          type=this.type
+          onClick=this.onClick
+        }}}
+      {{/each}}
+    </div>
+  {{/FormCommonLayout}}
+</div>

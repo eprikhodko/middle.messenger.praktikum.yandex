@@ -1,11 +1,11 @@
 import Block from "../../utils/Block";
-import template from "./sign-in.hbs";
+import template from "./sign-up.hbs";
+import "./sign-up.css";
 import { render } from "../../utils/render";
 import validateInput from "../../utils/validateInput";
 import { InputType, ValidationPattern, ErrorMessages } from "../../utils/enums";
-import "./sign-in.css";
 
-export class SignInPage extends Block {
+export class SignUpPage extends Block {
   constructor() {
     super({
       signInForm: {

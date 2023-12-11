@@ -1,18 +1,19 @@
-import {HomePage} from "../pages/home";
-import {LoginPage} from "../pages/login";
-import {SignInPage} from "../pages/sign-in";
-
+import { HomePage } from "../pages/home";
+import { LoginPage } from "../pages/login";
+import { SignInPage } from "../pages/sign-in";
+import { SignUpPage } from "../pages/sign-up";
 
 const ROUTES = {
-  'home': HomePage,
-  'login': LoginPage,
-  'sign-in': SignInPage,
-}
+  home: HomePage,
+  login: LoginPage,
+  "sign-in": SignInPage,
+  "sign-up": SignUpPage,
+};
 
 export function render(name: keyof typeof ROUTES) {
-  const root = document.querySelector('#app')!;
+  const root = document.querySelector("#app")!;
 
-  root.innerHTML = '';
+  root.innerHTML = "";
 
   const Page = ROUTES[name];
 
