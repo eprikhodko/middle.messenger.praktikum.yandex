@@ -3,29 +3,68 @@ import template from "./sign-up.hbs";
 import "./sign-up.css";
 import { render } from "../../utils/render";
 import validateInput from "../../utils/validateInput";
-import { InputType, ValidationPattern, ErrorMessages } from "../../utils/enums";
+import {
+  InputType,
+  InputName,
+  ValidationPattern,
+  ErrorMessage,
+} from "../../utils/enums";
 
 export class SignUpPage extends Block {
   constructor() {
     super({
-      signInForm: {
-        title: "Sign In",
+      signUpForm: {
+        title: "Sign Up",
       },
 
       formInputs: [
         {
+          type: InputType.EMAIL,
+          name: InputName.EMAIL,
+          label: "Email",
+          id: "email",
+          pattern: ValidationPattern.PASSWORD, // todo
+          errorText: ErrorMessage.PASSWORD, // todo
+        },
+        {
           type: InputType.TEXT,
+          name: InputName.LOGIN,
           label: "Login",
           id: "login",
           pattern: ValidationPattern.LOGIN,
-          errorText: ErrorMessages.LOGIN,
+          errorText: ErrorMessage.LOGIN,
+        },
+        {
+          type: InputType.TEXT,
+          name: InputName.FIRSTNAME,
+          label: "First name",
+          id: "first_name",
+          pattern: ValidationPattern.LOGIN, // todo
+          errorText: ErrorMessage.LOGIN, // todo
+        },
+        {
+          type: InputType.TEXT,
+          name: InputName.SECONDNAME,
+          label: "Second name",
+          id: "second_name",
+          pattern: ValidationPattern.LOGIN, // todo
+          errorText: ErrorMessage.LOGIN, // todo
+        },
+        {
+          type: InputType.TEL,
+          name: InputName.PHONE,
+          label: "Phone",
+          id: "phone",
+          pattern: ValidationPattern.LOGIN, // todo
+          errorText: ErrorMessage.LOGIN, // todo
         },
         {
           type: InputType.PASSWORD,
+          name: InputName.PASSWORD,
           label: "Password",
           id: "password",
           pattern: ValidationPattern.PASSWORD,
-          errorText: ErrorMessages.PASSWORD,
+          errorText: ErrorMessage.PASSWORD,
         },
       ],
 

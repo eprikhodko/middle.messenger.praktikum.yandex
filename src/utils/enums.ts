@@ -1,6 +1,17 @@
 export enum InputType {
   TEXT = "text",
-  PASSWORD = "password"
+  PASSWORD = "password",
+  EMAIL = "email",
+  TEL = "tel",
+}
+
+export enum InputName {
+  LOGIN = "login",
+  PASSWORD = "password",
+  FIRSTNAME = "first_name",
+  SECONDNAME = "second_name",
+  EMAIL = "email",
+  PHONE = "phone"
 }
 
 export enum ValidationPattern {
@@ -8,7 +19,7 @@ export enum ValidationPattern {
   PASSWORD = "^(?=.*[A-Z])(?=.*[0-9]).{8,40}$"
 }
 
-export enum ErrorMessages {
+export enum ErrorMessage {
   LOGIN = "incorrect login",
   PASSWORD = "incorrect password"
 }

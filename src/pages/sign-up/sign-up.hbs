@@ -1,12 +1,12 @@
 <div>
-  {{#FormCommonLayout title=this.signInForm.title}}
+  {{#FormCommonLayout title=this.signUpForm.title}}
     <form class="form-common" action="" method="post">
       {{#each formInputs}}
         {{#FormInputContainer label=this.label for=this.id}}
           {{{FormInput
             ref="forminput"
             type=this.type
-            label=this.label
+            name=this.name
             id=this.id
             pattern=this.pattern
           }}}

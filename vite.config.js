@@ -17,7 +17,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(root, "index.html"),
-        signUp: resolve(root, "pages/sign-up/sign-up.html"),
         chat: resolve(root, "pages/chat/chat.html"),
         userProfile: resolve(root, "pages/profile/profile.html"),
         changePassword: resolve(

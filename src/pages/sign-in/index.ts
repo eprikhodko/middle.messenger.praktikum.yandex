@@ -2,7 +2,7 @@ import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
 import { render } from "../../utils/render";
 import validateInput from "../../utils/validateInput";
-import { InputType, ValidationPattern, ErrorMessages } from "../../utils/enums";
+import { InputType, InputName, ValidationPattern, ErrorMessage } from "../../utils/enums";
 import "./sign-in.css";
 
 export class SignInPage extends Block {
@@ -15,17 +15,19 @@ export class SignInPage extends Block {
       formInputs: [
         {
           type: InputType.TEXT,
+          name: InputName.LOGIN,
           label: "Login",
           id: "login",
           pattern: ValidationPattern.LOGIN,
-          errorText: ErrorMessages.LOGIN,
+          errorText: ErrorMessage.LOGIN,
         },
         {
           type: InputType.PASSWORD,
+          name: InputName.PASSWORD,
           label: "Password",
           id: "password",
           pattern: ValidationPattern.PASSWORD,
-          errorText: ErrorMessages.PASSWORD,
+          errorText: ErrorMessage.PASSWORD,
         },
       ],
 
