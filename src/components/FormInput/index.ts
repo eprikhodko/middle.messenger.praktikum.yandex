@@ -6,6 +6,8 @@ import { InputType, ValidationPattern } from "../../utils/enums";
 
 interface Props {
   type: InputType;
+  propClass: string;
+  value?: string;
   id: string;
   pattern: ValidationPattern;
   onClick?: () => void;

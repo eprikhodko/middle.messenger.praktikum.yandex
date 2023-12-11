@@ -17,14 +17,18 @@ export class ProfilePage extends Block {
         title: "Sign Up",
       },
 
+      inputClass: "settings-form__input",
+
       formInputs: [
         {
+          propClass: "settings-form__input",
           type: InputType.EMAIL,
           name: InputName.EMAIL,
           label: "Email",
           id: "email",
           pattern: ValidationPattern.EMAIL,
           errorText: ErrorMessage.EMAIL,
+          value: "pochta@yandex.ru",
         },
         {
           type: InputType.TEXT,
@@ -33,6 +37,7 @@ export class ProfilePage extends Block {
           id: "login",
           pattern: ValidationPattern.LOGIN,
           errorText: ErrorMessage.LOGIN,
+          value: "ivanivanov",
         },
         {
           type: InputType.TEXT,
@@ -41,6 +46,7 @@ export class ProfilePage extends Block {
           id: "first_name",
           pattern: ValidationPattern.NAME,
           errorText: ErrorMessage.FIRSTNAME,
+          value: "Ivan",
         },
         {
           type: InputType.TEXT,
@@ -49,6 +55,16 @@ export class ProfilePage extends Block {
           id: "second_name",
           pattern: ValidationPattern.NAME,
           errorText: ErrorMessage.SECONDNAME,
+          value: "Ivanov",
+        },
+        {
+          type: InputType.TEXT,
+          name: InputName.DISPLAYNAME,
+          label: "Username",
+          id: "display_name",
+          pattern: ValidationPattern.LOGIN,
+          errorText: ErrorMessage.DISPLAYNAME,
+          value: "Ivan",
         },
         {
           type: InputType.TEL,
@@ -57,14 +73,7 @@ export class ProfilePage extends Block {
           id: "phone",
           pattern: ValidationPattern.PHONE,
           errorText: ErrorMessage.PHONE,
-        },
-        {
-          type: InputType.PASSWORD,
-          name: InputName.PASSWORD,
-          label: "Password",
-          id: "password",
-          pattern: ValidationPattern.PASSWORD,
-          errorText: ErrorMessage.PASSWORD,
+          value: "+79099673030",
         },
       ],
 

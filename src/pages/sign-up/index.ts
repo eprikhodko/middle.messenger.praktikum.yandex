@@ -17,6 +17,8 @@ export class SignUpPage extends Block {
         title: "Sign Up",
       },
 
+      inputClass: "form-common__input",
+
       formInputs: [
         {
           type: InputType.EMAIL,

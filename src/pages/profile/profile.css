@@ -44,6 +44,9 @@
 }
 
 .settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   width: 100%;
   margin-top: 56px;
   font-size: 13px;
@@ -83,4 +86,31 @@
 
 .button-arrow--left {
   transform: rotate(180deg);
+}
+
+.settings-form__input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--color-ui-secondary);
+  position: relative;
+}
+
+.settings-form__input {
+  padding: 4px;
+  text-align: right;
+  color: var(--color-text-placeholder);
+}
+
+.button-setting {
+  font-size: 13px;
+}
+
+.button-setting--primary {
+  color: var(--color-ui-primary);
+}
+
+.button-setting--warning {
+  color: var(--color-ui-warning);
 }

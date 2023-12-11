@@ -1,9 +1,10 @@
 <div>
-  {{#FormCommonLayout title=this.signInForm.title}}
+  {{#FormAuthLayout title=this.signInForm.title}}
     <form class="form-common" action="" method="post">
       {{#each formInputs}}
         {{#FormInputContainer label=this.label for=this.id}}
           {{{FormInput
+            propClass=../inputClass
             ref="forminput"
             type=this.type
             name=this.name
@@ -25,5 +26,5 @@
         }}}
       {{/each}}
     </div>
-  {{/FormCommonLayout}}
+  {{/FormAuthLayout}}
 </div>

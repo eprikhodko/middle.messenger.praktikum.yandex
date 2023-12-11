@@ -1,12 +1,12 @@
 import Block from "../../utils/Block";
-import template from "./FormCommonLayout.hbs";
-import "./FormCommonLayout.css";
+import template from "./FormAuthLayout.hbs";
+import "./FormAuthLayout.css";
 
 interface Props {
   title: string;
 }
 
-export class FormCommonLayout extends Block {
+export class FormAuthLayout extends Block {
   constructor(props: Props) {
     super({
       ...props,

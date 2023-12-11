@@ -4,8 +4,15 @@
   color: var(--color-ui-warning);
   padding: 8px 0;
   visibility: hidden;
+  position: absolute;
+  bottom: -24px;
 }
 
 .form-common__input-error--visible {
   visibility: visible;
+}
+
+.form-common__input-error--profile-error {
+  position: absolute;
+  bottom: -24px;
 }

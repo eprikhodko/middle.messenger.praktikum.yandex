@@ -30,57 +30,36 @@
 
     <p class="settings__username">Ivan</p>
 
-    <form class="settings-form">
-      {{!-- {{>SettingsFormInput/SettingsFormInput label="Почта" type="email"
-      id="email" value="pochta@yandex.ru"}}
-      {{>SettingsFormInput/SettingsFormInput label="Логин" type="text"
-      id="login" value="ivanivanov"}}
-      {{>SettingsFormInput/SettingsFormInput label="Имя" type="text"
-      id="first_name" value="Ivan"}}
-      {{>SettingsFormInput/SettingsFormInput label="Фамилия" type="text"
-      id="second_name" value="Ivanov"}}
-      {{>SettingsFormInput/SettingsFormInput label="Имя в чате" type="text"
-      id="display_name" value="Ivan"}}
-      {{>SettingsFormInput/SettingsFormInput label="Телефон" type="phone"
-      id="phone" value="+79099673030"}} --}}
-    </form>
-
-    <div class="settings-buttons">
-      {{!-- {{> ButtonSetting/ButtonSetting text="Изменить данные" buttonPrimary=true}}
-      <span class="separator-line"></span>
-      {{> ButtonSetting/ButtonSetting text="Изменить пароль" buttonPrimary=true}}
-      <span class="separator-line"></span>
-      {{> ButtonSetting/ButtonSetting text="Выйти" buttonWarning=true}} --}}
-    </div>
-  </main>
-</div>
-
-{{!-- <div>
-  {{#FormCommonLayout title=this.signUpForm.title}}
-    <form class="form-common" action="" method="post">
+    <form class="settings-form" action="" method="">
       {{#each formInputs}}
-        {{#FormInputContainer label=this.label for=this.id}}
+        <div class="settings-form__input-container">
+           <label for={{this.id}} class="settings-form__label">{{this.label}}</label>
           {{{FormInput
             ref="forminput"
+            value=this.value
+            propClass=../inputClass
             type=this.type
             name=this.name
             id=this.id
             pattern=this.pattern
           }}}
           {{{FormInputError text=this.errorText for=this.id}}}
-        {{/FormInputContainer}}
+        </div>
       {{/each}}
     </form>
 
-    <div class="form-buttons form-buttons_sign-up">
-      {{#each formButtons}}
-        {{{ButtonCommon
-          text=this.text
-          propClass=this.class
-          type=this.type
-          onClick=this.onClick
-        }}}
-      {{/each}}
+    <div class="settings-buttons">
+      <button type="submit" class="button-setting button-setting--primary">
+        Save changes
+      </button>
+      <span class="separator-line"></span>
+      <button type="button" class="button-setting button-setting--primary">
+        Change password
+      </button>
+      <span class="separator-line"></span>
+      <button type="button" class="button-setting button-setting--warning">
+        Cancel
+      </button>
     </div>
-  {{/FormCommonLayout}}
-</div> --}}
+  </main>
+</div>

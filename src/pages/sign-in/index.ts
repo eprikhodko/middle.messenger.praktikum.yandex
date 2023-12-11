@@ -12,6 +12,8 @@ export class SignInPage extends Block {
         title: "Sign In",
       },
 
+      inputClass: "form-common__input",
+
       formInputs: [
         {
           type: InputType.TEXT,
