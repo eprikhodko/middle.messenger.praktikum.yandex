@@ -12,6 +12,7 @@ import { FormInputError } from "./components/FormInputError";
 import { FormInputContainer } from "./components/FormInputContainer";
 import { ErrorPageContent } from "./components/ErrorPageContent";
 import { ChatAvatar } from "./modules/Chat/components/ChatAvatar";
+import { ChatListItem } from "./modules/Chat/components/ChatListItem";
 
 registerComponent("Button", Button);
 registerComponent("ButtonCommon", ButtonCommon);
@@ -21,6 +22,7 @@ registerComponent("FormInputError", FormInputError);
 registerComponent("FormInputContainer", FormInputContainer);
 registerComponent("ErrorPageContent", ErrorPageContent);
 registerComponent("ChatAvatar", ChatAvatar);
+registerComponent("ChatListItem", ChatListItem);
 
 window.addEventListener("DOMContentLoaded", () => {
   render("chat");

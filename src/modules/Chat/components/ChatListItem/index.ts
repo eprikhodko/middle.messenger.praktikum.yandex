@@ -1,11 +1,10 @@
-import Block from "../../utils/Block";
+import Block from "../../../../utils/Block";
 import template from "./ChatListItem.hbs";
 import "./ChatListItem.css";
 
 interface Props {
-  text: string;
-  type?: "submit" | "button";
-  propClass?: string,
+  chatName: string;
+  isActive: boolean;
   onClick?: () => void;
   events: {
     click: () => void;
