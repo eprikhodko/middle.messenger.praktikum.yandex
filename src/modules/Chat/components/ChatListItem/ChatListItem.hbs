@@ -1,15 +1,6 @@
-<li class="chat-list-item">
-  <div class="chat-list-item-inner-content {{#if isActive}}chat-list-item--active{{/if}}">
-    {{> Chat/components/ChatAvatar/ChatAvatar sizeDefault=true}}
-
-    <div class="chat-list-item__details">
-      {{> Chat/components/ChatName/ChatName chatName="Chat name"}}
-      <p class="chat-list-item__last-message-preview">Last message preview...</p>
-    </div>
-
-    <div class="chat-list-item__metadata">
-      <p class="chat-list-item__timestamp">1 Мая 2020</p>
-      <p class="chat-list-item__unread-messages-count">4</p>
-    </div>
-  </div>
-</li>
+<button 
+  type="{{ type }}" 
+  class="button {{#if propClass}}{{propClass}}{{/if}}"
+>
+  {{ text }}
+</button>

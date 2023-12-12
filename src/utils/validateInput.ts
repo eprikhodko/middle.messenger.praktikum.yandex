@@ -11,7 +11,7 @@ const validateInput = (pattern, value, id) => {
 };
 
 const toggleErrorMessage = (errorMessageEl, isError) => {
-  errorMessageEl.classList.toggle("form-common__input-error--visible", isError);
+  errorMessageEl?.classList.toggle("form-common__input-error--visible", isError);
 };
 
 export default validateInput;

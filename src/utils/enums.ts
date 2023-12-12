@@ -3,6 +3,7 @@ export enum InputType {
   PASSWORD = "password",
   EMAIL = "email",
   TEL = "tel",
+  SEARCH = "search"
 }
 
 export enum InputName {
@@ -16,6 +17,7 @@ export enum InputName {
   OLDPASSWORD = "old_password",
   NEWPASSWORD = "new_password",
   REPEATPASSWORD = "repeat_password",
+  SEARCH = "search"
 }
 
 export enum ValidationPattern {

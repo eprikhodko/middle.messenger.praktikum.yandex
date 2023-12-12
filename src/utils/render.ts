@@ -6,8 +6,7 @@ import { ProfilePage } from "../pages/profile";
 import { ChangePasswordPage } from "../pages/change-password";
 import { Error404Page } from "../pages/404";
 import { Error500Page } from "../pages/500";
-
-
+import { ChatPage } from "../pages/chat";
 
 const ROUTES = {
   home: HomePage,
@@ -18,6 +17,7 @@ const ROUTES = {
   signUp: SignUpPage,
   error404: Error404Page,
   error500: Error500Page,
+  chat: ChatPage,
 };
 
 export function render(name: keyof typeof ROUTES) {

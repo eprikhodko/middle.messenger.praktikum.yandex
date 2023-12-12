@@ -1,0 +1,147 @@
+<div class="chat-container">
+  <aside class="chat-sidebar">
+    <div class="chat-link-profile">
+      <a class="link-profile" href="#">
+        <p>Профиль</p>
+        <img
+          class="link-profile__icon"
+          src="/icons/icon-chevron.svg"
+          alt="user profile"
+        />
+      </a>
+    </div>
+    
+    <form class="search-form">
+      <label class="search-form__label" for="search">
+        <img class="search-form__icon" src="/icons/icon-search.svg" alt="search" />
+      </label>
+
+       {{{FormInput
+          ref="forminput"
+          propClass=this.searchInput.propClass
+          type=this.searchInput.type
+          name=this.searchInput.name
+          id=this.searchInput.id
+        }}}
+    </form>
+    
+    <ul class="chat-list">
+      <li class="chat-list-item">
+        <div class="chat-list-item-inner-content {{#if this.chatListItem.isActive}}chat-list-item--active{{/if}}">
+          {{{ChatAvatar size="sizeDefault" sizeDefault=true}}}
+
+          <div class="chat-list-item__details">
+            <p class="chat-name">{{this.chatListItem.chatName}}</p>
+            <p class="chat-list-item__last-message-preview">Last message preview...</p>
+          </div>
+
+          <div class="chat-list-item__metadata">
+            <p class="chat-list-item__timestamp">1 Мая 2020</p>
+            <p class="chat-list-item__unread-messages-count">4</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </aside>
+
+  <div class="chat-body">
+    {{!-- {{> Chat/components/ChatHeader/ChatHeader}} --}}
+
+    <div class="chat-messages">
+      <div class="chat-messages__date-separator">
+          <p class="chat-messages__date-text">June 19</p>
+      </div>
+
+      <div class="chat-message chat-message--received">
+          <div class="chat-message__text">
+            Hi! Look, an interesting piece of lunar space history has surfaced - NASA at some point asked Hasselblad to adapt the SWC model for lunar missions. Now we all know that the astronauts flew with the 500 EL model - and by the way, all of those camera bodies are still on the lunar surface, as the astronauts only took the film cassettes with them.
+            
+            Hasselblad eventually adapted the SWC for space, but something went wrong and they never made it onto the rocket. Only 25 of them were produced, one of them was recently sold at auction for 45,000 euros.
+            </div>
+          <div class="chat-message__timestamp chat-message__timestamp--received">11:56</div>
+      </div>
+
+      <div class="chat-message chat-message--sent">
+          <div class="chat-message__text">Cool! Thanks for sharing.</div>
+          <div class="chat-message__timestamp chat-message__timestamp--sent">12:00</div>
+      </div>
+    </div>
+
+    <footer class="chat-footer">
+      <form class="send-message-form">
+        <input
+          class="send-message-form__input"
+          autocomplete="off"
+          type="text"
+          id="message"
+          name="message"
+          placeholder="Сообщение"
+        />
+
+        {{!-- {{> ButtonArrow/ButtonArrow type="submit" }} --}}
+      </form>
+    </footer>
+  </div>
+</div>
+{{!-- <div class="settings-container">
+  <aside class="sidebar-back-button">
+    <button type="button" class="button-arrow button-arrow--left">
+      <img
+        class="button-arrow__icon"
+        src="/icons/icon-arrow.svg"
+        alt="arrow icon"
+      />
+    </button>
+  </aside>
+
+  <main class="settings-main-content">
+    <div class="settings-avatar">
+      <label for="avatar-input" class="settings-avatar__label">
+        <img
+          class="settings-avatar__img"
+          src="/avatar-placeholder.svg"
+          alt="Avatar"
+          onerror="this.onerror=null; this.src='/avatar-placeholder.svg';"
+        />
+      </label>
+      <input
+        class="settings-avatar__file-input"
+        id="avatar-input"
+        name="avatar"
+        type="file"
+        onchange="loadFile(event)"
+      />
+    </div>
+
+    <p class="settings__username">Ivan</p>
+
+    <form class="settings-form" action="" method="">
+      {{#each formInputs}}
+        <div class="settings-form__input-container">
+           <label for={{this.id}} class="settings-form__label">{{this.label}}</label>
+          {{{FormInput
+            ref="forminput"
+            value=this.value
+            propClass=../inputClass
+            type=this.type
+            name=this.name
+            id=this.id
+            pattern=this.pattern
+          }}}
+          {{{FormInputError text=this.errorText for=this.id}}}
+        </div>
+      {{/each}}
+    </form>
+
+    <div class="settings-buttons">
+      {{#each formButtons}}
+        {{{ButtonCommon
+          text=this.text
+          propClass=this.propClass
+          type=this.type
+          onClick=this.onClick
+        }}}
+      {{/each}}
+    </div>
+  </main>
+</div> --}}
