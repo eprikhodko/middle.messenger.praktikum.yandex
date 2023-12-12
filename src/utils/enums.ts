@@ -17,7 +17,8 @@ export enum InputName {
   OLDPASSWORD = "old_password",
   NEWPASSWORD = "new_password",
   REPEATPASSWORD = "repeat_password",
-  SEARCH = "search"
+  SEARCH = "search",
+  MESSAGE = "message"
 }
 
 export enum ValidationPattern {
@@ -26,6 +27,8 @@ export enum ValidationPattern {
   NAME = "^[A-ZА-Я][a-zа-я]*(-[A-ZА-Яa-zа-я][a-zа-я]*)*$",
   EMAIL = "^[a-zA-Z0-9._\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z]{2,}$",
   PHONE = "^\\+?\\d{10,15}$",
+  SEARCH = "^.*$",
+  MESSAGE = "^.*$"
 }
 
 export enum ErrorMessage {
