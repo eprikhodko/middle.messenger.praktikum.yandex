@@ -26,14 +26,20 @@ export class ChatPage extends Block {
         id: "search",
       },
 
-      chatListItem: {
-        propClass: "search-form__input",
-        type: InputType.SEARCH,
-        name: InputName.SEARCH,
-        id: "search",
-        isActive: true,
-        chatName: "Chat name"
-      },
+      chatListItems: [
+        {
+          isActive: false,
+          chatName: "Chat name",
+        },
+        {
+          isActive: true,
+          chatName: "Chat name",
+        },
+        {
+          isActive: false,
+          chatName: "Chat name",
+        },
+      ],
 
       formInputs: [
         {

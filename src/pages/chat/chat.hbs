@@ -26,21 +26,23 @@
     </form>
     
     <ul class="chat-list">
-      <li class="chat-list-item">
-        <div class="chat-list-item-inner-content {{#if this.chatListItem.isActive}}chat-list-item--active{{/if}}">
-          {{{ChatAvatar size="sizeDefault" sizeDefault=true}}}
+      {{#each chatListItems}}
+        <li class="chat-list-item">
+          <div class="chat-list-item-inner-content {{#if this.isActive}}chat-list-item--active{{/if}}">
+            {{{ChatAvatar size="sizeDefault" sizeDefault=true}}}
 
-          <div class="chat-list-item__details">
-            <p class="chat-name">{{this.chatListItem.chatName}}</p>
-            <p class="chat-list-item__last-message-preview">Last message preview...</p>
-          </div>
+            <div class="chat-list-item__details">
+              <p class="chat-name">{{this.chatName}}</p>
+              <p class="chat-list-item__last-message-preview">Last message preview...</p>
+            </div>
 
-          <div class="chat-list-item__metadata">
-            <p class="chat-list-item__timestamp">1 Мая 2020</p>
-            <p class="chat-list-item__unread-messages-count">4</p>
+            <div class="chat-list-item__metadata">
+              <p class="chat-list-item__timestamp">1 Мая 2020</p>
+              <p class="chat-list-item__unread-messages-count">4</p>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
+      {{/each}}
     </ul>
   </aside>
 
