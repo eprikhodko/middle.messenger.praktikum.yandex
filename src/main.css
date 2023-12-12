@@ -60,6 +60,7 @@ html {
   text-size-adjust: 100%; /* 2 */
   tab-size: 4; /* 3 */
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 /*
@@ -71,6 +72,11 @@ body {
   margin: 0; /* 1 */
   line-height: inherit; /* 2 */
   -webkit-font-smoothing: antialiased;
+  height: 100%;
+}
+
+#app {
+  height: 100%;
 }
 
 /*
