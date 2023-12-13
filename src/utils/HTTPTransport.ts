@@ -5,14 +5,18 @@ enum METHOD {
   DELETE = "DELETE",
 }
 
+interface QueryData {
+  [key: string]: string | number | boolean;
+}
+
 interface Options {
   method?: METHOD;
-  data?: any;
+  data?: QueryData;
   headers?: any;
   timeout?: number;
 }
 
-function queryStringify(data) {
+function queryStringify(data: Options["data"]) {
   return Object.keys(data)
     .map((key) => {
       let value = data[key];
@@ -99,7 +103,8 @@ export class HTTPTransport {
       if (method === METHOD.GET || !data) {
         xhr.send(); // send request
       } else {
-        xhr.send(data);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify(data));
       }
     });
   }
