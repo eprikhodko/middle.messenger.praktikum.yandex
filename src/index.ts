@@ -3,7 +3,6 @@ import "./index.css";
 
 import { registerComponent } from "./utils/registerComponent";
 import { render } from "./utils/render";
-import { HomePage } from "./pages/home";
 import { Button } from "./components/Button";
 import { ButtonCommon } from "./components/ButtonCommon";
 import { FormAuthLayout } from "./components/FormAuthLayout";

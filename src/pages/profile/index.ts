@@ -1,7 +1,6 @@
 import Block from "../../utils/Block";
 import template from "./profile.hbs";
 import "./profile.css";
-import { render } from "../../utils/render";
 import {
   InputType,
   InputName,

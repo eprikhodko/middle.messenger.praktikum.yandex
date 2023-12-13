@@ -1,12 +1,10 @@
 import Block from "../../utils/Block";
 import template from "./chat.hbs";
 import "./chat.css";
-import { render } from "../../utils/render";
 import {
   InputType,
   InputName,
   ValidationPattern,
-  ErrorMessage,
 } from "../../utils/enums";
 
 export class ChatPage extends Block {

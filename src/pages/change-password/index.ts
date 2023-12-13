@@ -1,7 +1,6 @@
 import Block from "../../utils/Block";
 import template from "./change-password.hbs";
 import "./change-password.css";
-import { render } from "../../utils/render";
 import {
   InputType,
   InputName,

@@ -12,7 +12,7 @@ interface QueryData {
 interface Options {
   method?: METHOD;
   data?: QueryData;
-  headers?: any;
+  headers?: Record<string, string>;
   timeout?: number;
 }
 
