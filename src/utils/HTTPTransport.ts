@@ -85,8 +85,11 @@ export class HTTPTransport {
       });
 
       xhr.onload = function () {
-        console.log(xhr);
-        resolve(xhr);
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resolve(xhr);
+        } else {
+          reject(new Error(`Request failed with status: ${xhr.status}`));
+        }
       };
 
       xhr.onabort = () => reject(new Error("Request was aborted"));
