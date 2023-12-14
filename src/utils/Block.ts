@@ -1,22 +1,20 @@
-import {EventBus} from "./EventBus";
-import {nanoid} from 'nanoid';
+import { EventBus } from "./EventBus";
+import { nanoid } from "nanoid";
 
-// Нельзя создавать экземпляр данного класса
 class Block {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
     FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    FLOW_RENDER: "flow:render",
   };
 
   public id = nanoid(6);
-  protected props: any;
+  protected props: Record<string, unknown>;
   protected refs: Record<string, Block> = {};
   public children: Record<string, Block>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
-  private _meta: { props: any; };
 
   /** JSDoc
    * @param {string} tagName
@@ -28,11 +26,7 @@ class Block {
     // console.log(propsWithChildren)
     const eventBus = new EventBus();
 
-    const {props, children} = this._getChildrenAndProps(propsWithChildren);
-
-    this._meta = {
-      props
-    };
+    const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
     this.children = children;
     this.props = this._makePropsProxy(props);
@@ -56,13 +50,15 @@ class Block {
       }
     });
 
-    return {props, children};
+    return { props, children };
   }
 
   _addEvents() {
-    const {events = {}} = this.props as { events: Record<string, () => void> };
+    const { events = {} } = this.props as {
+      events: Record<string, () => void>;
+    };
 
-    Object.keys(events).forEach(eventName => {
+    Object.keys(events).forEach((eventName) => {
       this._element?.addEventListener(eventName, events[eventName]);
     });
   }
@@ -80,20 +76,20 @@ class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  protected init() {
-  }
+  protected init() {}
 
   _componentDidMount() {
     this.componentDidMount();
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
+    Object.values(this.children).forEach((child) =>
+      child.dispatchComponentDidMount()
+    );
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
@@ -133,15 +129,15 @@ class Block {
   }
 
   protected compile(template: (context: any) => string, context: any) {
-    const contextAndStubs = {...context, __refs: this.refs};
+    const contextAndStubs = { ...context, __refs: this.refs };
 
     const html = template(contextAndStubs);
 
-    const temp = document.createElement('template');
+    const temp = document.createElement("template");
 
     temp.innerHTML = html;
 
-    contextAndStubs.__children?.forEach(({embed}: any) => {
+    contextAndStubs.__children?.forEach(({ embed }: any) => {
       embed(temp.content);
     });
 
@@ -157,7 +153,6 @@ class Block {
   }
 
   _makePropsProxy(props: any) {
-    // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     const self = this;
 
     return new Proxy(props, {
@@ -166,23 +161,20 @@ class Block {
         return typeof value === "function" ? value.bind(target) : value;
       },
       set(target, prop, value) {
-        const oldTarget = {...target}
+        const oldTarget = { ...target };
 
         target[prop] = value;
 
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
       deleteProperty() {
         throw new Error("Нет доступа");
-      }
+      },
     });
   }
 
   _createDocumentElement(tagName: string) {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
     return document.createElement(tagName);
   }
 
