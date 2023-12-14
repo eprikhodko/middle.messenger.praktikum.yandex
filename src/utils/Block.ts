@@ -1,6 +1,15 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from "nanoid";
 
+type Props = Record<string, unknown>;
+
+type ContextAndStubs = {
+  __refs: Record<string, Block>;
+  __children?: Array<{
+    embed: (fragment: DocumentFragment) => void;
+  }>;
+};
+
 class Block {
   static EVENTS = {
     INIT: "init",
@@ -10,20 +19,13 @@ class Block {
   };
 
   public id = nanoid(6);
-  protected props: Record<string, unknown>;
+  protected props: Props;
   protected refs: Record<string, Block> = {};
   public children: Record<string, Block>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
 
-  /** JSDoc
-   * @param {string} tagName
-   * @param {Object} props
-   *
-   * @returns {void}
-   */
-  constructor(propsWithChildren: any = {}) {
-    // console.log(propsWithChildren)
+  constructor(propsWithChildren = {}) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
@@ -38,8 +40,8 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(childrenAndProps: any) {
-    const props: Record<string, any> = {};
+  _getChildrenAndProps(childrenAndProps: Record<string, unknown>) {
+    const props: Props = {};
     const children: Record<string, Block> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
@@ -92,17 +94,17 @@ class Block {
     );
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any) {
+  protected componentDidUpdate(oldProps: Props, newProps: Props) {
     return true;
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -128,8 +130,11 @@ class Block {
     this._addEvents();
   }
 
-  protected compile(template: (context: any) => string, context: any) {
-    const contextAndStubs = { ...context, __refs: this.refs };
+  protected compile(
+    template: (context: Record<string, unknown>) => string,
+    context: Record<string, unknown>
+  ) {
+    const contextAndStubs: ContextAndStubs = { ...context, __refs: this.refs };
 
     const html = template(contextAndStubs);
 
@@ -137,7 +142,7 @@ class Block {
 
     temp.innerHTML = html;
 
-    contextAndStubs.__children?.forEach(({ embed }: any) => {
+    contextAndStubs.__children?.forEach(({ embed }) => {
       embed(temp.content);
     });
 
@@ -152,15 +157,16 @@ class Block {
     return this.element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: Props) {
     const self = this;
 
     return new Proxy(props, {
-      get(target, prop) {
+      get(target, prop: string) {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target, prop, value) {
+
+      set(target, prop: string, value) {
         const oldTarget = { ...target };
 
         target[prop] = value;
@@ -168,6 +174,7 @@ class Block {
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
+
       deleteProperty() {
         throw new Error("Нет доступа");
       },
