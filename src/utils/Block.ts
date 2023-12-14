@@ -40,7 +40,7 @@ class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(childrenAndProps: Record<string, unknown>) {
+  private _getChildrenAndProps(childrenAndProps: Record<string, unknown>) {
     const props: Props = {};
     const children: Record<string, Block> = {};
 
@@ -55,7 +55,7 @@ class Block {
     return { props, children };
   }
 
-  _addEvents() {
+  private _addEvents() {
     const { events = {} } = this.props as {
       events: Record<string, () => void>;
     };
@@ -65,7 +65,7 @@ class Block {
     });
   }
 
-  _registerEvents(eventBus: EventBus) {
+  private _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -80,11 +80,11 @@ class Block {
 
   protected init() {}
 
-  _componentDidMount() {
+  private _componentDidMount() {
     this.componentDidMount();
   }
 
-  componentDidMount() {}
+  protected componentDidMount() {}
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -104,7 +104,7 @@ class Block {
     return true;
   }
 
-  setProps = (nextProps: Props) => {
+  protected setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -153,11 +153,11 @@ class Block {
     return new DocumentFragment();
   }
 
-  getContent() {
+  public getContent() {
     return this.element;
   }
 
-  _makePropsProxy(props: Props) {
+  private _makePropsProxy(props: Props) {
     const self = this;
 
     return new Proxy(props, {
