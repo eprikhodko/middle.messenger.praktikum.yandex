@@ -1,23 +1,24 @@
 import Block from "../../utils/Block";
-import template from "./FormInputError.hbs";
-import "./FormInputError.css";
+import template from "./Link.hbs";
+import "./Link.css";
+import { render } from "../../utils/render";
+import { ROUTE } from "../../utils/render";
 
 interface Props {
   text: string;
-  for: string;
-  propClass: string;
+  to: ROUTE;
   onClick?: () => void;
   events: {
     click: () => void;
   };
 }
 
-export class FormInputError extends Block {
+export class Link extends Block {
   constructor(props: Props) {
     super({
       ...props,
       events: {
-        click: props.onClick,
+        click: () => render(props.to),
       },
     });
   }

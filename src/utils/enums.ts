@@ -32,11 +32,11 @@ export enum ValidationPattern {
 }
 
 export enum ErrorMessage {
-  EMAIL = "incorrect email format",
-  LOGIN = "incorrect login",
-  FIRSTNAME = "incorrect first name format",
-  SECONDNAME = "incorrect second name format",
-  PHONE = "incorrect phone",
-  PASSWORD = "incorrect password",
-  DISPLAYNAME = "incorrect username",
+  EMAIL = "please use correct email address",
+  LOGIN = "incorrect format, please use 3-20 symbols, without spaces",
+  FIRSTNAME = "incorrect format, please don't use spaces and digits",
+  SECONDNAME = "incorrect format, please don't use spaces and digits",
+  PHONE = "incorrect phone number, please use 10-15 digits",
+  PASSWORD = "incorrect format, please use 8-40 symbols, at least one capital letter, and digit",
+  DISPLAYNAME = "incorrect format, please use 3-20 symbols, without spaces",
 }

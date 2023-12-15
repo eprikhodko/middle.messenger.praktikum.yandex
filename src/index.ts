@@ -13,6 +13,8 @@ import { ErrorPageContent } from "./components/ErrorPageContent";
 import { ChatAvatar } from "./modules/Chat/components/ChatAvatar";
 import { ChatListItem } from "./modules/Chat/components/ChatListItem";
 import { ButtonArrow } from "./components/ButtonArrow";
+import { Link } from "./components/Link";
+import { ROUTE } from "./utils/render";
 
 registerComponent("Button", Button);
 registerComponent("ButtonCommon", ButtonCommon);
@@ -24,7 +26,8 @@ registerComponent("ErrorPageContent", ErrorPageContent);
 registerComponent("ChatAvatar", ChatAvatar);
 registerComponent("ChatListItem", ChatListItem);
 registerComponent("ButtonArrow", ButtonArrow);
+registerComponent("Link", Link);
 
 window.addEventListener("DOMContentLoaded", () => {
-  render("profile");
+  render(ROUTE.HOME);
 });

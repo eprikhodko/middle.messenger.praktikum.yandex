@@ -1,7 +1,6 @@
 import Block from "../../utils/Block";
 import template from "./sign-up.hbs";
 import "./sign-up.css";
-import { render } from "../../utils/render";
 import {
   InputType,
   InputName,
@@ -83,9 +82,6 @@ export class SignUpPage extends Block {
           text: "Sign in",
           type: "submit",
           class: "button--link-primary",
-          onClick: () => {
-            render("login");
-          },
         },
       ],
     });

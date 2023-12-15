@@ -5,14 +5,13 @@
   padding: 8px 0;
   visibility: hidden;
   position: absolute;
-  bottom: -24px;
+  top: 37px;
 }
 
 .form-common__input-error--visible {
   visibility: visible;
 }
 
-.form-common__input-error--profile-error {
-  position: absolute;
-  bottom: -24px;
+.form-common__input-error--settings-error {
+  top: 30px;
 }

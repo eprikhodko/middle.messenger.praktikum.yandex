@@ -1,19 +1,15 @@
-<div>
-    <h1>Home pagee</h1>
-    {{!-- {{#Card}} --}}
-        {{!-- {{{Button ref="button" label=buttonLabel onClick=onButtonClick}}} --}}
-        {{!-- {{{Button ref="button" type=type label=label onClick=onButtonClick}}} --}}
-        {{{Button ref="button" type=type label=label onClick=this.onClick}}}
-        {{{Button ref="button" type=type label="hardcoded label" onClick=this.onClick}}}
-        {{{Button ref="button" type=this.customButton.type label=this.customButton.label onClick=this.customButton.onClick}}}
+<main class="main-page-content">
+  <div class="main-page-content__container">
+    <h1 class="main-page-content__title">Project pages:</h1>
 
-
-        {{#each buttons}}
-            {{{Button label=this.label type=../type onClick=this.onClick}}}
+    <nav>
+      <ul class="main-page-content__links">
+        {{#each buttonLinks}}
+          <li>
+            {{{Link text=this.text onClick=this.onClick to=this.to}}}
+          </li>
         {{/each}}
-
-        {{#each buttons}}
-            {{{Button label=this.label type=this.type onClick=this.onClick}}}
-        {{/each}}
-    {{!-- {{/Card}} --}}
-</div>
+      </ul>
+    </nav>
+  </div>
+</main>

@@ -8,16 +8,28 @@ import { Error404Page } from "../pages/404";
 import { Error500Page } from "../pages/500";
 import { ChatPage } from "../pages/chat";
 
+export enum ROUTE {
+  HOME = "home",
+  LOGIN = "login",
+  PROFILE = "profile",
+  CHANGE_PASSWORD = "change-password",
+  SIGN_IN = "sign-in",
+  SIGN_UP = "sign-up",
+  ERROR_404 = "error-404",
+  ERROR_500 = "error-500",
+  CHAT = "chat",
+}
+
 const ROUTES = {
-  home: HomePage,
-  login: LoginPage,
-  profile: ProfilePage,
-  changePassword: ChangePasswordPage,
-  signIn: SignInPage,
-  signUp: SignUpPage,
-  error404: Error404Page,
-  error500: Error500Page,
-  chat: ChatPage,
+  [ROUTE.HOME]: HomePage,
+  [ROUTE.LOGIN]: LoginPage,
+  [ROUTE.PROFILE]: ProfilePage,
+  [ROUTE.CHANGE_PASSWORD]: ChangePasswordPage,
+  [ROUTE.SIGN_IN]: SignInPage,
+  [ROUTE.SIGN_UP]: SignUpPage,
+  [ROUTE.ERROR_404]: Error404Page,
+  [ROUTE.ERROR_500]: Error500Page,
+  [ROUTE.CHAT]: ChatPage,
 };
 
 export function render(name: keyof typeof ROUTES) {
