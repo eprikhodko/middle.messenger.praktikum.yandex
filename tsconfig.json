@@ -16,7 +16,7 @@
     "strictNullChecks": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "sourceMap": true,
+    "sourceMap": true
   },
   "include": ["src"]
 }
