@@ -104,13 +104,13 @@ class Block {
     );
   }
 
-  private _componentDidUpdate(oldProps: Props, newProps: Props) {
-    if (this.componentDidUpdate(oldProps, newProps)) {
+  private _componentDidUpdate() {
+    if (this.componentDidUpdate()) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: Props, newProps: Props) {
+  protected componentDidUpdate() {
     return true;
   }
 
