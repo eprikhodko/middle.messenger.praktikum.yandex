@@ -10,17 +10,21 @@ const getFormInputs = () => document.querySelectorAll(".form-input");
 const validate = () => {
   const inputs = getFormInputs();
 
-  inputs.forEach((i) => {
-    validateInput(i.pattern, i.value, i.id);
+  inputs.forEach((el) => {
+    const inputElement = el as HTMLInputElement;
+
+    validateInput(inputElement.pattern, inputElement.value, el.id);
   });
 };
 
 const getFormData = () => {
   const inputs = getFormInputs();
-  const formData = {};
+  const formData: Record<string, string> = {};
 
-  inputs.forEach((i) => {
-    formData[i.name] = i.value;
+  inputs.forEach((el) => {
+    const inputElement = el as HTMLInputElement;
+
+    formData[inputElement.name] = inputElement.value;
   });
 
   console.log(formData);

@@ -23,7 +23,7 @@ export class FormInput extends Block {
       ...props,
       events: {
         click: props.onClick,
-        blur: (event) => this.handleBlur(event, props),
+        blur: (event: FocusEvent) => this.handleBlur(event, props),
       },
     });
   }
@@ -32,8 +32,10 @@ export class FormInput extends Block {
     return this.compile(template, this.props);
   }
 
-  handleBlur(event, props) {
-    const inputValue = event.target.value;
-    validateInput(props.pattern, inputValue, props.id);
+  handleBlur(event: FocusEvent, props: Props) {
+    const eventTarget = event.target as HTMLInputElement
+    if (props.pattern) {
+      validateInput(props.pattern, eventTarget.value, props.id);
+    }
   }
 }

@@ -1,6 +1,5 @@
 import Block from "../../utils/Block";
 import template from "./404.hbs";
-import "./404.css";
 
 export class Error404Page extends Block {
   constructor() {

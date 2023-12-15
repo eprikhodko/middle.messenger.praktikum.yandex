@@ -8,7 +8,7 @@ export class HomePage extends Block {
       type: 'btn',
       label: 'root label',
       onClick: () => {
-        render('sign-in');
+        render('signIn');
         console.log("hello from root button")
       },
 
