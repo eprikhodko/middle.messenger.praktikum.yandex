@@ -9,9 +9,9 @@
     "preview": "vite preview",
     "start": "vite build --emptyOutDir && node ./server.cjs",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "stylelint": "stylelint '**/*.css'",
     "stylelintfix": "stylelint '**/*.css' --fix"
-
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "6.13.2",
@@ -22,6 +22,7 @@
     "prettier": "3.1.0",
     "stylelint": "15.11.0",
     "stylelint-config-standard": "34.0.0",
+    "typescript": "5.3.3",
     "vite": "5.0.0",
     "vite-plugin-handlebars": "1.6.0"
   },
