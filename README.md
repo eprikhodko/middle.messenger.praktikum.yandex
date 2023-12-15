@@ -4,20 +4,13 @@
 
 Проект доступен на Netlify по ссылке: https://eloquent-arithmetic-ee6077.netlify.app/
 
-Страницы:
-
-- Sign in: https://eloquent-arithmetic-ee6077.netlify.app/pages/sign-in/sign-in
-- Sign up: https://eloquent-arithmetic-ee6077.netlify.app/pages/sign-up/sign-up
-- Chat: https://eloquent-arithmetic-ee6077.netlify.app/pages/chat/chat
-- Profile: https://eloquent-arithmetic-ee6077.netlify.app/pages/profile/profile
-- Change password: https://eloquent-arithmetic-ee6077.netlify.app/pages/change-password/change-password
-- 404 page: https://eloquent-arithmetic-ee6077.netlify.app/pages/404/404
-- 500 page: https://eloquent-arithmetic-ee6077.netlify.app/pages/500/500
+Навигация по проекту осуществляется по ссылкам на главной странице. После того как вы перешли с главной страницы на любую другую страницу, для того чтобы снова вернуться на главную, просто обновите текущую страницу в браузере.
 
 #### Стэк:
 
 - Handlebars
 - Vite
+- TypeScript
 - Express
 
 ### Установка и запуск
@@ -45,3 +38,7 @@ npm install
 
 Проект будет запущен при помощи express и доступен по адресу
 `http://localhost:3000/`
+
+Линтинг осуществляется при помощи команды:
+`npm run lint`
+При этом будет запущен eslint, тайпчекинг, а так же stylelint.
