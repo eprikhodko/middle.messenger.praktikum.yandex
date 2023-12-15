@@ -8,7 +8,7 @@
     "build": "vite build --emptyOutDir",
     "preview": "vite preview",
     "start": "vite build --emptyOutDir && node ./server.cjs",
-    "lint": "eslint .",
+    "lint": "eslint . && tsc --noEmit && stylelint '**/*.css'",
     "typecheck": "tsc --noEmit",
     "stylelint": "stylelint '**/*.css'",
     "stylelintfix": "stylelint '**/*.css' --fix"
