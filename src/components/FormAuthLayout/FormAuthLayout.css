@@ -1,0 +1,27 @@
+.form-container {
+  max-width: 340px;
+  border-radius: 12px;
+  box-shadow: 0 0 6px 0 rgb(0 0 0 / 14%);
+  padding: 32px;
+  margin: 128px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.form-title_margin-large {
+  margin-bottom: 40px;
+}
+
+.form-common {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}

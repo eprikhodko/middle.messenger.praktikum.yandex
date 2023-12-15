@@ -1,49 +1,18 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Compile on build example</title>
-  </head>
-  <body>
-    <main class="main-page-content">
-      <div class="main-page-content__container">
-        <h1 class="main-page-content__title">Project pages:</h1>
-
-        <nav>
-          <ul class="main-page-content__links">
-            <li>
-              <a class="main-page-content__link" href="/pages/sign-in/sign-in.html">Sign in</a>
-            </li>
-            <li>
-              <a class="main-page-content__link" href="/pages/sign-up/sign-up.html">Sign up</a>
-            </li>
-            <li>
-              <a class="main-page-content__link" href="/pages/chat/chat.html">Chat</a>
-            </li>
-            <li>
-              <a class="main-page-content__link" href="/pages/profile/profile.html">Profile</a>
-            </li>
-            <li>
-              <a class="main-page-content__link" href="/pages/change-password/change-password.html">Change password</a>
-            </li>
-            <li>
-              <a class="main-page-content__link" href="/pages/404/404.html">404 page</a>
-            </li>
-            <li>
-              <a class="main-page-content__link" href="/pages/500/500.html">500 page</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </main>
-
+    <title>Precompile example</title>
     <script
       type="module"
-      src="./main.js"
+      src="index.ts"
     ></script>
+  </head>
+  <body>
+    <div id="app"></div>
   </body>
 </html>
