@@ -1,10 +1,11 @@
-<div class="form-common__input-container">
-  <label for={{id}} class="form-common__label">{{label}}</label>
-  <input
-    class="form-common__input"
-    type={{type}}
-    name={{id}}
-    id={{id}}
-    required
-  />
-</div>
+<input
+  class="form-input {{#if propClass}}{{propClass}}{{/if}}"
+  type={{type}}
+  name={{name}}
+  id={{id}}
+  pattern="{{pattern}}"
+  value="{{value}}"
+  placeholder="{{placeholder}}"
+  autocomplete="off"
+  required
+/>

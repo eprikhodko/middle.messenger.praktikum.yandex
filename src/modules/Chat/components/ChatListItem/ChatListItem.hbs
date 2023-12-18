@@ -1,9 +1,9 @@
 <li class="chat-list-item">
   <div class="chat-list-item-inner-content {{#if isActive}}chat-list-item--active{{/if}}">
-    {{> Chat/components/ChatAvatar/ChatAvatar sizeDefault=true}}
+    {{{ChatAvatar sizeDefault=true}}}
 
     <div class="chat-list-item__details">
-      {{> Chat/components/ChatName/ChatName chatName="Chat name"}}
+      <p class="chat-name">{{chatName}}</p>
       <p class="chat-list-item__last-message-preview">Last message preview...</p>
     </div>
 
