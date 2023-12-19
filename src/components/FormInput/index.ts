@@ -12,7 +12,7 @@ interface Props {
   pattern?: ValidationPattern;
   placeholder?: string;
   onClick?: () => void;
-  events: {
+  events?: {
     click: () => void;
   };
 }
@@ -33,8 +33,10 @@ export class FormInput extends Block {
   }
 
   handleBlur(event: FocusEvent, props: Props) {
+    console.log("blur handled")
     const eventTarget = event.target as HTMLInputElement
     if (props.pattern) {
+      console.log("pattern present",  validateInput(props.pattern, eventTarget.value, props.id))
       validateInput(props.pattern, eventTarget.value, props.id);
     }
   }

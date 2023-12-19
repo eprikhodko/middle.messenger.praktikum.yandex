@@ -1,4 +1,39 @@
+<div>
+   <form class="form-common" action="" method="post">
+      {{#each formInputs}}
+        {{!-- {{#FormInputContainer label=this.label for=this.id}} --}}
+        {{{this}}}
+
+        test
+          {{!-- {{{FormInput
+            propClass=../inputClass
+            ref="forminput"
+            type=this.type
+            name=this.name
+            id=this.id
+            pattern=this.pattern
+          }}} --}}
+          {{!-- {{{FormInputError text=this.errorText for=this.id}}} --}}
+          {{{FormInputError text="this.errorText" for="this.id"}}}
+      {{/each}}
+    </form>
+
   <div class="form-buttons form-buttons_sign-in">
     {{{ButtonCommon}}}
-    {{{button}}}
+    {{{Buttons}}}
+    {{!-- {{#each formInputs}}
+      {{{this}}}
+    {{/each}} --}}
   </div>
+</div>
+
+{{!-- <div class="form-buttons form-buttons_sign-in">
+    {{{ButtonCommon}}}
+    {{{button}}}
+     {{{ButtonCommon
+      text=this.text
+      propClass=this.class
+      type=this.type
+      onClick=this.onClick
+    }}}
+  </div> --}}
