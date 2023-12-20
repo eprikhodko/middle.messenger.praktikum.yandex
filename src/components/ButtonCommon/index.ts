@@ -6,7 +6,7 @@ interface Props {
   text: string;
   type?: "submit" | "button";
   propClass?: string;
-  onClick?: () => void;
+  onClick: () => void;
   events: {
     click: () => void;
   };
@@ -14,18 +14,14 @@ interface Props {
 
 export class ButtonCommon extends Block<Props> {
   constructor(props: Props) {
-    // super({
-    //   ...props,
-    //   // events: {
-    //   //   click: props.onClick,
-    //   // },
-    // });
-     super({ type: 'button', ...props });
+    super({
+      ...props,
+      events: {
+        click: props.onClick,
+      },
+    });
   }
 
-  // render() {
-  //   return this.compile(template, this.props);
-  // }
   render() {
     return this.compile(template, { ...this.props });
   }

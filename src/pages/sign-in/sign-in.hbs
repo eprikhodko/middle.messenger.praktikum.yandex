@@ -4,29 +4,13 @@
     <form class="form-common" action="" method="post">
       {{#each formInputs}}
         {{{this}}}
-
-        {{!-- {{{FormInputError text=this.errorText for=this.id}}} --}}
-        {{!-- {{{FormInputError text="this.errorText" for="this.id"}}} --}}
       {{/each}}
     </form>
 
     <div class="form-buttons form-buttons_sign-in">
-      {{{ButtonCommon}}}
-      {{{Buttons}}}
-      {{!-- {{#each formInputs}}
-      {{{this}}}
-    {{/each}} --}}
+      {{#each buttons}}
+        {{{this}}}
+      {{/each}}
     </div>
   </div>
 </div>
-
-{{!-- <div class="form-buttons form-buttons_sign-in">
-    {{{ButtonCommon}}}
-    {{{button}}}
-     {{{ButtonCommon
-      text=this.text
-      propClass=this.class
-      type=this.type
-      onClick=this.onClick
-    }}}
-  </div> --}}

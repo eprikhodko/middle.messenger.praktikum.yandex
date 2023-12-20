@@ -24,11 +24,9 @@ class Block<P extends Record<string, any> = any> {
   private _element: HTMLElement | null = null;
 
   constructor(propsWithChildren: P) {
-    console.log("propsWithChildren:", propsWithChildren)
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
-  
 
     this.children = children;
     this.props = this._makePropsProxy(props);
@@ -38,38 +36,21 @@ class Block<P extends Record<string, any> = any> {
     this._registerEvents(eventBus);
 
     eventBus.emit(Block.EVENTS.INIT);
-
-    console.log("constructor, this.children:", this.children)
   }
 
-  // private _getChildrenAndProps(childrenAndProps: P): {
-  //   props: P;
-  //   children: Record<string, Block | Block[]>;
-  // } {
-  //   const props: Record<string, unknown> = {};
-  //   const children: Record<string, Block> = {};
-
-  //   console.log("_getChildrenAndProps:", childrenAndProps)
-
-  //   Object.entries(childrenAndProps).forEach(([key, value]) => {
-  //     if (value instanceof Block) {
-  //       children[key] = value;
-  //     } else {
-  //       props[key] = value;
-  //     }
-  //   });
-
-  //   return { props: props as P, children };
-  // }
-
-  _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block | Block[]> } {
+  _getChildrenAndProps(childrenAndProps: P): {
+    props: P;
+    children: Record<string, Block | Block[]>;
+  } {
     const props: Record<string, unknown> = {};
     const children: Record<string, Block | Block[]> = {};
 
-    console.log("_getChildrenAndProps:", childrenAndProps)
-
     Object.entries(childrenAndProps).forEach(([key, value]) => {
-      if (Array.isArray(value) && value.length > 0 && value.every(v => v instanceof Block)) {
+      if (
+        Array.isArray(value) &&
+        value.length > 0 &&
+        value.every((v) => v instanceof Block)
+      ) {
         children[key as string] = value;
       } else if (value instanceof Block) {
         children[key as string] = value;
@@ -78,9 +59,7 @@ class Block<P extends Record<string, any> = any> {
       }
     });
 
-    console.log("RETURN", {props: props as P, children})
-
-    return {props: props as P, children};
+    return { props: props as P, children };
   }
 
   _addEvents() {
@@ -91,8 +70,6 @@ class Block<P extends Record<string, any> = any> {
     Object.keys(events).forEach((eventName) => {
       this._element?.addEventListener(eventName, events[eventName]);
     });
-
-    // console.log(this._element)
   }
 
   private _removeEvents() {
@@ -129,7 +106,6 @@ class Block<P extends Record<string, any> = any> {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    console.log("dispatchComponentDidMount:", this.children)
     Object.values(this.children).forEach((child) => {
       if (Array.isArray(child)) {
         child.forEach((ch) => ch.dispatchComponentDidMount());
@@ -175,74 +151,42 @@ class Block<P extends Record<string, any> = any> {
     this._element = newElement;
 
     this._addEvents();
-    
-    console.log("Block _render:" ,this._element)
   }
 
   protected render(): DocumentFragment {
     return new DocumentFragment();
   }
 
-  // protected compile(
-  //   template: (context: Record<string, unknown>) => string,
-  //   context: Record<string, unknown>
-  // ) {
-  //   const contextAndStubs: ContextAndStubs = { ...context, __refs: this.refs };
-
-  //   const html = template(contextAndStubs);
-
-  //   const temp = document.createElement("template");
-
-  //   temp.innerHTML = html;
-
-  //   // console.log("contextAndStubs", contextAndStubs)
-  //   contextAndStubs.__children?.forEach(({ embed }) => {
-  //     // console.log("EMBED")
-  //     embed(temp.content);
-  //   });
-
-  //   console.log("COMPILE", temp.content)
-  //   return temp.content;
-  // }
-
   protected compile(template: (context: any) => string, context: any) {
-    const contextAndStubs = {...context};
-
-    // console.log("debug", contextAndStubs)
-    // console.log("debug", this.children)
+    const contextAndStubs = { ...context };
 
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
-        contextAndStubs[name] = component.map(child => `<div data-id="${child.id}"></div>`)
+        contextAndStubs[name] = component.map(
+          (child) => `<div data-id="${child.id}"></div>`
+        );
       } else {
         contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
-        // console.log("debug", contextAndStubs[name])
       }
     });
 
     const html = template(contextAndStubs);
-    console.log("debug, template(contextAndStubs):", template(contextAndStubs))
 
-    const temp = document.createElement('template');
+    const temp = document.createElement("template");
 
     temp.innerHTML = html;
 
     const replaceStub = (component: Block) => {
-      // console.log("debug, component:", component)
       const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-      // console.log("debug, temp.content:", temp.content)
-      // console.log("debug, stub:", stub)
-
 
       if (!stub) {
         return;
       }
 
-      // console.log("does component have getContent?")
       component.getContent()?.append(...Array.from(stub.childNodes));
 
       stub.replaceWith(component.getContent()!);
-    }
+    };
 
     Object.entries(this.children).forEach(([_, component]) => {
       if (Array.isArray(component)) {
@@ -252,19 +196,15 @@ class Block<P extends Record<string, any> = any> {
       }
     });
 
-    console.log("COMPILE", temp.content)
     return temp.content;
   }
 
   public getContent() {
-    console.log("GET CONTENT", this.element)
     return this.element;
   }
 
   private _makePropsProxy(props: P) {
     const self = this;
-
-    console.log("_makePropsProxy", props)
 
     return new Proxy(props, {
       get(target, prop: string) {
