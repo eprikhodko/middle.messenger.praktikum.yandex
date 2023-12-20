@@ -1,6 +1,7 @@
 .form-common__input-container {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .form-common__label {

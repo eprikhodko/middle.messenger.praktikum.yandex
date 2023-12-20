@@ -4,6 +4,7 @@ import "./FormCommonInput.css";
 import validateInput from "../../utils/validateInput";
 import { InputType, ValidationPattern } from "../../utils/enums";
 import { FormInput } from "../../components/FormInput";
+import { FormInputError } from "../../components/FormInputError";
 import { ButtonCommon } from "../../components/ButtonCommon";
 
 
@@ -32,12 +33,9 @@ export class FormCommonInput extends Block {
   }
 
   init() {
-    console.log("debug, PROPS", this)
-    this.children.FormInput = new FormInput(this.props);
-
-    // this.children.FormInput = new FormInput({
-     
-    // });
+    console.log("debug, PROPS", this.props)
+    this.children.formInput = new FormInput(this.props);
+    this.children.inputError = new FormInputError(this.props);
 
     this.children.ButtonCommon = new ButtonCommon({
       text: "Войти",

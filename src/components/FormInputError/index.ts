@@ -4,7 +4,7 @@ import "./FormInputError.css";
 
 interface Props {
   text: string;
-  for: string;
+  id: string;
   propClass?: string;
   onClick?: () => void;
   events: {

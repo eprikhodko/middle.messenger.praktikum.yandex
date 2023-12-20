@@ -1,11 +1,9 @@
 import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
 import { ButtonCommon } from "../../components/ButtonCommon";
-import { FormInput } from "../../components/FormInput";
 import { FormCommonInput } from "../../components/FormCommonInput";
-// import { FormInputContainer } from "../../components/FormInputContainer";
+import "../../components/FormAuthLayout/FormAuthLayout.css"
 // import { FormInputError } from "../../components/FormInputError";
-
 
 import {
   InputType,
@@ -23,6 +21,7 @@ const formInputs = [
     id: "login",
     pattern: ValidationPattern.LOGIN,
     errorText: ErrorMessage.LOGIN,
+    propClass: "form-common__input",
   },
   {
     type: InputType.PASSWORD,
@@ -31,8 +30,9 @@ const formInputs = [
     id: "password",
     pattern: ValidationPattern.PASSWORD,
     errorText: ErrorMessage.PASSWORD,
+    propClass: "form-common__input",
   },
-]
+];
 
 export class SignInPage extends Block {
   constructor() {
@@ -40,11 +40,12 @@ export class SignInPage extends Block {
   }
 
   init() {
-    this.children.formInputs = formInputs.map(input => {
-      return new FormCommonInput(input);
+    this.children.formInputs = formInputs.map((props) => {
+      console.log(props);
+      return new FormCommonInput(props);
     });
 
-    console.log(this.children.formInputs)
+    console.log(this.children.formInputs);
 
     const buttonsArr = [1, 2, 3];
     // this.children.button = new ButtonCommon({
@@ -62,9 +63,9 @@ export class SignInPage extends Block {
       });
     });
 
-    console.log("buttons", buttons)
+    console.log("buttons", buttons);
 
-    this.children.Buttons = buttons
+    this.children.Buttons = buttons;
 
     this.children.ButtonCommon = new ButtonCommon({
       text: "Войти",
