@@ -3,10 +3,11 @@ import "./index.css";
 
 import Router from "./utils/Router";
 import { SignInPage } from "./pages/sign-in";
+import { SignUpPage } from "./pages/sign-up";
 
 enum Routes {
   Index = "/",
-  Register = "/register",
+  SignUp = "/sign-up",
   Profile = "/profile",
   Messenger = "/messenger",
 }
@@ -28,8 +29,7 @@ enum Routes {
 // });
 
 window.addEventListener("DOMContentLoaded", async () => {
-  Router.use(Routes.Index, SignInPage);
-  // .use(Routes.Register, RegisterPage)
+  Router.use(Routes.Index, SignInPage).use(Routes.SignUp, SignUpPage);
   // .use(Routes.Profile, ProfilePage)
   // .use(Routes.Messenger, MessengerPage)
 
@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   switch (window.location.pathname) {
     case Routes.Index:
-    case Routes.Register:
+    case Routes.SignUp:
       isProtectedRoute = false;
       break;
   }

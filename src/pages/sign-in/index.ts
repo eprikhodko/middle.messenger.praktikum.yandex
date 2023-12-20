@@ -2,6 +2,8 @@ import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
 import { ButtonCommon } from "../../components/ButtonCommon";
 import { FormCommonInput } from "../../components/FormCommonInput";
+import { Link } from "../../components/Link";
+import { ROUTE } from "../../utils/enums";
 import handleFormSubmit from "../../utils/handleFormSubmit";
 import "../../components/FormAuthLayout/FormAuthLayout.css";
 
@@ -13,7 +15,7 @@ import {
 } from "../../utils/enums";
 import "./sign-in.css";
 
-const formInputs = [
+const formInputsProps = [
   {
     type: InputType.TEXT,
     name: InputName.LOGIN,
@@ -34,21 +36,19 @@ const formInputs = [
   },
 ];
 
-const buttons = [
-  {
-    text: "Sign in",
-    type: "submit",
-    propClass: "button--primary",
-    onClick: () => {
-      handleFormSubmit();
-    },
+const buttonSignInProps = {
+  text: "Sign in",
+  type: "submit",
+  propClass: "button--primary",
+  onClick: () => {
+    handleFormSubmit();
   },
-  {
-    text: "Sign up",
-    type: "button",
-    propClass: "button--link-primary",
-  },
-];
+};
+
+const linkSignUpProps = {
+  text: "Sign Up",
+  to: ROUTE.SignUp,
+};
 
 export class SignInPage extends Block {
   constructor() {
@@ -56,13 +56,13 @@ export class SignInPage extends Block {
   }
 
   init() {
-    this.children.formInputs = formInputs.map((props) => {
+    this.children.formInputs = formInputsProps.map((props) => {
       return new FormCommonInput(props);
     });
 
-    this.children.buttons = buttons.map((props) => {
-      return new ButtonCommon(props);
-    });
+    this.children.signInButton = new ButtonCommon(buttonSignInProps);
+
+    this.children.link = new Link(linkSignUpProps);
   }
 
   render() {
