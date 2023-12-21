@@ -48,6 +48,6 @@ export enum ROUTE {
   SETTINGS = "/settings",
   MESSENGER = "/messenger",
   CHANGE_PASSWORD = "/change-password",
-  ERROR_404 = "error-404",
-  ERROR_500 = "error-500",
+  ERROR_404 = "/error-404",
+  ERROR_500 = "/error-500",
 }
