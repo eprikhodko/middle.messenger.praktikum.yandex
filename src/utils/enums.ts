@@ -42,14 +42,12 @@ export enum ErrorMessage {
 }
 
 export enum ROUTE {
-  Index = "/",
-  SignIn = "/sign-in",
-  SignUp = "/sign-up",
-  PROFILE = "profile",
-  CHANGE_PASSWORD = "change-password",
-  SIGN_IN = "sign-in",
-  SIGN_UP = "sign-up",
+  INDEX = "/",
+  SIGN_IN = "/sign-in",
+  SIGN_UP = "/sign-up",
+  SETTINGS = "/settings",
+  MESSENGER = "/messenger",
+  CHANGE_PASSWORD = "/change-password",
   ERROR_404 = "error-404",
   ERROR_500 = "error-500",
-  CHAT = "chat",
 }

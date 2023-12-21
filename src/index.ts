@@ -2,42 +2,29 @@ import "./main.css";
 import "./index.css";
 
 import Router from "./utils/Router";
+import { ROUTE } from "./utils/enums";
 import { SignInPage } from "./pages/sign-in";
 import { SignUpPage } from "./pages/sign-up";
-
-enum Routes {
-  Index = "/",
-  SignUp = "/sign-up",
-  Profile = "/profile",
-  Messenger = "/messenger",
-}
-
-// registerComponent("Button", Button);
-// registerComponent("ButtonCommon", ButtonCommon);
-// registerComponent("FormAuthLayout", FormAuthLayout);
-// registerComponent("FormInput", FormInput);
-// registerComponent("FormInputError", FormInputError);
-// registerComponent("FormInputContainer", FormInputContainer);
-// registerComponent("ErrorPageContent", ErrorPageContent);
-// registerComponent("ChatAvatar", ChatAvatar);
-// registerComponent("ChatListItem", ChatListItem);
-// registerComponent("ButtonArrow", ButtonArrow);
-// registerComponent("Link", Link);
-
-// window.addEventListener("DOMContentLoaded", () => {
-//   render(ROUTE.HOME);
-// });
+import { ChatPage } from "./pages/chat";
+import { ProfilePage } from "./pages/profile";
+import { ChangePasswordPage } from "./pages/change-password";
+import { Error404Page } from "./pages/404";
+import { Error500Page } from "./pages/500";
 
 window.addEventListener("DOMContentLoaded", async () => {
-  Router.use(Routes.Index, SignInPage).use(Routes.SignUp, SignUpPage);
-  // .use(Routes.Profile, ProfilePage)
-  // .use(Routes.Messenger, MessengerPage)
+  Router.use(ROUTE.INDEX, SignInPage)
+    .use(ROUTE.SIGN_UP, SignUpPage)
+    .use(ROUTE.SETTINGS, ProfilePage)
+    .use(ROUTE.MESSENGER, ChatPage)
+    .use(ROUTE.CHANGE_PASSWORD, ChangePasswordPage)
+    .use(ROUTE.ERROR_404, Error404Page)
+    .use(ROUTE.ERROR_500, Error500Page);
 
   let isProtectedRoute = true;
 
   switch (window.location.pathname) {
-    case Routes.Index:
-    case Routes.SignUp:
+    case ROUTE.INDEX:
+    case ROUTE.SIGN_UP:
       isProtectedRoute = false;
       break;
   }
@@ -49,13 +36,13 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     if (!isProtectedRoute) {
       // Router.go(Routes.Profile)
-      Router.go(Routes.Index);
+      Router.go(ROUTE.INDEX);
     }
   } catch (e) {
     Router.start();
 
     if (isProtectedRoute) {
-      Router.go(Routes.Index);
+      Router.go(ROUTE.INDEX);
     }
   }
 });

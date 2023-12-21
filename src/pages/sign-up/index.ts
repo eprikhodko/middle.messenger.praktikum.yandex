@@ -82,7 +82,7 @@ const buttonSignUpProps = {
 
 const linkSignUpProps = {
   text: "Sign In",
-  to: ROUTE.SignIn,
+  to: ROUTE.SIGN_IN,
 };
 
 export class SignUpPage extends Block {

@@ -46,7 +46,7 @@ const buttonSignInProps = {
 
 const linkSignUpProps = {
   text: "Sign Up",
-  to: ROUTE.SignUp,
+  to: ROUTE.SIGN_UP,
 };
 
 export class SignInPage extends Block {
