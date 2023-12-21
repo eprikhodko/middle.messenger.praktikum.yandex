@@ -1,8 +1,6 @@
 import Block from "../../utils/Block";
 import template from "./profile.hbs";
 import { ButtonCommon } from "../../components/ButtonCommon";
-import { Link } from "../../components/Link";
-import { ROUTE } from "../../utils/enums";
 import handleFormSubmit from "../../utils/handleFormSubmit";
 import "../../components/FormAuthLayout/FormAuthLayout.css";
 import {
@@ -79,15 +77,6 @@ const formInputsProps = [
 ];
 
 const buttonsProps = [
-  // {
-  //   text: "Sign In",
-  //   type: "submit",
-  //   propClass: "button--primary",
-  //   onClick: () => {
-  //     handleFormSubmit();
-  //   },
-  // },
-
   {
     text: "Save changes",
     type: "submit",
@@ -114,11 +103,6 @@ const buttonBackProps = {
   },
 };
 
-const linkSignUpProps = {
-  text: "Sign Up",
-  to: ROUTE.SIGN_UP,
-};
-
 export class ProfilePage extends Block {
   constructor() {
     super({});
@@ -129,10 +113,10 @@ export class ProfilePage extends Block {
       return new FormSettingsInput(props);
     });
 
-    this.children.buttons = buttonsProps.map((buttonProps) => new ButtonCommon(buttonProps));
+    this.children.buttons = buttonsProps.map(
+      (buttonProps) => new ButtonCommon(buttonProps)
+    );
     this.children.buttonBack = new ButtonBack(buttonBackProps);
-
-    this.children.link = new Link(linkSignUpProps);
   }
 
   render() {
