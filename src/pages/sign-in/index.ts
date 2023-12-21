@@ -6,7 +6,6 @@ import { Link } from "../../components/Link";
 import { ROUTE } from "../../utils/enums";
 import handleFormSubmit from "../../utils/handleFormSubmit";
 import "../../components/FormAuthLayout/FormAuthLayout.css";
-
 import {
   InputType,
   InputName,
@@ -37,7 +36,7 @@ const formInputsProps = [
 ];
 
 const buttonSignInProps = {
-  text: "Sign in",
+  text: "Sign In",
   type: "submit",
   propClass: "button--primary",
   onClick: () => {
