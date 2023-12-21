@@ -1,6 +1,7 @@
 import Block from "../../../../utils/Block";
 import template from "./ChatListItem.hbs";
 import "./ChatListItem.css";
+import { ChatAvatar } from "../ChatAvatar";
 
 interface Props {
   chatName: string;
@@ -11,14 +12,21 @@ interface Props {
   };
 }
 
+// looks like this props should be passed from the parent, at least image source
+const chatAvatarProps = {
+  sizeDefault: true,
+  src: "server-response/user/chat-avatar.jpg",
+};
+
 export class ChatListItem extends Block {
   constructor(props: Props) {
     super({
       ...props,
-      events: {
-        click: props.onClick,
-      },
     });
+  }
+
+  init() {
+    this.children.chatAvatar = new ChatAvatar(chatAvatarProps);
   }
 
   render() {
