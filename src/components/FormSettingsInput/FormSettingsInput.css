@@ -1,0 +1,8 @@
+.settings-form__input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--color-ui-secondary);
+  position: relative;
+}

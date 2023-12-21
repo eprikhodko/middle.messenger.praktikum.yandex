@@ -1,29 +1,35 @@
 import Block from "../../utils/Block";
 import template from "./Link.hbs";
 import "./Link.css";
-import { render } from "../../utils/render";
-import { ROUTE } from "../../utils/render";
+import { PropsWithRouter, withRouter } from '../../hocs/withRouter';
 
-interface Props {
+interface LinkProps extends PropsWithRouter {
+  to: string;
   text: string;
-  to: ROUTE;
-  onClick?: () => void;
-  events: {
+  events?: {
     click: () => void;
   };
 }
 
-export class Link extends Block {
-  constructor(props: Props) {
+class BaseLink extends Block<LinkProps> {
+  constructor(props: LinkProps) {
     super({
       ...props,
       events: {
-        click: () => render(props.to),
+        click: () => this.navigate()
       },
     });
   }
 
+  navigate() {
+    this.props.router.go(this.props.to);
+  }
+
   render() {
-    return this.compile(template, this.props);
+    return this.compile(template, { ...this.props });
   }
 }
+
+export const Link = withRouter(BaseLink);
+
+

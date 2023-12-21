@@ -12,7 +12,7 @@ interface Props {
   pattern?: ValidationPattern;
   placeholder?: string;
   onClick?: () => void;
-  events: {
+  events?: {
     click: () => void;
   };
 }

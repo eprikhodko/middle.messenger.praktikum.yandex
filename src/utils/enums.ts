@@ -40,3 +40,14 @@ export enum ErrorMessage {
   PASSWORD = "incorrect format, please use 8-40 symbols, at least one capital letter, and digit",
   DISPLAYNAME = "incorrect format, please use 3-20 symbols, without spaces",
 }
+
+export enum ROUTE {
+  INDEX = "/",
+  SIGN_IN = "/sign-in",
+  SIGN_UP = "/sign-up",
+  SETTINGS = "/settings",
+  MESSENGER = "/messenger",
+  CHANGE_PASSWORD = "/change-password",
+  ERROR_404 = "/error-404",
+  ERROR_500 = "/error-500",
+}

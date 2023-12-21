@@ -20,20 +20,12 @@
         />
       </label>
 
-      {{{FormInput
-        ref="forminput"
-        propClass="search-form__input"
-        type=this.searchInput.type
-        name=this.searchInput.name
-        id=this.searchInput.id
-        placeholder=this.searchInput.placeholder
-        pattern=this.searchInput.pattern
-      }}}
+      {{{searchInput}}}
     </form>
 
     <ul class="chat-list">
       {{#each chatListItems}}
-        {{{ChatListItem chatName=this.chatName isActive=this.isActive}}}
+        {{{this}}}
       {{/each}}
     </ul>
   </aside>
@@ -41,9 +33,13 @@
   <div class="chat-body">
     <header class="chat-header">
       <div class="chat-header__description">
-        {{{ChatAvatar sizeSmall=true}}}
+        {{{chatAvatar}}}
         <p class="chat-name">Chat name</p>
       </div>
+
+      <button class="chat-header__menu-button" type="button">
+        <img class="" src="/icons/icon-three-dots.svg" alt="" />
+      </button>
     </header>
 
     <div class="chat-messages">
@@ -78,17 +74,9 @@
 
     <footer class="chat-footer">
       <form class="send-message-form">
-        {{{FormInput
-          ref="forminput"
-          propClass="send-message-form__input"
-          type=this.sendMessageInput.type
-          name=this.sendMessageInput.name
-          id=this.sendMessageInput.id
-          placeholder=this.sendMessageInput.placeholder
-          pattern=this.sendMessageInput.pattern
-        }}}
+        {{{sendMessageInput}}}
 
-        {{{ButtonArrow type="button"}}}
+        {{{buttonSendMessage}}}
       </form>
     </footer>
   </div>

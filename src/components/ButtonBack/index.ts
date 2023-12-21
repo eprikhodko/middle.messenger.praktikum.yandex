@@ -1,6 +1,6 @@
 import Block from "../../utils/Block";
-import template from "./ButtonCommon.hbs";
-import "./ButtonCommon.css";
+import template from "./ButtonBack.hbs";
+import "./ButtonBack.css";
 
 interface Props {
   text: string;
@@ -12,7 +12,7 @@ interface Props {
   };
 }
 
-export class ButtonCommon extends Block<Props> {
+export class ButtonBack extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,
