@@ -10,6 +10,8 @@ import { ProfilePage } from "./pages/profile";
 import { ChangePasswordPage } from "./pages/change-password";
 import { Error404Page } from "./pages/404";
 import { Error500Page } from "./pages/500";
+import AuthController from "./controllers/AuthController";
+// import store from "./utils/Store";
 
 window.addEventListener("DOMContentLoaded", async () => {
   Router.use(ROUTE.INDEX, SignInPage)
@@ -30,12 +32,14 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
-    // await AuthController.fetchUser();
+    await AuthController.fetchUser();
+    // const storeState = store.getState()
+    // console.log(storeState.user)
 
     Router.start();
 
     if (!isProtectedRoute) {
-      // Router.go(Routes.Profile)
+      Router.go(ROUTE.SETTINGS);
       Router.go(ROUTE.INDEX);
     }
   } catch (e) {

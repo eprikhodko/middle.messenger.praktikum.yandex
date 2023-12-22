@@ -15,6 +15,8 @@ import {
 import "./sign-in.css";
 import AuthController from "../../controllers/AuthController";
 import { SignupData } from "../../api/AuthAPI";
+import Router from "../../utils/Router";
+import store from "../../utils/Store";
 
 const formInputsProps = [
   {
@@ -65,9 +67,15 @@ export class SignInPage extends Block {
   }
 
   onSubmit() {
-    const data = handleFormSubmit(this.children.formInputs);
+    const storeState = store.getState();
+    console.log(storeState.user);
+    if (storeState.user) {
+      Router.go(ROUTE.MESSENGER);
+    } else {
+      const data = handleFormSubmit(this.children.formInputs);
 
-    AuthController.signin(data as SignupData);
+      AuthController.signin(data as SignupData);
+    }
   }
 
   render() {
