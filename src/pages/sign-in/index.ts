@@ -37,16 +37,6 @@ const formInputsProps = [
   },
 ];
 
-// const buttonSignInProps = {
-//   text: "Sign In",
-//   type: "submit",
-//   propClass: "button--primary",
-//   onClick: () => {
-//     // handleFormSubmit();
-//     this.onSubmit()
-//   },
-// };
-
 const linkSignUpProps = {
   text: "Sign Up",
   to: ROUTE.SIGN_UP,
@@ -67,7 +57,6 @@ export class SignInPage extends Block {
       type: "submit",
       propClass: "button--primary",
       onClick: () => {
-        // handleFormSubmit(this.children.formInputs);
         this.onSubmit();
       },
     });
@@ -76,17 +65,7 @@ export class SignInPage extends Block {
   }
 
   onSubmit() {
-   const data = handleFormSubmit(this.children.formInputs);
-  //  console.log("data onSubmit", data)
-    // console.log(this.children)
-    // const values = Object
-    //   .values(this.children)
-    //   .filter(child => child instanceof FormInput)
-    //   .map((child) => ([(child as FormInput).getName(), (child as FormInput).getValue()]))
-
-    // // const data = Object.fromEntries(values);
-
-    // const data = {};
+    const data = handleFormSubmit(this.children.formInputs);
 
     AuthController.signin(data as SignupData);
   }

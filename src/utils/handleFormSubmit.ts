@@ -23,34 +23,16 @@ function findAllFormInputs(arr) {
     return component.children.formInput;
   });
 
-  console.log("formInputs", formInputs);
-
   return formInputs;
 }
 
 const getFormData = (children) => {
-  console.log(children);
-  console.log("found", findAllFormInputs(children));
-
   const inputs = findAllFormInputs(children);
   const inputsValues = inputs.map((child) => [
     (child as FormInput).getName(),
     (child as FormInput).getValue(),
   ]);
   const data = Object.fromEntries(inputsValues);
-  console.log("data", data);
-
-  ///////////////////
-  // const inputs = getFormInputs();
-  // const formData: Record<string, string> = {};
-
-  // inputs.forEach((el) => {
-  //   const inputElement = el as HTMLInputElement;
-
-  //   formData[inputElement.name] = inputElement.value;
-  // });
-
-  // console.log(formData);
   return data;
 };
 
