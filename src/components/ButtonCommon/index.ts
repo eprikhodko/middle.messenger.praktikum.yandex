@@ -7,7 +7,7 @@ interface Props {
   type?: "submit" | "button";
   propClass?: string;
   onClick: () => void;
-  events: {
+  events?: {
     click: () => void;
   };
 }

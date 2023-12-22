@@ -2,6 +2,7 @@ import Block from "../../utils/Block";
 import template from "./profile.hbs";
 import { ButtonCommon } from "../../components/ButtonCommon";
 import handleFormSubmit from "../../utils/handleFormSubmit";
+import AuthController from "../../controllers/AuthController";
 import "../../components/FormAuthLayout/FormAuthLayout.css";
 import {
   InputType,
@@ -91,9 +92,12 @@ const buttonsProps = [
     propClass: "button--primary",
   },
   {
-    text: "Cancel",
+    text: "Sign Out",
     type: "button",
     propClass: "button--link-warning",
+    onClick: () => {
+      AuthController.logout();
+    },
   },
 ];
 

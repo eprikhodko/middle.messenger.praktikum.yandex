@@ -28,12 +28,24 @@ export class FormInput extends Block {
     });
   }
 
+  public setValue(value: string) {
+    return ((this.element as HTMLInputElement).value = value);
+  }
+
+  public getName() {
+    return (this.element as HTMLInputElement).name;
+  }
+
+  public getValue() {
+    return (this.element as HTMLInputElement).value;
+  }
+
   render() {
     return this.compile(template, this.props);
   }
 
   handleBlur(event: FocusEvent, props: Props) {
-    const eventTarget = event.target as HTMLInputElement
+    const eventTarget = event.target as HTMLInputElement;
     if (props.pattern) {
       validateInput(props.pattern, eventTarget.value, props.id);
     }

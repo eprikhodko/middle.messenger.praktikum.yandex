@@ -13,6 +13,8 @@ import {
   ErrorMessage,
 } from "../../utils/enums";
 import "./sign-in.css";
+import AuthController from "../../controllers/AuthController";
+import { SignupData } from "../../api/AuthAPI";
 
 const formInputsProps = [
   {
@@ -35,14 +37,15 @@ const formInputsProps = [
   },
 ];
 
-const buttonSignInProps = {
-  text: "Sign In",
-  type: "submit",
-  propClass: "button--primary",
-  onClick: () => {
-    handleFormSubmit();
-  },
-};
+// const buttonSignInProps = {
+//   text: "Sign In",
+//   type: "submit",
+//   propClass: "button--primary",
+//   onClick: () => {
+//     // handleFormSubmit();
+//     this.onSubmit()
+//   },
+// };
 
 const linkSignUpProps = {
   text: "Sign Up",
@@ -59,9 +62,33 @@ export class SignInPage extends Block {
       return new FormCommonInput(props);
     });
 
-    this.children.signInButton = new ButtonCommon(buttonSignInProps);
+    this.children.signInButton = new ButtonCommon({
+      text: "Sign In",
+      type: "submit",
+      propClass: "button--primary",
+      onClick: () => {
+        // handleFormSubmit(this.children.formInputs);
+        this.onSubmit();
+      },
+    });
 
     this.children.link = new Link(linkSignUpProps);
+  }
+
+  onSubmit() {
+   const data = handleFormSubmit(this.children.formInputs);
+  //  console.log("data onSubmit", data)
+    // console.log(this.children)
+    // const values = Object
+    //   .values(this.children)
+    //   .filter(child => child instanceof FormInput)
+    //   .map((child) => ([(child as FormInput).getName(), (child as FormInput).getValue()]))
+
+    // // const data = Object.fromEntries(values);
+
+    // const data = {};
+
+    AuthController.signin(data as SignupData);
   }
 
   render() {
