@@ -11,10 +11,12 @@ export default abstract class BaseAPI {
 
   public abstract read?(identifier?: string | number): Promise<unknown>;
 
-  public abstract update?(
-    identifier: string | number,
-    data: unknown
-  ): Promise<unknown>;
+  // public abstract update?(
+  //   identifier: string | number,
+  //   data: unknown
+  // ): Promise<unknown>;
+  
+  public abstract update?(): Promise<unknown>;
 
   public abstract delete?(identifier: string | number): Promise<unknown>;
 }

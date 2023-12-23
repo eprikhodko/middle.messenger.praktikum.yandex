@@ -13,6 +13,9 @@ import {
 import "./profile.css";
 import { ButtonBack } from "../../components/ButtonBack";
 import { FormSettingsInput } from "../../components/FormSettingsInput";
+import { withStore } from "../../utils/Store";
+import UsersController from "../../controllers/UsersController";
+import { ProfileData } from "../../api/UsersAPI";
 
 const formInputsProps = [
   {
@@ -22,7 +25,6 @@ const formInputsProps = [
     id: "email",
     pattern: ValidationPattern.EMAIL,
     errorText: ErrorMessage.EMAIL,
-    value: "pochta@yandex.ru",
     inputClassName: "settings-form__input",
   },
   {
@@ -32,7 +34,6 @@ const formInputsProps = [
     id: "login",
     pattern: ValidationPattern.LOGIN,
     errorText: ErrorMessage.LOGIN,
-    value: "ivanivanov",
     inputClassName: "settings-form__input",
   },
   {
@@ -42,7 +43,6 @@ const formInputsProps = [
     id: "first_name",
     pattern: ValidationPattern.NAME,
     errorText: ErrorMessage.FIRSTNAME,
-    value: "Ivan",
     inputClassName: "settings-form__input",
   },
   {
@@ -52,7 +52,6 @@ const formInputsProps = [
     id: "second_name",
     pattern: ValidationPattern.NAME,
     errorText: ErrorMessage.SECONDNAME,
-    value: "Ivanov",
     inputClassName: "settings-form__input",
   },
   {
@@ -62,7 +61,6 @@ const formInputsProps = [
     id: "display_name",
     pattern: ValidationPattern.LOGIN,
     errorText: ErrorMessage.DISPLAYNAME,
-    value: "Ivan",
     inputClassName: "settings-form__input",
   },
   {
@@ -72,20 +70,11 @@ const formInputsProps = [
     id: "phone",
     pattern: ValidationPattern.PHONE,
     errorText: ErrorMessage.PHONE,
-    value: "+79099673030",
     inputClassName: "settings-form__input",
   },
 ];
 
 const buttonsProps = [
-  {
-    text: "Save changes",
-    type: "submit",
-    propClass: "button--primary",
-    onClick: () => {
-      handleFormSubmit();
-    },
-  },
   {
     text: "Change password",
     type: "button",
@@ -107,23 +96,43 @@ const buttonBackProps = {
   },
 };
 
-export class ProfilePage extends Block {
-  constructor() {
-    super({});
-  }
-
+export class ProfilePageBase extends Block {
   init() {
+    console.log("this", this.props);
+
     this.children.formInputs = formInputsProps.map((props) => {
-      return new FormSettingsInput(props);
+      return new FormSettingsInput({ ...props, value: this.props[props.name] });
     });
 
     this.children.buttons = buttonsProps.map(
       (buttonProps) => new ButtonCommon(buttonProps)
     );
+
+    this.children.saveChangesButton = new ButtonCommon({
+      text: "Save changes",
+      type: "submit",
+      propClass: "button--primary",
+      onClick: () => {
+        this.onSubmit();
+      },
+    });
+
     this.children.buttonBack = new ButtonBack(buttonBackProps);
+  }
+
+  onSubmit() {
+    console.log(this.children.formInputs);
+    const data = handleFormSubmit(this.children.formInputs);
+    console.log(data)
+
+    UsersController.updateProfileData(data as ProfileData);
   }
 
   render() {
     return this.compile(template, { ...this.props });
   }
 }
+
+const withUser = withStore((state) => ({ ...state.user }));
+
+export const ProfilePage = withUser(ProfilePageBase);
