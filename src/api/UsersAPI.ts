@@ -9,6 +9,11 @@ export interface ProfileData {
   display_name: string;
 }
 
+export interface UpdatePassword {
+  oldPassword: string;
+  newPassword: string;
+}
+
 export class UsersAPI extends BaseAPI {
   constructor() {
     super("/user");
@@ -16,6 +21,10 @@ export class UsersAPI extends BaseAPI {
 
   updateProfileData(data: ProfileData) {
     return this.http.put("/profile", data);
+  }
+
+  updatePassword(data: UpdatePassword) {
+    return this.http.put("/password", data);
   }
 
   create = undefined;

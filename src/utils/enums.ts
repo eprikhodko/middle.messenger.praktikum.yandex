@@ -14,8 +14,8 @@ export enum InputName {
   DISPLAYNAME = "display_name",
   EMAIL = "email",
   PHONE = "phone",
-  OLDPASSWORD = "old_password",
-  NEWPASSWORD = "new_password",
+  OLDPASSWORD = "oldPassword",
+  NEWPASSWORD = "newPassword",
   REPEATPASSWORD = "repeat_password",
   SEARCH = "search",
   MESSAGE = "message"

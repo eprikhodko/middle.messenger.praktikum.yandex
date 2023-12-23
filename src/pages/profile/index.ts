@@ -16,6 +16,8 @@ import { FormSettingsInput } from "../../components/FormSettingsInput";
 import { withStore } from "../../utils/Store";
 import UsersController from "../../controllers/UsersController";
 import { ProfileData } from "../../api/UsersAPI";
+import { Link } from "../../components/Link";
+import { ROUTE } from "../../utils/enums";
 
 const formInputsProps = [
   {
@@ -74,12 +76,7 @@ const formInputsProps = [
   },
 ];
 
-const buttonsProps = [
-  {
-    text: "Change password",
-    type: "button",
-    propClass: "button--primary",
-  },
+const buttonSignOutProps =
   {
     text: "Sign Out",
     type: "button",
@@ -87,13 +84,17 @@ const buttonsProps = [
     onClick: () => {
       AuthController.logout();
     },
-  },
-];
+  }
 
 const buttonBackProps = {
   onClick: () => {
     console.log("go back");
   },
+};
+
+const linkChangePasswordProps = {
+  text: "Change password",
+  to: ROUTE.CHANGE_PASSWORD,
 };
 
 export class ProfilePageBase extends Block {
@@ -104,9 +105,8 @@ export class ProfilePageBase extends Block {
       return new FormSettingsInput({ ...props, value: this.props[props.name] });
     });
 
-    this.children.buttons = buttonsProps.map(
-      (buttonProps) => new ButtonCommon(buttonProps)
-    );
+    this.children.buttonSignOut =  new ButtonCommon(buttonSignOutProps)
+    
 
     this.children.saveChangesButton = new ButtonCommon({
       text: "Save changes",
@@ -116,6 +116,8 @@ export class ProfilePageBase extends Block {
         this.onSubmit();
       },
     });
+
+    this.children.linkChangePassword = new Link(linkChangePasswordProps);
 
     this.children.buttonBack = new ButtonBack(buttonBackProps);
   }
