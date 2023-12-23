@@ -18,6 +18,7 @@ import UsersController from "../../controllers/UsersController";
 import { ProfileData } from "../../api/UsersAPI";
 import { Link } from "../../components/Link";
 import { ROUTE } from "../../utils/enums";
+import Router from "../../utils/Router";
 
 const formInputsProps = [
   {
@@ -88,7 +89,7 @@ const buttonSignOutProps =
 
 const buttonBackProps = {
   onClick: () => {
-    console.log("go back");
+    Router.back()
   },
 };
 

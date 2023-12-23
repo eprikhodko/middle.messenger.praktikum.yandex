@@ -14,6 +14,7 @@ import { ButtonBack } from "../../components/ButtonBack";
 import { FormSettingsInput } from "../../components/FormSettingsInput";
 import UsersController from "../../controllers/UsersController";
 import { UpdatePassword } from "../../api/UsersAPI";
+import Router from "../../utils/Router";
 
 const formInputsProps = [
   {
@@ -38,7 +39,7 @@ const formInputsProps = [
 
 const buttonBackProps = {
   onClick: () => {
-    console.log("go back");
+    Router.back()
   },
 };
 
