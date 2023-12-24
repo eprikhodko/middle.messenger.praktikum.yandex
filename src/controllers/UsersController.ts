@@ -1,4 +1,4 @@
-import API, { UsersAPI, ProfileData, UpdatePassword } from "../api/UsersAPI";
+import API, { UsersAPI, ProfileData, UpdatePassword, Avatar } from "../api/UsersAPI";
 
 export class UsersController {
   private readonly api: UsersAPI;
@@ -18,6 +18,14 @@ export class UsersController {
   async updatePassword(data: UpdatePassword) {
     try {
       await this.api.updatePassword(data);
+    } catch (e: any) {
+      console.error(e);
+    }
+  }
+
+  async updateAvatar(data: FormData) {
+    try {
+      await this.api.updateAvatar(data);
     } catch (e: any) {
       console.error(e);
     }

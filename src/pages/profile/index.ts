@@ -15,10 +15,11 @@ import { ButtonBack } from "../../components/ButtonBack";
 import { FormSettingsInput } from "../../components/FormSettingsInput";
 import { withStore } from "../../utils/Store";
 import UsersController from "../../controllers/UsersController";
-import { ProfileData } from "../../api/UsersAPI";
+import { Avatar, ProfileData } from "../../api/UsersAPI";
 import { Link } from "../../components/Link";
 import { ROUTE } from "../../utils/enums";
 import Router from "../../utils/Router";
+import { ImageUpload } from "../../components/ImageUpload";
 
 const formInputsProps = [
   {
@@ -77,19 +78,18 @@ const formInputsProps = [
   },
 ];
 
-const buttonSignOutProps =
-  {
-    text: "Sign Out",
-    type: "button",
-    propClass: "button--link-warning",
-    onClick: () => {
-      AuthController.logout();
-    },
-  }
+const buttonSignOutProps = {
+  text: "Sign Out",
+  type: "button",
+  propClass: "button--link-warning",
+  onClick: () => {
+    AuthController.logout();
+  },
+};
 
 const buttonBackProps = {
   onClick: () => {
-    Router.back()
+    Router.back();
   },
 };
 
@@ -106,8 +106,7 @@ export class ProfilePageBase extends Block {
       return new FormSettingsInput({ ...props, value: this.props[props.name] });
     });
 
-    this.children.buttonSignOut =  new ButtonCommon(buttonSignOutProps)
-    
+    this.children.buttonSignOut = new ButtonCommon(buttonSignOutProps);
 
     this.children.saveChangesButton = new ButtonCommon({
       text: "Save changes",
@@ -121,14 +120,36 @@ export class ProfilePageBase extends Block {
     this.children.linkChangePassword = new Link(linkChangePasswordProps);
 
     this.children.buttonBack = new ButtonBack(buttonBackProps);
+
+    this.children.imageUpload = new ImageUpload({
+      onSubmit: (event) => {
+        this.onFileUpload(event);
+      },
+    });
   }
 
   onSubmit() {
     console.log(this.children.formInputs);
     const data = handleFormSubmit(this.children.formInputs);
-    console.log(data)
+    console.log(data);
 
     UsersController.updateProfileData(data as ProfileData);
+  }
+
+  onFileUpload(event) {
+    event.preventDefault()
+    console.log("upload image");
+    console.log(this.children.imageUpload.getContent());
+
+    const form = this.children.imageUpload.getContent()
+    const formData = new FormData(form);
+
+    console.log(formData)
+    // for (const [key, value] of formData.entries()) {
+    //   console.log(key, value);
+    // }
+
+    UsersController.updateAvatar(formData);
   }
 
   render() {

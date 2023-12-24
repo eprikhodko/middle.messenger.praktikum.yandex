@@ -14,6 +14,10 @@ export interface UpdatePassword {
   newPassword: string;
 }
 
+export interface Avatar {
+  form: FormData;
+}
+
 export class UsersAPI extends BaseAPI {
   constructor() {
     super("/user");
@@ -25,6 +29,10 @@ export class UsersAPI extends BaseAPI {
 
   updatePassword(data: UpdatePassword) {
     return this.http.put("/password", data);
+  }
+
+  updateAvatar(data: FormData) {
+    return this.http.put("/profile/avatar", data);
   }
 
   create = undefined;
