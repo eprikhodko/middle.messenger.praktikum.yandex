@@ -1,4 +1,5 @@
 import BaseAPI from "./BaseAPI";
+import { User } from "./AuthAPI";
 
 export interface ProfileData {
   first_name: string;
@@ -35,8 +36,12 @@ export class UsersAPI extends BaseAPI {
     return this.http.put("/profile/avatar", data);
   }
 
+  read(): Promise<User> {
+    return this.http.get('/user');
+  }
+
   create = undefined;
-  read = undefined;
+  // read = undefined;
   update = undefined;
   delete = undefined;
 }

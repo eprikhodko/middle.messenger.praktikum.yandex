@@ -129,11 +129,11 @@ export class ProfilePageBase extends Block {
       },
     });
 
-    const avatarSrc = this.props.avatar
+    this.props.avatarSrc = this.props.avatar
       ? `${API.API_URL}${API.RESOURCES}${this.props.avatar}`
       : "/avatar-placeholder.svg";
 
-    this.children.userAvatar = new UserAvatar({ imgSrc: avatarSrc });
+    this.children.userAvatar = new UserAvatar({ imgSrc: this.props.avatarSrc });
   }
 
   onSubmit() {
@@ -151,6 +151,29 @@ export class ProfilePageBase extends Block {
     const formData = new FormData(form);
 
     UsersController.updateAvatar(formData);
+  }
+
+  protected componentDidUpdate(this): boolean {
+    /**
+     * Обновляем детей
+     */
+    console.log("DEBUG", this.props.avatar)
+    this.children.userAvatar?.setProps({  imgSrc: `${API.API_URL}${API.RESOURCES}${this.props.avatar}`})
+    // (this.children.userAvatar.setProps({  value: newProps[userFields[i]] });
+    // });
+
+    /**
+     * Другой вариант — просто заново создать всех детей. Но тогда метод должен возвращать true, чтобы новые дети отрендерились
+     *
+     * this.children.fields = userFields.map(name => {
+     *   return new ProfileField({ name, value: newProps[name] });
+     * });
+     */
+
+    /**
+     * Так как мы обновили детей, этот компонент не обязательно рендерить
+     */
+    return false;
   }
 
   render() {
