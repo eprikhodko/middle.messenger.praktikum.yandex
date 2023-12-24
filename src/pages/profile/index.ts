@@ -20,6 +20,8 @@ import { Link } from "../../components/Link";
 import { ROUTE } from "../../utils/enums";
 import Router from "../../utils/Router";
 import { ImageUpload } from "../../components/ImageUpload";
+import { UserAvatar } from "../../components/UserAvatar";
+import { API } from "../../utils/enums";
 
 const formInputsProps = [
   {
@@ -126,6 +128,12 @@ export class ProfilePageBase extends Block {
         this.onFileUpload(event);
       },
     });
+
+    const avatarSrc = this.props.avatar
+      ? `${API.API_URL}${API.RESOURCES}${this.props.avatar}`
+      : "/avatar-placeholder.svg";
+
+    this.children.userAvatar = new UserAvatar({ imgSrc: avatarSrc });
   }
 
   onSubmit() {
@@ -137,17 +145,10 @@ export class ProfilePageBase extends Block {
   }
 
   onFileUpload(event) {
-    event.preventDefault()
-    console.log("upload image");
-    console.log(this.children.imageUpload.getContent());
+    event.preventDefault();
 
-    const form = this.children.imageUpload.getContent()
+    const form = this.children.imageUpload.getContent();
     const formData = new FormData(form);
-
-    console.log(formData)
-    // for (const [key, value] of formData.entries()) {
-    //   console.log(key, value);
-    // }
 
     UsersController.updateAvatar(formData);
   }
