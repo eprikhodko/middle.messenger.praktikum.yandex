@@ -5,24 +5,10 @@
 
   <main class="settings-main-content">
     <div class="settings-avatar">
-      <label for="avatar-input" class="settings-avatar__label">
-        <img
-          class="settings-avatar__img"
-          src="/avatar-placeholder.svg"
-          alt="Avatar"
-          onerror="this.onerror=null; this.src='/avatar-placeholder.svg';"
-        />
-      </label>
-      <input
-        class="settings-avatar__file-input"
-        id="avatar-input"
-        name="avatar"
-        type="file"
-        onchange="loadFile(event)"
-      />
+      {{{userAvatar}}}
     </div>
 
-    <p class="settings__username">Ivan</p>
+    {{{imageUpload}}}
 
     <form class="settings-form" action="" method="">
       {{#each formInputs}}
@@ -31,9 +17,11 @@
     </form>
 
     <div class="settings-buttons">
-      {{#each buttons}}
-        {{{this}}}
-      {{/each}}
+      {{{saveChangesButton}}}
+
+      {{{linkChangePassword}}}
+
+      {{{buttonSignOut}}}
     </div>
   </main>
 </div>

@@ -3,7 +3,7 @@ export enum InputType {
   PASSWORD = "password",
   EMAIL = "email",
   TEL = "tel",
-  SEARCH = "search"
+  SEARCH = "search",
 }
 
 export enum InputName {
@@ -14,11 +14,11 @@ export enum InputName {
   DISPLAYNAME = "display_name",
   EMAIL = "email",
   PHONE = "phone",
-  OLDPASSWORD = "old_password",
-  NEWPASSWORD = "new_password",
+  OLDPASSWORD = "oldPassword",
+  NEWPASSWORD = "newPassword",
   REPEATPASSWORD = "repeat_password",
   SEARCH = "search",
-  MESSAGE = "message"
+  MESSAGE = "message",
 }
 
 export enum ValidationPattern {
@@ -28,7 +28,7 @@ export enum ValidationPattern {
   EMAIL = "^[a-zA-Z0-9._\\-]+@[a-zA-Z0-9\\-]+\\.[a-zA-Z]{2,}$",
   PHONE = "^\\+?\\d{10,15}$",
   SEARCH = "^.*$",
-  MESSAGE = "^.*$"
+  MESSAGE = "^.*$",
 }
 
 export enum ErrorMessage {
@@ -50,4 +50,9 @@ export enum ROUTE {
   CHANGE_PASSWORD = "/change-password",
   ERROR_404 = "/error-404",
   ERROR_500 = "/error-500",
+}
+
+export enum API {
+  API_URL = "https://ya-praktikum.tech/api/v2",
+  RESOURCES = "/resources"
 }

@@ -12,59 +12,34 @@ import {
 import "./change-password.css";
 import { ButtonBack } from "../../components/ButtonBack";
 import { FormSettingsInput } from "../../components/FormSettingsInput";
+import UsersController from "../../controllers/UsersController";
+import { UpdatePassword } from "../../api/UsersAPI";
+import Router from "../../utils/Router";
 
 const formInputsProps = [
   {
     type: InputType.PASSWORD,
     name: InputName.OLDPASSWORD,
-    label: "Old password",
+    label: "Enter your current password",
     id: "old_password",
     pattern: ValidationPattern.PASSWORD,
     errorText: ErrorMessage.PASSWORD,
-    value: "currentPass1",
     inputClassName: "settings-form__input",
   },
   {
     type: InputType.PASSWORD,
     name: InputName.NEWPASSWORD,
-    label: "New password",
+    label: "Enter new password",
     id: "new_password",
     pattern: ValidationPattern.PASSWORD,
     errorText: ErrorMessage.PASSWORD,
-    value: "newPass1",
     inputClassName: "settings-form__input",
-  },
-  {
-    type: InputType.PASSWORD,
-    name: InputName.REPEATPASSWORD,
-    label: "Repeat new password",
-    id: "repeat_password",
-    pattern: ValidationPattern.PASSWORD,
-    errorText: ErrorMessage.PASSWORD,
-    value: "newPass1",
-    inputClassName: "settings-form__input",
-  },
-];
-
-const buttonsProps = [
-  {
-    text: "Save changes",
-    type: "submit",
-    propClass: "button--primary",
-    onClick: () => {
-      handleFormSubmit();
-    },
-  },
-  {
-    text: "Cancel",
-    type: "button",
-    propClass: "button--link-warning",
   },
 ];
 
 const buttonBackProps = {
   onClick: () => {
-    console.log("go back");
+    Router.back()
   },
 };
 
@@ -78,10 +53,24 @@ export class ChangePasswordPage extends Block {
       return new FormSettingsInput(props);
     });
 
-    this.children.buttons = buttonsProps.map(
-      (buttonProps) => new ButtonCommon(buttonProps)
-    );
+    this.children.saveChangesButton = new ButtonCommon({
+      text: "Save changes",
+      type: "submit",
+      propClass: "button--primary",
+      onClick: () => {
+        this.onSubmit();
+      },
+    });
+
     this.children.buttonBack = new ButtonBack(buttonBackProps);
+  }
+
+  onSubmit() {
+    console.log(this.children.formInputs);
+    const data = handleFormSubmit(this.children.formInputs);
+    console.log(data);
+
+    UsersController.updatePassword(data as UpdatePassword);
   }
 
   render() {

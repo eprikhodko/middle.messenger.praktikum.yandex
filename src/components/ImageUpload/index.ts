@@ -1,23 +1,23 @@
 import Block from "../../utils/Block";
-import template from "./ButtonCommon.hbs";
-import "./ButtonCommon.css";
+import template from "./ImageUpload.hbs";
+import "./ImageUpload.css";
 
 interface Props {
-  text: string;
+  text?: string;
   type?: "submit" | "button";
   propClass?: string;
-  onClick: () => void;
+  onSubmit: (event) => void;
   events?: {
-    click: () => void;
+    submit: (event) => void;
   };
 }
 
-export class ButtonCommon extends Block<Props> {
+export class ImageUpload extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,
       events: {
-        click: props.onClick,
+        submit: props.onSubmit,
       },
     });
   }

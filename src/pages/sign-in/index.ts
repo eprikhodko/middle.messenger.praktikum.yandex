@@ -13,6 +13,10 @@ import {
   ErrorMessage,
 } from "../../utils/enums";
 import "./sign-in.css";
+import AuthController from "../../controllers/AuthController";
+import { SignupData } from "../../api/AuthAPI";
+import Router from "../../utils/Router";
+import store from "../../utils/Store";
 
 const formInputsProps = [
   {
@@ -35,15 +39,6 @@ const formInputsProps = [
   },
 ];
 
-const buttonSignInProps = {
-  text: "Sign In",
-  type: "submit",
-  propClass: "button--primary",
-  onClick: () => {
-    handleFormSubmit();
-  },
-};
-
 const linkSignUpProps = {
   text: "Sign Up",
   to: ROUTE.SIGN_UP,
@@ -59,9 +54,28 @@ export class SignInPage extends Block {
       return new FormCommonInput(props);
     });
 
-    this.children.signInButton = new ButtonCommon(buttonSignInProps);
+    this.children.signInButton = new ButtonCommon({
+      text: "Sign In",
+      type: "submit",
+      propClass: "button--primary",
+      onClick: () => {
+        this.onSubmit();
+      },
+    });
 
     this.children.link = new Link(linkSignUpProps);
+  }
+
+  onSubmit() {
+    const storeState = store.getState();
+    console.log(storeState.user);
+    if (storeState.user) {
+      Router.go(ROUTE.MESSENGER);
+    } else {
+      const data = handleFormSubmit(this.children.formInputs);
+
+      AuthController.signin(data as SignupData);
+    }
   }
 
   render() {

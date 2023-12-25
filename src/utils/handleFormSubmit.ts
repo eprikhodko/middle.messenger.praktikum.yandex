@@ -1,8 +1,9 @@
 import validateInput from "./validateInput";
+import { FormInput } from "../components/FormInput";
 
-const handleFormSubmit = () => {
-  getFormData();
+const handleFormSubmit = (children) => {
   validate();
+  return getFormData(children);
 };
 
 const getFormInputs = () => document.querySelectorAll(".form-input");
@@ -17,17 +18,22 @@ const validate = () => {
   });
 };
 
-const getFormData = () => {
-  const inputs = getFormInputs();
-  const formData: Record<string, string> = {};
-
-  inputs.forEach((el) => {
-    const inputElement = el as HTMLInputElement;
-
-    formData[inputElement.name] = inputElement.value;
+function findAllFormInputs(arr) {
+  const formInputs = arr.map((component) => {
+    return component.children.formInput;
   });
 
-  console.log(formData);
+  return formInputs;
+}
+
+const getFormData = (children) => {
+  const inputs = findAllFormInputs(children);
+  const inputsValues = inputs.map((child) => [
+    (child as FormInput).getName(),
+    (child as FormInput).getValue(),
+  ]);
+  const data = Object.fromEntries(inputsValues);
+  return data;
 };
 
 export default handleFormSubmit;

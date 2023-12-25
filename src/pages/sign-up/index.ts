@@ -13,6 +13,8 @@ import {
   ErrorMessage,
 } from "../../utils/enums";
 import "./sign-up.css";
+import AuthController from "../../controllers/AuthController";
+import { SignupData } from "../../api/AuthAPI";
 
 const formInputsProps = [
   {
@@ -71,15 +73,6 @@ const formInputsProps = [
   },
 ];
 
-const buttonSignUpProps = {
-  text: "Sign Up",
-  type: "submit",
-  propClass: "button--primary",
-  onClick: () => {
-    handleFormSubmit();
-  },
-};
-
 const linkSignUpProps = {
   text: "Sign In",
   to: ROUTE.SIGN_IN,
@@ -95,9 +88,22 @@ export class SignUpPage extends Block {
       return new FormCommonInput(props);
     });
 
-    this.children.signInButton = new ButtonCommon(buttonSignUpProps);
-
     this.children.link = new Link(linkSignUpProps);
+
+    this.children.signUpButton = new ButtonCommon({
+      text: "Sign Up",
+      type: "submit",
+      propClass: "button--primary",
+      onClick: () => {
+        this.onSubmit();
+      },
+    });
+  }
+
+  onSubmit() {
+    const data = handleFormSubmit(this.children.formInputs);
+
+    AuthController.signup(data as SignupData);
   }
 
   render() {
