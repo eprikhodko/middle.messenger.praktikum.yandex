@@ -102,8 +102,6 @@ const linkChangePasswordProps = {
 
 export class ProfilePageBase extends Block {
   init() {
-    console.log("this", this.props);
-
     this.children.formInputs = formInputsProps.map((props) => {
       return new FormSettingsInput({ ...props, value: this.props[props.name] });
     });

@@ -84,10 +84,6 @@ export default class HTTPTransport {
       if (method === Method.Put && data instanceof FormData) {
         xhr.withCredentials = true;
         xhr.send(data);
-        console.log("handle file upload", data);
-        for (const [key, value] of data.entries()) {
-          console.log("this is form file data", key, value);
-        }
       } else {
         xhr.setRequestHeader("Content-Type", "application/json");
 
