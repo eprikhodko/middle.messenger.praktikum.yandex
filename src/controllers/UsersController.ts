@@ -37,9 +37,6 @@ export class UsersController {
       // Parse the response string into a JSON object
       const result = JSON.parse(response);
 
-      // Log the success result
-      console.log("success", result);
-      // await this.fetchUser();
       store.set("user", result);
     } catch (e: any) {
       console.error(e);

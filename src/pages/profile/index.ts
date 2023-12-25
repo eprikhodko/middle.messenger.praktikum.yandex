@@ -129,11 +129,11 @@ export class ProfilePageBase extends Block {
       },
     });
 
-    this.props.avatarSrc = this.props.avatar
+    const avatarSrc = this.props.avatar
       ? `${API.API_URL}${API.RESOURCES}${this.props.avatar}`
       : "/avatar-placeholder.svg";
 
-    this.children.userAvatar = new UserAvatar({ imgSrc: this.props.avatarSrc });
+    this.children.userAvatar = new UserAvatar({ imgSrc: avatarSrc });
   }
 
   onSubmit() {
@@ -153,14 +153,14 @@ export class ProfilePageBase extends Block {
     UsersController.updateAvatar(formData);
   }
 
-  protected componentDidUpdate(this): boolean {
+  protected componentDidUpdate(oldProps, newProps): boolean {
     /**
      * Обновляем детей
      */
-    console.log("DEBUG", this.props.avatar)
-    this.children.userAvatar?.setProps({  imgSrc: `${API.API_URL}${API.RESOURCES}${this.props.avatar}`})
-    // (this.children.userAvatar.setProps({  value: newProps[userFields[i]] });
-    // });
+
+    this.children.userAvatar?.setProps({
+      imgSrc: `${API.API_URL}${API.RESOURCES}${newProps.avatar}`,
+    });
 
     /**
      * Другой вариант — просто заново создать всех детей. Но тогда метод должен возвращать true, чтобы новые дети отрендерились
