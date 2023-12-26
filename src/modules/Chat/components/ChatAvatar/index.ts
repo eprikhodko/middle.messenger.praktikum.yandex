@@ -5,7 +5,7 @@ import "./ChatAvatar.css";
 interface Props {
   sizeDefault?: boolean;
   sizeSmall?: boolean;
-  src: string;
+  imgSrc: string;
   onClick?: () => void;
   events: {
     click: () => void;

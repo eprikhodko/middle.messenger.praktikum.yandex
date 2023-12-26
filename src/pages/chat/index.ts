@@ -67,14 +67,10 @@ export class ChatPage extends Block {
 
   init() {
     // this.children.searchInput = new FormInput(searchInputProps);
-    // this.children.sendMessageInput = new FormInput(sendMessageInputProps);
-
-    // this.children.chatListItems = chatListItemsProps.map(
-    //   (itemProps) => new ChatListItem(itemProps)
-    // );
+    this.children.sendMessageInput = new FormInput(sendMessageInputProps);
 
     // this.children.chatAvatar = new ChatAvatar(chatAvatarProps);
-    // this.children.buttonSendMessage = new ButtonArrow({});
+    this.children.buttonSendMessage = new ButtonArrow({});
 
     this.children.chatsList = new ChatsList({ isLoaded: false });
 

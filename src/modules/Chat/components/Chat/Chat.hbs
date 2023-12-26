@@ -1,6 +1,19 @@
-<div class="{{ styles.chat }} {{#if isSelected }}{{ styles.chat--selected }}{{/if}}">
-    {{title}}
-    {{#if unread_count }}
-        <span class="{{ styles.chat__badge }}">{{unread_count}}</span>
-    {{/if}}
+<div class="chat-list-item-inner-content {{#if isSelected }}chat-list-item--active{{/if}}">
+  {{{chatAvatar}}}
+  <div class="chat-list-item__details">
+    <p class="chat-name">{{title}}</p>
+    <p class="chat-list-item__last-message-preview">Last message preview...</p>
+  </div>
+
+  <div class="chat-list-item__metadata">
+    <p class="chat-list-item__timestamp">1 Мая 2020</p>
+    <p class="chat-list-item__unread-messages-count">4</p>
+  </div>
+
+  {{#if unread_count }}
+    <span class="{{ styles.chat__badge }}">{{unread_count}}</span>
+  {{/if}}
 </div>
+
+
+

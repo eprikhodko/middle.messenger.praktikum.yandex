@@ -20,12 +20,7 @@ export class UserAvatar extends Block<Props> {
     });
   }
 
-  // init() {
-  //   console.log("DEBUG", this.element)
-  // }
-
   render() {
-    // console.log("DEBUG", this.getContent())
     return this.compile(template, { ...this.props });
   }
 }

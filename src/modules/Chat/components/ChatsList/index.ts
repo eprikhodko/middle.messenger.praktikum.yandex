@@ -1,7 +1,6 @@
 import Block from '../../../../utils/Block';
 import template from './chatsList.hbs';
 import { Chat } from '../../../Chat/components/Chat';
-// import styles from './styles.module.pcss';
 import { withStore } from '../../../../utils/Store';
 import { ChatInfo } from '../../../../api/ChatsAPI';
 import ChatsController from '../../../../controllers/ChatsController';
