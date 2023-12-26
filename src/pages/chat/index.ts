@@ -6,6 +6,8 @@ import { FormInput } from "../../components/FormInput";
 import { ChatListItem } from "../../modules/Chat/components/ChatListItem";
 import { ChatAvatar } from "../../modules/Chat/components/ChatAvatar";
 import { ButtonArrow } from "../../components/ButtonArrow";
+import ChatsController from "../../controllers/ChatsController";
+import { ChatsList } from "../../modules/Chat/components/ChatsList";
 
 const searchInputProps = {
   type: InputType.SEARCH,
@@ -64,15 +66,23 @@ export class ChatPage extends Block {
   }
 
   init() {
-    this.children.searchInput = new FormInput(searchInputProps);
-    this.children.sendMessageInput = new FormInput(sendMessageInputProps);
+    // this.children.searchInput = new FormInput(searchInputProps);
+    // this.children.sendMessageInput = new FormInput(sendMessageInputProps);
 
-    this.children.chatListItems = chatListItemsProps.map(
-      (itemProps) => new ChatListItem(itemProps)
-    );
+    // this.children.chatListItems = chatListItemsProps.map(
+    //   (itemProps) => new ChatListItem(itemProps)
+    // );
 
-    this.children.chatAvatar = new ChatAvatar(chatAvatarProps);
-    this.children.buttonSendMessage = new ButtonArrow({});
+    // this.children.chatAvatar = new ChatAvatar(chatAvatarProps);
+    // this.children.buttonSendMessage = new ButtonArrow({});
+
+    this.children.chatsList = new ChatsList({ isLoaded: false });
+
+    ChatsController.fetchChats().finally(() => {
+      (this.children.chatsList as Block).setProps({
+        isLoaded: true
+      })
+    });
   }
 
   render() {

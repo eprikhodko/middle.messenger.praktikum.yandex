@@ -2,7 +2,7 @@ import { set } from './helpers';
 import { EventBus } from './EventBus';
 import Block from './Block';
 import { User } from '../api/AuthAPI';
-// import { ChatInfo } from '../api/ChatsAPI';
+import { ChatInfo } from '../api/ChatsAPI';
 // import { Message } from '../controllers/MessagesController';
 
 export enum StoreEvents {
@@ -11,7 +11,7 @@ export enum StoreEvents {
 
 interface State {
   user: User;
-  // chats: ChatInfo[];
+  chats: ChatInfo[];
   // messages: Record<number, Message[]>;
   selectedChat?: number;
 }
