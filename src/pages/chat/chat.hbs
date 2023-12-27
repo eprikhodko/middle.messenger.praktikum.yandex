@@ -28,17 +28,19 @@
 
   <div class="chat-body">
     <header class="chat-header">
-      <div class="chat-header__description">
+      {{!-- <div class="chat-header__description">
         {{{chatAvatar}}}
         <p class="chat-name">Chat name</p>
-      </div>
+      </div> --}}
 
       <button class="chat-header__menu-button" type="button">
         <img class="" src="/icons/icon-three-dots.svg" alt="" />
       </button>
     </header>
 
-    <div class="chat-messages">
+     {{{messenger}}}
+
+    {{!-- <div class="chat-messages">
       <div class="chat-messages__date-separator">
         <p class="chat-messages__date-text">June 19</p>
       </div>
@@ -66,7 +68,7 @@
           class="chat-message__timestamp chat-message__timestamp--sent"
         >12:00</div>
       </div>
-    </div>
+    </div> --}}
 
     <footer class="chat-footer">
       <form class="send-message-form">

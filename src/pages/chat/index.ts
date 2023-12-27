@@ -8,6 +8,7 @@ import { ChatAvatar } from "../../modules/Chat/components/ChatAvatar";
 import { ButtonArrow } from "../../components/ButtonArrow";
 import ChatsController from "../../controllers/ChatsController";
 import { ChatsList } from "../../modules/Chat/components/ChatsList";
+import { Messenger } from '../../modules/Chat/components/Messenger';
 
 const searchInputProps = {
   type: InputType.SEARCH,
@@ -73,6 +74,8 @@ export class ChatPage extends Block {
     this.children.buttonSendMessage = new ButtonArrow({});
 
     this.children.chatsList = new ChatsList({ isLoaded: false });
+
+    this.children.messenger = new Messenger({});
 
     ChatsController.fetchChats().finally(() => {
       (this.children.chatsList as Block).setProps({

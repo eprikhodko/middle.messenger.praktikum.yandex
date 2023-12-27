@@ -1,6 +1,5 @@
 import Block from "../../../../utils/Block";
 import template from "./chat.hbs";
-// import styles from './styles.module.pcss';
 import { withStore } from "../../../../utils/Store";
 import { ChatInfo } from "../../../../api/ChatsAPI";
 import { ChatAvatar } from "../ChatAvatar";
@@ -30,8 +29,7 @@ class ChatBase extends Block<ChatProps> {
       imgSrc: avatarSrc,
       sizeDefault: true,
     });
-    // console.log("CHAT AVATAR", this.children)
-    console.log("chat props", this.props);
+    // console.log("chat props", this.props);
     // this.children.profileLink = new Link({ to: '/profile', label: 'Профиль'});
   }
 
