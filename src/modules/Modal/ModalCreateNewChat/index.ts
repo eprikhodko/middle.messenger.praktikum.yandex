@@ -1,45 +1,62 @@
-import Block from "../../../utils/Block";
 import template from "./ModalCreateNewChat.hbs";
 import "./ModalCreateNewChat.css";
-import { ModalCreateNewChatContent } from "../ModalCreateNewChatContent";
-// import { Chat } from '../../../Chat/components/Chat';
-// import { withStore } from '../../../../utils/Store';
-// import { ChatInfo } from '../../../../api/ChatsAPI';
-// import ChatsController from '../../../../controllers/ChatsController';
-// import MessagesController from '../../controllers/MessagesController';
-// import { Link } from '../Link';
+import { ModalBase } from "../ModalBase";
+import { ButtonCommon } from "../../../components/ButtonCommon";
+import { FormCommonInput } from "../../../components/FormCommonInput";
+import { InputName, InputType, ValidationPattern } from "../../../utils/enums";
+import handleFormSubmit from "../../../utils/handleFormSubmit";
+import { SignupData } from "../../../api/AuthAPI";
 
 interface Props {
-  isOpen: boolean;
+  text: string;
+  type?: "submit" | "button";
+  propClass?: string;
+  onClick: () => void;
+  events?: {
+    click: () => void;
+  };
 }
 
-export class ModalCreateNewChat extends Block<Props> {
+export class ModalCreateNewChat extends ModalBase<Props> {
   constructor(props: Props) {
     super({
       ...props,
-
-      events: {
-        click: (event) => {
-          if (event.target === event.currentTarget) {
-            // if (event.target === this.getContent()) {
-            console.log("modal overlay clicked", event, this);
-            this.setProps({isOpen: false})
-          }
-        },
-      },
       // events: {
       //   click: props.onClick,
       // },
+      title: "Enter new chat name",
     });
   }
 
-  protected init() {
-    this.children.modalCreateNewChatContent = new ModalCreateNewChatContent({
-      // onClick: (event) => console.log("modal clicked", event ),
+  init() {
+    this.children.chatNameInput = new FormCommonInput({
+      type: InputType.TEXT,
+      name: InputName.NEWCHATNAME,
+      label: "Chat name",
+      id: "chat_name",
+      pattern: ValidationPattern.MESSAGE,
+      inputClassName: "form-common__input",
+    });
+
+    this.children.buttonCreateNewChat = new ButtonCommon({
+      text: "Create new chat",
+      type: "button",
+      propClass: "button--primary",
+      onClick: () => {
+        this.onSubmit();
+      },
     });
   }
 
-  protected render(): DocumentFragment {
+  onSubmit() {
+    const data = handleFormSubmit(this.children.chatNameInput);
+    console.log("DATA", data)
+
+    // AuthController.signup(data as SignupData);
+  }
+
+  render() {
+    console.log("DEBUG, ModalCreateNewChat", this.props);
     return this.compile(template, { ...this.props });
   }
 }

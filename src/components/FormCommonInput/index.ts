@@ -1,6 +1,6 @@
 import Block from "../../utils/Block";
 import template from "./FormCommonInput.hbs";
-import { InputType, ValidationPattern } from "../../utils/enums";
+import { InputName, InputType, ValidationPattern } from "../../utils/enums";
 import { FormInput } from "../../components/FormInput";
 import { FormInputError } from "../../components/FormInputError";
 import "./FormCommonInput.css";
@@ -10,6 +10,9 @@ interface Props {
   propClass?: string;
   value?: string;
   id: string;
+  name: InputName;
+  label: string;
+  inputClassName?: string;
   pattern?: ValidationPattern;
   placeholder?: string;
   onClick?: () => void;
