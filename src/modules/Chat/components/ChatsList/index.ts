@@ -19,7 +19,7 @@ class ChatsListBase extends Block<ChatsListProps> {
 
   protected init() {
     this.children.chats = this.createChats(this.props);
-    // console.log("this.props", this.props)
+    console.log("this.chats", this.children)
     // this.children.profileLink = new Link({ to: '/profile', label: 'Профиль'});
   }
 
