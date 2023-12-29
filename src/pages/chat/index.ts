@@ -11,6 +11,8 @@ import { ChatsList } from "../../modules/Chat/components/ChatsList";
 import { Messenger } from "../../modules/Chat/components/Messenger";
 import { ButtonCommon } from "../../components/ButtonCommon";
 import { ModalCreateNewChat } from "../../modules/Modal/ModalCreateNewChat";
+import { ButtonOpenChatMenu } from "../../modules/Chat/components/ButtonOpenChatMenu";
+import { DropdownMenuButton } from "../../modules/Chat/components/DropdownMenuButton";
 
 // const searchInputProps = {
 //   type: InputType.SEARCH,
@@ -30,12 +32,37 @@ const sendMessageInputProps = {
   inputClassName: "send-message-form__input",
 };
 
+const dropdownMenuButtonsProps = [
+  {
+    text: "Add user",
+    onClick: () => {
+      console.log("add new user");
+    },
+  },
+  {
+    text: "Remove user",
+    onClick: () => {
+      console.log("remove user");
+    },
+  },
+  {
+    text: "Delete chat",
+    onClick: () => {
+      console.log("delete chat");
+    },
+  },
+];
+
 export class ChatPage extends Block {
   constructor() {
     super({});
   }
 
   init() {
+    this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
+    this.children.dropdownMenuButtons = this.createDropdownMenuButtons(
+      dropdownMenuButtonsProps
+    );
     this.children.buttonCreateNewChat = new ButtonCommon({
       text: "Create new chat",
       type: "button",
@@ -62,6 +89,19 @@ export class ChatPage extends Block {
     ChatsController.fetchChats().finally(() => {
       (this.children.chatsList as Block).setProps({
         isLoaded: true,
+      });
+    });
+  }
+
+  private createDropdownMenuButtons(buttonsProps) {
+    return buttonsProps.map((props) => {
+      return new DropdownMenuButton({
+        ...props,
+        events: {
+          click: () => {
+            props.onClick;
+          },
+        },
       });
     });
   }
