@@ -5,7 +5,7 @@ import { ButtonCommon } from "../../../components/ButtonCommon";
 import { FormCommonInput } from "../../../components/FormCommonInput";
 import { InputName, InputType, ValidationPattern } from "../../../utils/enums";
 import handleFormSubmit from "../../../utils/handleFormSubmit";
-import { SignupData } from "../../../api/AuthAPI";
+import ChatsController from '../../../controllers/ChatsController';
 
 interface Props {
   text: string;
@@ -52,7 +52,7 @@ export class ModalCreateNewChat extends ModalBase<Props> {
     const data = handleFormSubmit(this.children.chatNameInput);
     console.log("DATA", data)
 
-    // AuthController.signup(data as SignupData);
+    ChatsController.create(data.title);
   }
 
   render() {
