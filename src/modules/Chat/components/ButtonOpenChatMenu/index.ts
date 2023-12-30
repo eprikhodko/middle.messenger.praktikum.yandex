@@ -5,7 +5,7 @@ import "./ButtonOpenChatMenu.css";
 interface Props {
   onClick: () => void;
   events: {
-    click: () => void;
+    mouseenter: () => void;
   };
 }
 
@@ -14,10 +14,19 @@ export class ButtonOpenChatMenu extends Block<Props> {
     super({
       ...props,
       events: {
-        // click: props.onClick,
-        click: () => {console.log("open chat menu")}, 
+        mouseenter: () => {
+          this.openDropdownMenu();
+        },
       },
     });
+  }
+
+  openDropdownMenu() {
+    const dropdownMenu = document.querySelector(".dropdown-menu");
+
+    if (dropdownMenu) {
+      dropdownMenu.classList.toggle("dropdown-menu--visible", true);
+    }
   }
 
   render() {
