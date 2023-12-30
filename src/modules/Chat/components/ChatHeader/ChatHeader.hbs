@@ -1,0 +1,20 @@
+<header class="chat-header {{#if selectedChat}}chat-header--visible{{/if}}">
+  {{#if selectedChat}}
+    {{!-- <div class="chat-header__description">
+        {{{chatAvatar}}}
+        <p class="chat-name">Chat name</p>
+      </div> --}}
+
+    {{{buttonOpenChatMenu}}}
+
+    <div class="dropdown-menu">
+      <ul class="dropdown-menu__items">
+        {{#each dropdownMenuButtons}}
+          <li class="dropdown-menu__item">
+            {{{this}}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  {{/if}}
+</header>

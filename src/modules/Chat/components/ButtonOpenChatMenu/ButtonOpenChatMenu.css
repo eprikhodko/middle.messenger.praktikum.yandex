@@ -1,19 +1,13 @@
-.button-arrow {
+.chat-header__menu-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-ui-primary);
-  width: 38px;
-  height: 38px;
-  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
   border-radius: 9999px;
+  transition: 200ms background;
 
-  .button-arrow__icon {
-    width: 16px;
-    height: 16px;
+  &:hover {
+    background: var(--color-ui-secondary);
   }
-}
-
-.button-arrow--left {
-  transform: rotate(180deg);
 }
