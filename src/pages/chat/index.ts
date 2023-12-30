@@ -13,6 +13,7 @@ import { ButtonCommon } from "../../components/ButtonCommon";
 import { ModalCreateNewChat } from "../../modules/Modal/ModalCreateNewChat";
 import { ButtonOpenChatMenu } from "../../modules/Chat/components/ButtonOpenChatMenu";
 import { DropdownMenuButton } from "../../modules/Chat/components/DropdownMenuButton";
+import store from "../../utils/Store";
 
 // const searchInputProps = {
 //   type: InputType.SEARCH,
@@ -32,7 +33,7 @@ const sendMessageInputProps = {
   inputClassName: "send-message-form__input",
 };
 
-const dropdownMenuButtonsProps = [
+const getDropdownMenuButtonsProps = (context) => [
   {
     text: "Add user",
     onClick: () => {
@@ -48,7 +49,7 @@ const dropdownMenuButtonsProps = [
   {
     text: "Delete chat",
     onClick: () => {
-      console.log("delete chat");
+      context.deleteChat();
     },
   },
 ];
@@ -61,14 +62,14 @@ export class ChatPage extends Block {
   init() {
     this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
     this.children.dropdownMenuButtons = this.createDropdownMenuButtons(
-      dropdownMenuButtonsProps
+      getDropdownMenuButtonsProps(this)
     );
     this.children.buttonCreateNewChat = new ButtonCommon({
       text: "Create new chat",
       type: "button",
       propClass: "button--primary",
       onClick: () => {
-        this.createNewChat();
+        this.openModalCreateNewChat();
       },
     });
 
@@ -106,15 +107,16 @@ export class ChatPage extends Block {
     });
   }
 
-  createNewChat() {
-    console.log("button create new chat clicked!");
-    console.log("open modal");
+  openModalCreateNewChat() {
     this.children.modalCreateNewChat.setProps({ isOpen: true });
-    // this.children.modalCreateNewChat.props({
-    //   isOpen: false,
-    // });
-    // ChatsController.create()
   }
+
+  deleteChat = () => {
+    const selectedChatId = store.getSelectedChatId();
+    if (selectedChatId) {
+      ChatsController.delete(selectedChatId);
+    }
+  };
 
   render() {
     return this.compile(template, this.props);
