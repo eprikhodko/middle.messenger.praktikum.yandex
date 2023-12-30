@@ -12,7 +12,6 @@ import { Messenger } from "../../modules/Chat/components/Messenger";
 import { ButtonCommon } from "../../components/ButtonCommon";
 import { ModalCreateNewChat } from "../../modules/Modal/ModalCreateNewChat";
 import { ButtonOpenChatMenu } from "../../modules/Chat/components/ButtonOpenChatMenu";
-import { DropdownMenuButton } from "../../modules/Chat/components/DropdownMenuButton";
 import store from "../../utils/Store";
 import { ChatHeader } from "../../modules/Chat/components/ChatHeader";
 
@@ -42,7 +41,7 @@ export class ChatPage extends Block {
   init() {
     this.children.chatHeader = new ChatHeader({});
     this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
-   
+
     this.children.buttonCreateNewChat = new ButtonCommon({
       text: "Create new chat",
       type: "button",
@@ -69,19 +68,6 @@ export class ChatPage extends Block {
     ChatsController.fetchChats().finally(() => {
       (this.children.chatsList as Block).setProps({
         isLoaded: true,
-      });
-    });
-  }
-
-  private createDropdownMenuButtons(buttonsProps) {
-    return buttonsProps.map((props) => {
-      return new DropdownMenuButton({
-        ...props,
-        events: {
-          click: () => {
-            props.onClick;
-          },
-        },
       });
     });
   }

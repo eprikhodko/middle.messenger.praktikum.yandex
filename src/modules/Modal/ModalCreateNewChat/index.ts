@@ -5,12 +5,9 @@ import { ButtonCommon } from "../../../components/ButtonCommon";
 import { FormCommonInput } from "../../../components/FormCommonInput";
 import { InputName, InputType, ValidationPattern } from "../../../utils/enums";
 import handleFormSubmit from "../../../utils/handleFormSubmit";
-import ChatsController from '../../../controllers/ChatsController';
+import ChatsController from "../../../controllers/ChatsController";
 
 interface Props {
-  text: string;
-  type?: "submit" | "button";
-  propClass?: string;
   onClick: () => void;
   events?: {
     click: () => void;
@@ -21,9 +18,6 @@ export class ModalCreateNewChat extends ModalBase<Props> {
   constructor(props: Props) {
     super({
       ...props,
-      // events: {
-      //   click: props.onClick,
-      // },
       title: "Enter new chat name",
     });
   }
@@ -50,9 +44,11 @@ export class ModalCreateNewChat extends ModalBase<Props> {
 
   onSubmit() {
     const data = handleFormSubmit(this.children.chatNameInput);
-    console.log("DATA", data)
+    console.log("DATA", data);
 
     ChatsController.create(data.title);
+
+    this.props.isOpen = false; // close modal after we create new chat
   }
 
   render() {
