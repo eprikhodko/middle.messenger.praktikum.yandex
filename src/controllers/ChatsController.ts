@@ -1,6 +1,6 @@
-import API, { ChatsAPI } from '../api/ChatsAPI';
-import store from '../utils/Store';
-import MessagesController from './MessagesController';
+import API, { ChatsAPI } from "../api/ChatsAPI";
+import store from "../utils/Store";
+import MessagesController from "./MessagesController";
 
 class ChatsController {
   private readonly api: ChatsAPI;
@@ -24,12 +24,24 @@ class ChatsController {
       await MessagesController.connect(chat.id, token);
     });
 
-    console.log(chats)
-    store.set('chats', chats);
+    console.log(chats);
+    store.set("chats", chats);
   }
 
   addUserToChat(id: number, userId: number) {
     this.api.addUsers(id, [userId]);
+  }
+
+  // removeUserFromChat(chatId: number, userId: number) {
+  //   this.api.addUsers(id, [userId]);
+  // }
+
+  async getChatUsers(chatId: number) {
+    const chatUsers = await this.api.getUsers(chatId);
+
+    console.log("CHATS USERS", chatUsers);
+
+    store.set("chatUsers", chatUsers);
   }
 
   async delete(id: number) {
@@ -42,8 +54,10 @@ class ChatsController {
     return this.api.getToken(id);
   }
 
-  selectChat(id: number) {
-    store.set('selectedChat', id);
+  async selectChat(id: number) {
+    store.set("selectedChat", id);
+
+    this.getChatUsers(id);
   }
 }
 

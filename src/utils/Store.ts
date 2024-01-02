@@ -12,15 +12,19 @@ export enum StoreEvents {
 interface State {
   user: User;
   chats: ChatInfo[];
+  chatUsers: any;
   messages: Record<number, Message[]>;
   selectedChat?: number;
-  isModalAddUserToChatOpen: false;
+  isModalAddUserToChatOpen: boolean;
+  isModalRemoveUserFromChatOpen: boolean;
 }
 
 export class Store extends EventBus {
   private state: any = {
     isModalAddUserToChatOpen: false,
-    selectedChat: undefined,
+    isModalRemoveUserFromChatOpen: false,
+    selectedChat: null,
+    chatUsers: [],
   };
 
   public set(keypath: string, data: unknown) {

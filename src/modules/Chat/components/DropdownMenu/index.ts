@@ -24,6 +24,8 @@ const getDropdownMenuButtonsProps = (context) => [
     text: "Remove user",
     onClick: () => {
       console.log("remove user");
+      context.closeDropdownMenu();
+      context.openModalRemoveUserFromChat();
     },
   },
   {
@@ -55,6 +57,10 @@ export class DropdownMenu extends Block<Props> {
 
   openModalAddUserToChat() {
     store.set("isModalAddUserToChatOpen", true);
+  }
+
+  openModalRemoveUserFromChat() {
+    store.set("isModalRemoveUserFromChatOpen", true);
   }
 
   closeDropdownMenu() {
