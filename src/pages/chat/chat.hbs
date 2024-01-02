@@ -1,4 +1,6 @@
 <div class="chat-container">
+  {{{modalCreateNewChat}}}
+
   <aside class="chat-sidebar">
     <div class="chat-link-profile">
       <a class="link-profile" href="#">
@@ -23,24 +25,18 @@
       {{{searchInput}}}
     </form> --}}
 
+    {{{buttonCreateNewChat}}}
+    <p>There is no chats. Create a new one!</p>
+
     {{{chatsList}}}
   </aside>
 
   <div class="chat-body">
-    <header class="chat-header">
-      {{!-- <div class="chat-header__description">
-        {{{chatAvatar}}}
-        <p class="chat-name">Chat name</p>
-      </div> --}}
+    {{{chatHeader}}}
 
-      <button class="chat-header__menu-button" type="button">
-        <img class="" src="/icons/icon-three-dots.svg" alt="" />
-      </button>
-    </header>
+    {{{messenger}}}
 
-     {{{messenger}}}
-
-    {{!-- <div class="chat-messages">
+    {{! <div class="chat-messages">
       <div class="chat-messages__date-separator">
         <p class="chat-messages__date-text">June 19</p>
       </div>
@@ -68,7 +64,7 @@
           class="chat-message__timestamp chat-message__timestamp--sent"
         >12:00</div>
       </div>
-    </div> --}}
+    </div> }}
 
     <footer class="chat-footer">
       <form class="send-message-form">

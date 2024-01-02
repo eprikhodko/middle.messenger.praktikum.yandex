@@ -19,6 +19,7 @@ export enum InputName {
   REPEATPASSWORD = "repeat_password",
   SEARCH = "search",
   MESSAGE = "message",
+  NEWCHATNAME = "title"
 }
 
 export enum ValidationPattern {

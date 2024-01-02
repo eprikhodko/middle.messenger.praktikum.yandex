@@ -29,6 +29,10 @@ export class Store extends EventBus {
   public getState() {
     return this.state;
   }
+
+  public getSelectedChatId() {
+    return this.state.selectedChat;
+  }
 }
 
 const store = new Store();

@@ -17,9 +17,9 @@ class MessengerBase extends Block<MessengerProps> {
     super(props);
   }
   protected init() {
-    console.log("PROPS FROM MESSENGER", this)
+    // console.log("PROPS FROM MESSENGER", this)
     this.children.messages = this.createMessages(this.props);
-    console.log("DEBUG, this.children.messages", this.children)
+    // console.log("DEBUG, this.children.messages", this.children)
 
     this.children.input = new Input({
       type: 'text',
@@ -51,7 +51,7 @@ class MessengerBase extends Block<MessengerProps> {
 
   private createMessages(props: MessengerProps) {
     return props.messages.map(data => {
-      console.log("DEBUG", data)
+      // console.log("DEBUG", data)
       // console.log("DEBUG, Message components", new Message({...data, isMine: props.userId === data.user_id }))
       return new Message({...data, isMine: props.userId === data.user_id });
     })
