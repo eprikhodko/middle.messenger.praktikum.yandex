@@ -16,6 +16,8 @@ const getDropdownMenuButtonsProps = (context) => [
     text: "Add user",
     onClick: () => {
       console.log("add new user");
+      context.closeDropdownMenu();
+      context.openModalAddUserToChat();
     },
   },
   {
@@ -27,6 +29,7 @@ const getDropdownMenuButtonsProps = (context) => [
   {
     text: "Delete chat",
     onClick: () => {
+      context.closeDropdownMenu();
       context.deleteChat();
     },
   },
@@ -50,8 +53,13 @@ export class DropdownMenu extends Block<Props> {
     );
   }
 
+  openModalAddUserToChat() {
+    store.set("isModalAddUserToChatOpen", true);
+  }
+
   closeDropdownMenu() {
-    const dropdownMenu = document.querySelector(".dropdown-menu");
+    // const dropdownMenu = document.querySelector(".dropdown-menu");
+    const dropdownMenu = this.getContent();
 
     if (dropdownMenu) {
       dropdownMenu.classList.toggle("dropdown-menu--visible", false);

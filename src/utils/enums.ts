@@ -19,7 +19,8 @@ export enum InputName {
   REPEATPASSWORD = "repeat_password",
   SEARCH = "search",
   MESSAGE = "message",
-  NEWCHATNAME = "title"
+  NEWCHATNAME = "title",
+  USERID = "user_id",
 }
 
 export enum ValidationPattern {
@@ -55,5 +56,5 @@ export enum ROUTE {
 
 export enum API {
   API_URL = "https://ya-praktikum.tech/api/v2",
-  RESOURCES = "/resources"
+  RESOURCES = "/resources",
 }
