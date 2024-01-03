@@ -1,0 +1,44 @@
+.chat-list-item {
+  border-top: 1px solid var(--color-ui-secondary);
+  padding: 2px 0;
+  cursor: pointer;
+
+  .chat-list-item-inner-content {
+    display: flex;
+    padding: 10px 8px;
+  }
+
+  .chat-list-item__last-message-preview {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+  }
+
+  .chat-list-item__timestamp {
+    font-size: 9px;
+    color: var(--color-text-secondary);
+  }
+
+  .chat-list-item__metadata {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: auto;
+
+    .chat-list-item__unread-messages-count {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-end;
+      font-size: 11px;
+      color: var(--color-text-snow);
+      background: var(--color-ui-primary);
+      border-radius: 9999px;
+    }
+  }
+}
+
+.chat-list-item--active {
+  background: var(--color-ui-chat-active);
+}

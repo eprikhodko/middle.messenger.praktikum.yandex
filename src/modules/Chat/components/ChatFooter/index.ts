@@ -1,5 +1,5 @@
 import Block from "../../../../utils/Block";
-import template from "./Messenger.hbs";
+import template from "./ChatFooter.hbs";
 import { Message } from "../Message";
 import { Input } from "../Input";
 import { Button } from "../../../../components/Button";
@@ -30,26 +30,24 @@ const sendMessageInputProps = {
   inputClassName: "send-message-form__input",
 };
 
-class MessengerBase extends Block<MessengerProps> {
+class ChatFooterBase extends Block<MessengerProps> {
   constructor(props: MessengerProps) {
     super(props);
   }
   protected init() {
-    this.children.messages = this.createMessages(this.props);
-  }
+    this.children.sendMessageInput = new FormInput(sendMessageInputProps);
+    this.children.buttonSendMessage = new ButtonArrow({
+      type: "button",
+      onClick: () => {
+        const input = this.children.sendMessageInput as FormInput;
+        const message = input.getValue();
 
-  protected componentDidUpdate(
-    oldProps: MessengerProps,
-    newProps: MessengerProps
-  ): boolean {
-    this.children.messages = this.createMessages(newProps);
+        input.setValue("");
 
-    return true;
-  }
-
-  private createMessages(props: MessengerProps) {
-    return props.messages.map((data) => {
-      return new Message({ ...data, isMine: props.userId === data.user_id });
+        if (message) {
+          MessagesController.sendMessage(this.props.selectedChat!, message);
+        }
+      },
     });
   }
 
@@ -63,17 +61,13 @@ const withSelectedChatMessages = withStore((state) => {
 
   if (!selectedChatId) {
     return {
-      messages: [],
       selectedChat: undefined,
-      userId: state.user.id,
     };
   }
 
   return {
-    messages: (state.messages || {})[selectedChatId] || [],
     selectedChat: state.selectedChat,
-    userId: state.user.id,
   };
 });
 
-export const Messenger = withSelectedChatMessages(MessengerBase);
+export const ChatFooter = withSelectedChatMessages(ChatFooterBase);
