@@ -28,13 +28,21 @@ class ChatsController {
     store.set("chats", chats);
   }
 
-  addUserToChat(id: number, userId: number) {
-    this.api.addUsers(id, [userId]);
+  async addUserToChat(id: number, userId: number) {
+    await this.api.addUsers(id, [userId]);
+
+    const currentChatId = store.getSelectedChatId();
+
+    this.getChatUsers(currentChatId);
   }
 
-  // removeUserFromChat(chatId: number, userId: number) {
-  //   this.api.addUsers(id, [userId]);
-  // }
+  async removeUserFromChat(chatId: number, userId: number) {
+    await this.api.deleteUsers(chatId, [userId]);
+
+    const currentChatId = store.getSelectedChatId();
+
+    this.getChatUsers(currentChatId);
+  }
 
   async getChatUsers(chatId: number) {
     const chatUsers = await this.api.getUsers(chatId);

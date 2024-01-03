@@ -7,7 +7,6 @@ import handleFormSubmit from "../../../utils/handleFormSubmit";
 import ChatsController from "../../../controllers/ChatsController";
 import { withStore } from "../../../utils/Store";
 import store from "../../../utils/Store";
-import { DropdownMenuButton } from "../../Chat/components/DropdownMenuButton";
 import { ChatUsers } from "../../Chat/components/ChatUsers";
 import Block from "../../../utils/Block";
 
@@ -22,13 +21,13 @@ export class ModalRemoveUserFromChatBase extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,
-      title: "Enter user ID",
+      title: "Enter ID of the user you want to remove from chat.",
 
       events: {
         click: (event) => {
           if (event.target === event.currentTarget) {
             // if (event.target === this.getContent()) {
-            store.set("isModalRemoveUserFromChatOpen", false)
+            store.set("isModalRemoveUserFromChatOpen", false);
           }
         },
       },
@@ -53,34 +52,24 @@ export class ModalRemoveUserFromChatBase extends Block<Props> {
       },
     });
 
-    // const test = this.props.selectedChat || this.props
-
-    const avatarSrc = this.props.selectedChat
-      ? this.props.selectedChat
-      : "/avatar-placeholder.svg";
-
-    this.children.chatUsers = new ChatUsers({ text: avatarSrc });
-
-    // this.children.chatUsers = new ChatUsers({text: "test"})
-
-    console.log("HELLO", this.children)
+    this.children.chatUsers = new ChatUsers({});
   }
-
-  
 
   onSubmit() {
     const data = handleFormSubmit(this.children.chatNameInput);
-    console.log("DATA", data);
 
-    console.log("REMOVE USER SUBMIT", data.user_id, this.props.selectedChat);
-
-    // ChatsController.addUserToChat(this.props.selectedChat, data.user_id);
+    ChatsController.removeUserFromChat(this.props.selectedChat, data.user_id);
 
     store.set("isModalRemoveUserFromChatOpen", false); // close modal after we remove user
+    this.children.chatNameInput.children.formInput.clearInputValue();
   }
 
   render() {
-    console.log("DEBUG, ModalRemoveUserFromChat", this.props, this.children.chatUsers);
+    console.log(
+      "DEBUG, ModalRemoveUserFromChat",
+      this.props,
+      this.children.chatUsers
+    );
     return this.compile(template, { ...this.props });
   }
 }
@@ -94,4 +83,6 @@ const withModalState = withStore((state) => ({
 //   console.log("STATE",state)
 //   } )
 
-export const ModalRemoveUserFromChat = withModalState(ModalRemoveUserFromChatBase);
+export const ModalRemoveUserFromChat = withModalState(
+  ModalRemoveUserFromChatBase
+);

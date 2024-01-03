@@ -26,7 +26,7 @@ export class ModalAddUserToChatBase extends Block<Props> {
         click: (event) => {
           if (event.target === event.currentTarget) {
             // if (event.target === this.getContent()) {
-            store.set("isModalAddUserToChatOpen", false)
+            store.set("isModalAddUserToChatOpen", false);
           }
         },
       },
@@ -54,13 +54,11 @@ export class ModalAddUserToChatBase extends Block<Props> {
 
   onSubmit() {
     const data = handleFormSubmit(this.children.chatNameInput);
-    console.log("DATA", data);
-
-    console.log("ADD USER SUBMIT", data.user_id, this.props.selectedChat);
 
     ChatsController.addUserToChat(this.props.selectedChat, data.user_id);
 
     store.set("isModalAddUserToChatOpen", false); // close modal after we add new user
+    this.children.chatNameInput.children.formInput.clearInputValue();
   }
 
   render() {

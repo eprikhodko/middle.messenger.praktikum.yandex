@@ -6,7 +6,6 @@ import { withStore } from "../../../../utils/Store";
 // import { withStore } from "../../../../utils/Store";
 import ChatsController from "../../../../controllers/ChatsController";
 
-
 interface Props {
   text: string;
   onClick: () => void;
@@ -26,45 +25,25 @@ export class ChatUsersBase extends Block<Props> {
   }
 
   init() {
-    this.children.chatUsersPlaceholder = new ChatUsersPlaceholder({})
+    this.children.chatUsersPlaceholder = new ChatUsersPlaceholder({});
   }
 
   protected componentDidUpdate(oldProps, newProps): boolean {
-    /**
-     * Обновляем детей
-     */
+    console.log("COMPONENT DID UPDATE", newProps, this);
 
-    console.log("COMPONENT DID UPDATE", newProps, this)
+    // if (newProps.chatUsers) {
+    console.log("Chat users from store", newProps.chatUsers);
 
-    if (newProps.chatUsers) {
-    //  const chatUsers =  ChatsController.getChatUsers(newProps.selectedChat)
-     
-     
-    //  console.log("chatUsers", ChatsController.getChatUsers(newProps.selectedChat))
-    console.log("Chat users from store", newProps.chatUsers)
-
-     this.children.chatUsersPlaceholder?.setProps({
-      text: newProps.chatUsers,
+    this.children.chatUsersPlaceholder?.setProps({
+      users: newProps.chatUsers.filter((user) => user.role !== "admin"),
     });
-    }
+    // }
 
-    
-
-    /**
-     * Другой вариант — просто заново создать всех детей. Но тогда метод должен возвращать true, чтобы новые дети отрендерились
-     *
-     * this.children.fields = userFields.map(name => {
-     *   return new ProfileField({ name, value: newProps[name] });
-     * });
-     */
-
-    /**
-     * Так как мы обновили детей, этот компонент не обязательно рендерить
-     */
     return false;
   }
 
   render() {
+    console.log(this);
     return this.compile(template, { ...this.props });
   }
 }
@@ -72,8 +51,5 @@ export class ChatUsersBase extends Block<Props> {
 const withChatUsersState = withStore((state) => ({
   chatUsers: state.chatUsers,
 }));
-// const withModalState = withStore((state) => {
-//   console.log("STATE",state)
-//   } )
 
 export const ChatUsers = withChatUsersState(ChatUsersBase);
