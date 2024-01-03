@@ -82,11 +82,9 @@ export default class HTTPTransport {
       xhr.ontimeout = () => reject({ reason: "timeout" });
 
       if (method === Method.Put && data instanceof FormData) {
-        console.log("are we're here?")
         xhr.withCredentials = true;
         xhr.send(data);
       } else {
-        console.log("here")
         xhr.setRequestHeader("Content-Type", "application/json");
 
         xhr.withCredentials = true;

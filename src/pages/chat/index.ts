@@ -42,7 +42,7 @@ export class ChatPage extends Block {
   }
 
   init() {
-    this.children.chatHeader = new ChatHeader({ this: "this" });
+    this.children.chatHeader = new ChatHeader({});
     this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
 
     this.children.buttonCreateNewChat = new ButtonCommon({
@@ -64,7 +64,6 @@ export class ChatPage extends Block {
     // this.children.searchInput = new FormInput(searchInputProps);
     this.children.sendMessageInput = new FormInput(sendMessageInputProps);
 
-    // this.children.chatAvatar = new ChatAvatar(chatAvatarProps);
     this.children.buttonSendMessage = new ButtonArrow({});
 
     this.children.chatsList = new ChatsList({ isLoaded: false });
