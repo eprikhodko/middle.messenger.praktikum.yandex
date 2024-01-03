@@ -52,7 +52,6 @@ export class ModalCreateNewChat extends ModalBase<Props> {
   }
 
   render() {
-    console.log("DEBUG, ModalCreateNewChat", this.props);
     return this.compile(template, { ...this.props });
   }
 }

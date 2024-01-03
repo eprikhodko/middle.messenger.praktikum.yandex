@@ -41,7 +41,6 @@ export class ChatPage extends Block {
   }
 
   init() {
-    console.log("DEBUG", store.getSelectedChatId())
     this.children.chatHeader = new ChatHeader({ this: "this" });
     this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
 

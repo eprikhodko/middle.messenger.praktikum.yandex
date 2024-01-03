@@ -65,23 +65,14 @@ export class ModalRemoveUserFromChatBase extends Block<Props> {
   }
 
   render() {
-    console.log(
-      "DEBUG, ModalRemoveUserFromChat",
-      this.props,
-      this.children.chatUsers
-    );
     return this.compile(template, { ...this.props });
   }
 }
 
-// const withModalState = withStore((state) => ({chats: [...(state.chats || [])]}));
 const withModalState = withStore((state) => ({
   isOpen: state.isModalRemoveUserFromChatOpen,
   selectedChat: state.selectedChat,
 }));
-// const withModalState = withStore((state) => {
-//   console.log("STATE",state)
-//   } )
 
 export const ModalRemoveUserFromChat = withModalState(
   ModalRemoveUserFromChatBase

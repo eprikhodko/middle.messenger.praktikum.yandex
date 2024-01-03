@@ -3,8 +3,6 @@ import "./ChatUsers.css";
 import Block from "../../../../utils/Block";
 import { ChatUsersPlaceholder } from "../ChatUsersPlaceholder";
 import { withStore } from "../../../../utils/Store";
-// import { withStore } from "../../../../utils/Store";
-import ChatsController from "../../../../controllers/ChatsController";
 
 interface Props {
   text: string;
@@ -29,21 +27,14 @@ export class ChatUsersBase extends Block<Props> {
   }
 
   protected componentDidUpdate(oldProps, newProps): boolean {
-    console.log("COMPONENT DID UPDATE", newProps, this);
-
-    // if (newProps.chatUsers) {
-    console.log("Chat users from store", newProps.chatUsers);
-
     this.children.chatUsersPlaceholder?.setProps({
       users: newProps.chatUsers.filter((user) => user.role !== "admin"),
     });
-    // }
 
     return false;
   }
 
   render() {
-    console.log(this);
     return this.compile(template, { ...this.props });
   }
 }

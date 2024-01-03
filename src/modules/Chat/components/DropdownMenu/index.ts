@@ -15,7 +15,6 @@ const getDropdownMenuButtonsProps = (context) => [
   {
     text: "Add user",
     onClick: () => {
-      console.log("add new user");
       context.closeDropdownMenu();
       context.openModalAddUserToChat();
     },
@@ -23,7 +22,13 @@ const getDropdownMenuButtonsProps = (context) => [
   {
     text: "Remove user",
     onClick: () => {
-      console.log("remove user");
+      context.closeDropdownMenu();
+      context.openModalRemoveUserFromChat();
+    },
+  },
+  {
+    text: "Change chat avatar",
+    onClick: () => {
       context.closeDropdownMenu();
       context.openModalRemoveUserFromChat();
     },
