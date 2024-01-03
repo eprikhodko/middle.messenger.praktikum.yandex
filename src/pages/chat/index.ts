@@ -62,9 +62,9 @@ export class ChatPage extends Block {
     this.children.modalChangeChatAvatar = new ModalChangeChatAvatar({});
 
     // this.children.searchInput = new FormInput(searchInputProps);
-    this.children.sendMessageInput = new FormInput(sendMessageInputProps);
+    // this.children.sendMessageInput = new FormInput(sendMessageInputProps);
 
-    this.children.buttonSendMessage = new ButtonArrow({});
+    // this.children.buttonSendMessage = new ButtonArrow({});
 
     this.children.chatsList = new ChatsList({ isLoaded: false });
 

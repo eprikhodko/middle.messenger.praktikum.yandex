@@ -1,12 +1,18 @@
-<div class="chat-messages">
+<div class="chat-messages-container">
   {{#if selectedChat}}
-    {{#each messages}}
-      {{{this}}}
-    {{/each}}
-    <div class="{{styles.messenger__footer}}">
-      {{{input}}}
-      {{{button}}}
+    <div class="chat-messages">
+      {{#each messages}}
+        {{{this}}}
+      {{/each}}
     </div>
+
+    <footer class="chat-footer">
+      <div class="send-message-form">
+        {{{sendMessageInput}}}
+
+        {{{buttonSendMessage}}}
+      </div>
+    </footer>
   {{else}}
     Выберите чат
   {{/if}}
