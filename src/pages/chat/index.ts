@@ -16,6 +16,7 @@ import store from "../../utils/Store";
 import { ChatHeader } from "../../modules/Chat/components/ChatHeader";
 import { ModalAddUserToChat } from "../../modules/Modal/ModalAddUserToChat";
 import { ModalRemoveUserFromChat } from "../../modules/Modal/ModalRemoveUserFromChat";
+import { ModalChangeChatAvatar } from "../../modules/Modal/ModalChangeChatAvatar";
 
 // const searchInputProps = {
 //   type: InputType.SEARCH,
@@ -58,6 +59,7 @@ export class ChatPage extends Block {
     });
     this.children.modalAddUserToChat = new ModalAddUserToChat({});
     this.children.modalRemoveUserFromChat = new ModalRemoveUserFromChat({});
+    this.children.modalChangeChatAvatar = new ModalChangeChatAvatar({});
 
     // this.children.searchInput = new FormInput(searchInputProps);
     this.children.sendMessageInput = new FormInput(sendMessageInputProps);

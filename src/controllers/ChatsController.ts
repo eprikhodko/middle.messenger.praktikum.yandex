@@ -52,6 +52,21 @@ class ChatsController {
     store.set("chatUsers", chatUsers);
   }
 
+  async updateChatAvatar(data: FormData, chatId: number) {
+    try {
+      // Call the API method and wait for the result
+      const response = await this.api.updateChatAvatar(data, chatId);
+
+      // Parse the response string into a JSON object
+      const result = JSON.parse(response);
+
+      this.fetchChats();
+      // store.set("user", result);
+    } catch (e: any) {
+      console.error(e);
+    }
+  }
+
   async delete(id: number) {
     await this.api.delete(id);
 

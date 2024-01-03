@@ -30,7 +30,7 @@ const getDropdownMenuButtonsProps = (context) => [
     text: "Change chat avatar",
     onClick: () => {
       context.closeDropdownMenu();
-      context.openModalRemoveUserFromChat();
+      context.openModalChangeChatAvatar();
     },
   },
   {
@@ -66,6 +66,10 @@ export class DropdownMenu extends Block<Props> {
 
   openModalRemoveUserFromChat() {
     store.set("isModalRemoveUserFromChatOpen", true);
+  }
+
+  openModalChangeChatAvatar() {
+    store.set("isModalChangeChatAvatarOpen", true);
   }
 
   closeDropdownMenu() {

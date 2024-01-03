@@ -17,12 +17,14 @@ interface State {
   selectedChat?: number;
   isModalAddUserToChatOpen: boolean;
   isModalRemoveUserFromChatOpen: boolean;
+  isModalChangeChatAvatarOpen: boolean;
 }
 
 export class Store extends EventBus {
   private state: any = {
     isModalAddUserToChatOpen: false,
     isModalRemoveUserFromChatOpen: false,
+    isModalChangeChatAvatarOpen: false,
     selectedChat: null,
     chatUsers: [],
   };
