@@ -62,18 +62,13 @@ export class ModalAddUserToChatBase extends Block<Props> {
   }
 
   render() {
-    console.log("DEBUG, ModalAddUserToChat", this.props);
     return this.compile(template, { ...this.props });
   }
 }
 
-// const withModalState = withStore((state) => ({chats: [...(state.chats || [])]}));
 const withModalState = withStore((state) => ({
   isOpen: state.isModalAddUserToChatOpen,
   selectedChat: state.selectedChat,
 }));
-// const withModalState = withStore((state) => {
-//   console.log("STATE",state)
-//   } )
 
 export const ModalAddUserToChat = withModalState(ModalAddUserToChatBase);

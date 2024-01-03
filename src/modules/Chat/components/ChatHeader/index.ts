@@ -4,6 +4,7 @@ import Block from "../../../../utils/Block";
 import { ButtonOpenChatMenu } from "../ButtonOpenChatMenu";
 import { withStore } from "../../../../utils/Store";
 import { DropdownMenu } from "../DropdownMenu";
+import { ChatAvatar } from "../ChatAvatar";
 
 interface Props {
   selectedChat: number | undefined;
@@ -11,17 +12,14 @@ interface Props {
 
 export class ChatHeaderBase extends Block<Props> {
   constructor(props: Props) {
-    super({...props});
+    super({ ...props });
   }
 
   init() {
     this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
-    this.children.dropdownMenu = new DropdownMenu({})
-    console.log("THIS PROPS", this)
+    this.children.dropdownMenu = new DropdownMenu({});
 
     // this.children.searchInput = new FormInput(searchInputProps);
-
-    // this.children.chatAvatar = new ChatAvatar(chatAvatarProps);
   }
 
   render() {
@@ -34,16 +32,12 @@ const withSelectedChatMessages = withStore((state) => {
 
   if (!selectedChatId) {
     return {
-      // messages: [],
       selectedChat: undefined,
-      // userId: state.user.id
     };
   }
 
   return {
-    // messages: (state.messages || {})[selectedChatId] || [],
     selectedChat: state.selectedChat,
-    // userId: state.user.id
   };
 });
 
