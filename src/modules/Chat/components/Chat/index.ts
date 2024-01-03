@@ -29,8 +29,6 @@ class ChatBase extends Block<ChatProps> {
       imgSrc: avatarSrc,
       sizeDefault: true,
     });
-    // console.log("chat props", this.props);
-    // this.children.profileLink = new Link({ to: '/profile', label: 'Профиль'});
   }
 
   protected render(): DocumentFragment {
