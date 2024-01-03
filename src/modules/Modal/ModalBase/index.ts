@@ -1,6 +1,7 @@
 import Block from "../../../utils/Block";
 import template from "./ModalBase.hbs";
 import "./ModalBase.css";
+import store from "../../../utils/Store";
 // import { ModalCreateNewChatContent } from "../ModalCreateNewChatContent";
 // import { Chat } from '../../../Chat/components/Chat';
 // import { withStore } from '../../../../utils/Store';
@@ -22,14 +23,15 @@ export class ModalBase extends Block<Props> {
         click: (event) => {
           if (event.target === event.currentTarget) {
             // if (event.target === this.getContent()) {
-              console.log("MODAL BASE", this)
+              console.log("MODAL BASE", this, event.target)
 
-            this.setProps({ isOpen: false });
+              // store.set(modalName, false)
           }
         },
       },
     });
   }
+
 
   // protected init() {
   //   this.children.modalCreateNewChatContent = new ModalCreateNewChatContent({

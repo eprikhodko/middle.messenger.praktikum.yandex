@@ -40,6 +40,10 @@ export class FormInput extends Block {
     return (this.element as HTMLInputElement).value;
   }
 
+  public clearInputValue() {
+    return (this.element as HTMLInputElement).value = "";
+  }
+
   render() {
     return this.compile(template, this.props);
   }

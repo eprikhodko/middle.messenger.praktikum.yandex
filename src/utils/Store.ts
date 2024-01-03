@@ -1,29 +1,37 @@
-import { set } from './helpers';
-import { EventBus } from './EventBus';
-import Block from './Block';
-import { User } from '../api/AuthAPI';
-import { ChatInfo } from '../api/ChatsAPI';
-import { Message } from '../controllers/MessagesController';
+import { set } from "./helpers";
+import { EventBus } from "./EventBus";
+import Block from "./Block";
+import { User } from "../api/AuthAPI";
+import { ChatInfo } from "../api/ChatsAPI";
+import { Message } from "../controllers/MessagesController";
 
 export enum StoreEvents {
-  Updated = 'updated'
+  Updated = "updated",
 }
 
 interface State {
   user: User;
   chats: ChatInfo[];
+  chatUsers: any;
   messages: Record<number, Message[]>;
   selectedChat?: number;
+  isModalAddUserToChatOpen: boolean;
+  isModalRemoveUserFromChatOpen: boolean;
 }
 
 export class Store extends EventBus {
-  private state: any = {};
+  private state: any = {
+    isModalAddUserToChatOpen: false,
+    isModalRemoveUserFromChatOpen: false,
+    selectedChat: null,
+    chatUsers: [],
+  };
 
   public set(keypath: string, data: unknown) {
     set(this.state, keypath, data);
 
     this.emit(StoreEvents.Updated, this.getState());
-    console.log(this.state)
+    console.log(this.state);
   }
 
   public getState() {
@@ -41,10 +49,8 @@ const store = new Store();
 window.store = store;
 
 export function withStore<SP>(mapStateToProps: (state: State) => SP) {
-  return function wrap<P>(Component: typeof Block<SP & P>){
-
+  return function wrap<P>(Component: typeof Block<SP & P>) {
     return class WithStore extends Component {
-
       constructor(props: Omit<P, keyof SP>) {
         let previousState = mapStateToProps(store.getState());
 
@@ -57,12 +63,9 @@ export function withStore<SP>(mapStateToProps: (state: State) => SP) {
 
           this.setProps({ ...stateProps });
         });
-
       }
-
-    }
-
-  }
+    };
+  };
 }
 
 export default store;

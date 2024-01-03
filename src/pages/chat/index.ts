@@ -14,6 +14,8 @@ import { ModalCreateNewChat } from "../../modules/Modal/ModalCreateNewChat";
 import { ButtonOpenChatMenu } from "../../modules/Chat/components/ButtonOpenChatMenu";
 import store from "../../utils/Store";
 import { ChatHeader } from "../../modules/Chat/components/ChatHeader";
+import { ModalAddUserToChat } from "../../modules/Modal/ModalAddUserToChat";
+import { ModalRemoveUserFromChat } from "../../modules/Modal/ModalRemoveUserFromChat";
 
 // const searchInputProps = {
 //   type: InputType.SEARCH,
@@ -39,7 +41,8 @@ export class ChatPage extends Block {
   }
 
   init() {
-    this.children.chatHeader = new ChatHeader({});
+    console.log("DEBUG", store.getSelectedChatId())
+    this.children.chatHeader = new ChatHeader({ this: "this" });
     this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
 
     this.children.buttonCreateNewChat = new ButtonCommon({
@@ -54,6 +57,8 @@ export class ChatPage extends Block {
     this.children.modalCreateNewChat = new ModalCreateNewChat({
       isOpen: false,
     });
+    this.children.modalAddUserToChat = new ModalAddUserToChat({});
+    this.children.modalRemoveUserFromChat = new ModalRemoveUserFromChat({});
 
     // this.children.searchInput = new FormInput(searchInputProps);
     this.children.sendMessageInput = new FormInput(sendMessageInputProps);

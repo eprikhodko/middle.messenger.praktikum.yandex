@@ -11,12 +11,13 @@ interface Props {
 
 export class ChatHeaderBase extends Block<Props> {
   constructor(props: Props) {
-    super(props);
+    super({...props});
   }
 
   init() {
     this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
     this.children.dropdownMenu = new DropdownMenu({})
+    console.log("THIS PROPS", this)
 
     // this.children.searchInput = new FormInput(searchInputProps);
 
