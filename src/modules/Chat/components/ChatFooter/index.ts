@@ -1,8 +1,5 @@
 import Block from "../../../../utils/Block";
 import template from "./ChatFooter.hbs";
-import { Message } from "../Message";
-import { Input } from "../Input";
-import { Button } from "../../../../components/Button";
 import MessagesController, {
   Message as MessageInfo,
 } from "../../../../controllers/MessagesController";

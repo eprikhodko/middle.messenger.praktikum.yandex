@@ -34,9 +34,20 @@ class MessengerBase extends Block<MessengerProps> {
   constructor(props: MessengerProps) {
     super(props);
   }
-  
+
   protected init() {
+    console.log("Messenger init called"); // Debugging line
     this.children.messages = this.createMessages(this.props);
+
+    this.setAfterRenderCallback(this.scrollToBottom);
+  }
+
+  private scrollToBottom() {
+    console.log("scrollToBottom call context:", this); // Debugging line
+    const element = document.getElementById("chat-messages-container");
+    if (element) {
+      element.scrollTop = element.scrollHeight;
+    }
   }
 
   protected componentDidUpdate(
@@ -44,6 +55,8 @@ class MessengerBase extends Block<MessengerProps> {
     newProps: MessengerProps
   ): boolean {
     this.children.messages = this.createMessages(newProps);
+
+    console.log("Messenger did update");
 
     return true;
   }

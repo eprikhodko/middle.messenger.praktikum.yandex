@@ -104,6 +104,7 @@ class Block<P extends Record<string, any> = any> {
   protected componentDidMount() {}
 
   public dispatchComponentDidMount() {
+    // console.log("component did mount", this)
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
     Object.values(this.children).forEach((child) => {
@@ -118,6 +119,14 @@ class Block<P extends Record<string, any> = any> {
   private _componentDidUpdate(oldProps: P, newProps: P) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+
+      // const element = document.getElementById("chat-messages-container");
+
+      // if (element) {
+      //   console.log(element.scrollTop, element.scrollHeight);
+      //   element.scrollTop = element.scrollHeight;
+      //   console.log("scroll top", element.scrollTop);
+      // }
     }
   }
 
@@ -138,6 +147,7 @@ class Block<P extends Record<string, any> = any> {
   }
 
   private _render() {
+    console.log("_render called in Block"); // Debugging line
     const fragment = this.render();
 
     this._removeEvents();
@@ -151,6 +161,11 @@ class Block<P extends Record<string, any> = any> {
     this._element = newElement;
 
     this._addEvents();
+
+    if (this.afterRenderCallback) {
+      console.log("Executing callback in Block"); // Debugging line
+      this.afterRenderCallback();
+    }
   }
 
   protected render(): DocumentFragment {
@@ -224,6 +239,17 @@ class Block<P extends Record<string, any> = any> {
         throw new Error("Нет доступа");
       },
     });
+  }
+
+  private afterRenderCallback?: () => void;
+
+  public setAfterRenderCallback(callback: () => void) {
+    console.log(
+      "Setting afterRenderCallback. Current value:",
+      this.afterRenderCallback
+    );
+    this.afterRenderCallback = callback;
+    console.log("New value of afterRenderCallback:", this.afterRenderCallback);
   }
 
   _createDocumentElement(tagName: string) {
