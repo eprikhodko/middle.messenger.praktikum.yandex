@@ -15,9 +15,10 @@ interface State {
   chatUsers: any;
   messages: Record<number, Message[]>;
   selectedChat?: number;
-  isModalAddUserToChatOpen: boolean;
-  isModalRemoveUserFromChatOpen: boolean;
-  isModalChangeChatAvatarOpen: boolean;
+  isModalAddUserToChatOpen?: boolean;
+  isModalRemoveUserFromChatOpen?: boolean;
+  isModalChangeChatAvatarOpen?: boolean;
+  isModalCreateNewChatOpen?: boolean;
 }
 
 export class Store extends EventBus {
@@ -25,6 +26,7 @@ export class Store extends EventBus {
     isModalAddUserToChatOpen: false,
     isModalRemoveUserFromChatOpen: false,
     isModalChangeChatAvatarOpen: false,
+    isModalCreateNewChatOpen: false,
     selectedChat: null,
     chatUsers: [],
   };
