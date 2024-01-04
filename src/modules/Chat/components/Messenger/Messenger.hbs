@@ -1,14 +1,11 @@
 <div class="chat-messages-container">
   {{#if selectedChat}}
-    <div class="chat-messages">
+    <div class="chat-messages" id="chat-messages">
       {{#each messages}}
         {{{this}}}
       {{/each}}
     </div>
 
-    {{!-- <div class="chat-footer">
-     
-    </div> --}}
   {{else}}
     Выберите чат
   {{/if}}

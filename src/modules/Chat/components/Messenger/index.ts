@@ -34,6 +34,7 @@ class MessengerBase extends Block<MessengerProps> {
   constructor(props: MessengerProps) {
     super(props);
   }
+  
   protected init() {
     this.children.messages = this.createMessages(this.props);
   }
