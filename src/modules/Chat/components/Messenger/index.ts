@@ -1,14 +1,10 @@
 import Block from "../../../../utils/Block";
 import template from "./Messenger.hbs";
+import "./Messenger.css"
 import { Message } from "../Message";
-import { Input } from "../Input";
-import { Button } from "../../../../components/Button";
-import MessagesController, {
-  Message as MessageInfo,
-} from "../../../../controllers/MessagesController";
+import { Message as MessageInfo } from "../../../../controllers/MessagesController";
 import { withStore } from "../../../../utils/Store";
-import { FormInput } from "../../../../components/FormInput";
-import { ButtonArrow } from "../../../../components/ButtonArrow";
+
 import {
   InputName,
   InputType,

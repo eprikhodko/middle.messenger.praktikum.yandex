@@ -42,3 +42,12 @@
 .chat-list-item--active {
   background: var(--color-ui-chat-active);
 }
+
+.chat-messages__choose-chat-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0 0 0 22%;
+  z-index: -1;
+}

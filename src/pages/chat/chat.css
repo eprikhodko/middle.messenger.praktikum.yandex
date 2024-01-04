@@ -5,6 +5,7 @@
 
 .chat-messages-container {
   overflow: auto;
+  margin-top: 8px;
 }
 
 .chat-messages {
@@ -42,6 +43,7 @@
   flex-direction: column;
   width: 100%;
   padding: 0 20px 12px;
+  justify-content: end;
 }
 
 .chat-message--received {
