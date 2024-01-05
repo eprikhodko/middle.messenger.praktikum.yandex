@@ -71,11 +71,10 @@ class ChatsController {
 
   async updateChatAvatar(data: FormData, chatId: number) {
     try {
-      // Call the API method and wait for the result
       await this.api.updateChatAvatar(data, chatId);
 
       this.fetchChats();
-    } catch (e: any) {
+    } catch (e) {
       console.error(e);
     }
   }
@@ -111,8 +110,5 @@ class ChatsController {
 }
 
 const controller = new ChatsController();
-
-// @ts-ignore
-window.chatsController = controller;
 
 export default controller;

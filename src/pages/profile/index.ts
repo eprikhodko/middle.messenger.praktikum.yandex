@@ -15,7 +15,7 @@ import { ButtonBack } from "../../components/ButtonBack";
 import { FormSettingsInput } from "../../components/FormSettingsInput";
 import { withStore } from "../../utils/Store";
 import UsersController from "../../controllers/UsersController";
-import { Avatar, ProfileData } from "../../api/UsersAPI";
+import { ProfileData } from "../../api/UsersAPI";
 import { Link } from "../../components/Link";
 import { ROUTE } from "../../utils/enums";
 import Router from "../../utils/Router";
@@ -98,7 +98,7 @@ const buttonBackProps = {
 const linkChangePasswordProps = {
   text: "Change password",
   to: ROUTE.CHANGE_PASSWORD,
-  styles: "button button-link"
+  styles: "button button-link",
 };
 
 export class ProfilePageBase extends Block {
@@ -153,25 +153,10 @@ export class ProfilePageBase extends Block {
   }
 
   protected componentDidUpdate(oldProps, newProps): boolean {
-    /**
-     * Обновляем детей
-     */
-
     this.children.userAvatar?.setProps({
       imgSrc: `${API.API_URL}${API.RESOURCES}${newProps.avatar}`,
     });
 
-    /**
-     * Другой вариант — просто заново создать всех детей. Но тогда метод должен возвращать true, чтобы новые дети отрендерились
-     *
-     * this.children.fields = userFields.map(name => {
-     *   return new ProfileField({ name, value: newProps[name] });
-     * });
-     */
-
-    /**
-     * Так как мы обновили детей, этот компонент не обязательно рендерить
-     */
     return false;
   }
 

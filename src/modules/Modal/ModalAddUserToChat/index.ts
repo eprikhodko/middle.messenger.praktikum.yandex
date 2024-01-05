@@ -2,7 +2,7 @@ import template from "./ModalAddUserToChat.hbs";
 import "./ModalAddUserToChat.css";
 import { ButtonCommon } from "../../../components/ButtonCommon";
 import { FormCommonInput } from "../../../components/FormCommonInput";
-import { InputName, InputType, ValidationPattern } from "../../../utils/enums";
+import { InputName, InputType } from "../../../utils/enums";
 import handleFormSubmit from "../../../utils/handleFormSubmit";
 import ChatsController from "../../../controllers/ChatsController";
 import { withStore } from "../../../utils/Store";

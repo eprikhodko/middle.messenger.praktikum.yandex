@@ -1,13 +1,6 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from "nanoid";
 
-type ContextAndStubs = {
-  __refs: Record<string, Block>;
-  __children?: Array<{
-    embed: (fragment: DocumentFragment) => void;
-  }>;
-};
-
 class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: "init",
@@ -119,14 +112,6 @@ class Block<P extends Record<string, any> = any> {
   private _componentDidUpdate(oldProps: P, newProps: P) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-
-      // const element = document.getElementById("chat-messages-container");
-
-      // if (element) {
-      //   console.log(element.scrollTop, element.scrollHeight);
-      //   element.scrollTop = element.scrollHeight;
-      //   console.log("scroll top", element.scrollTop);
-      // }
     }
   }
 

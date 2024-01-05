@@ -18,7 +18,7 @@ export class AuthController {
       await this.fetchUser();
 
       router.go(ROUTE.MESSENGER);
-    } catch (e: any) {
+    } catch (e) {
       console.error(e);
     }
   }
@@ -30,8 +30,8 @@ export class AuthController {
       await this.fetchUser();
 
       router.go(ROUTE.MESSENGER);
-    } catch (e: any) {
-      console.error(e.message);
+    } catch (e) {
+      console.error(e);
     }
   }
 
@@ -52,8 +52,8 @@ export class AuthController {
       await this.api.logout();
 
       router.go("/");
-    } catch (e: any) {
-      console.error(e.message);
+    } catch (e) {
+      console.error(e);
     }
   }
 }
