@@ -15,8 +15,6 @@ import {
 import "./sign-in.css";
 import AuthController from "../../controllers/AuthController";
 import { SignupData } from "../../api/AuthAPI";
-import Router from "../../utils/Router";
-import store from "../../utils/Store";
 
 const formInputsProps = [
   {
