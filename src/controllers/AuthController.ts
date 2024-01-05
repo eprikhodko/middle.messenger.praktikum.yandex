@@ -1,8 +1,8 @@
-import API, { AuthAPI, SigninData, SignupData } from '../api/AuthAPI';
-import store from '../utils/Store';
-import router from '../utils/Router';
-import { ROUTE } from '../utils/enums';
-// import MessagesController from './MessagesController';
+import API, { AuthAPI, SigninData, SignupData } from "../api/AuthAPI";
+import store from "../utils/Store";
+import router from "../utils/Router";
+import { ROUTE } from "../utils/enums";
+import MessagesController from "./MessagesController";
 
 export class AuthController {
   private readonly api: AuthAPI;
@@ -36,18 +36,22 @@ export class AuthController {
   }
 
   async fetchUser() {
-    const user = await this.api.read();
+    try {
+      const user = await this.api.read();
 
-    store.set('user', user);
+      store.set("user", user);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   async logout() {
     try {
-      // MessagesController.closeAll();
+      MessagesController.closeAll();
 
       await this.api.logout();
 
-      router.go('/');
+      router.go("/");
     } catch (e: any) {
       console.error(e.message);
     }
