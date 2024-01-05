@@ -1,5 +1,5 @@
 import Block from "../../../../utils/Block";
-import template from "./chat.hbs";
+import template from "./Chat.hbs";
 import { withStore } from "../../../../utils/Store";
 import { ChatInfo } from "../../../../api/ChatsAPI";
 import { ChatAvatar } from "../ChatAvatar";
