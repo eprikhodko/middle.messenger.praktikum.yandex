@@ -8,24 +8,24 @@ import ChatsController from "../../../controllers/ChatsController";
 import { withStore } from "../../../utils/Store";
 import store from "../../../utils/Store";
 import Block from "../../../utils/Block";
+import { FormInput } from "../../../components/FormInput";
 
 interface Props {
-  onClick: () => void;
   events?: {
-    click: () => void;
+    click: (event: Event) => void;
   };
+  isOpen: boolean;
+  title?: string;
 }
 
 export class ModalCreateNewChatBase extends Block<Props> {
-  constructor(props: Props) {
+  constructor() {
     super({
-      ...props,
       title: "Enter new chat name",
-
+      isOpen: false,
       events: {
-        click: (event) => {
+        click: (event: Event) => {
           if (event.target === event.currentTarget) {
-            // if (event.target === this.getContent()) {
             store.set("isModalCreateNewChatOpen", false);
           }
         },
@@ -54,13 +54,21 @@ export class ModalCreateNewChatBase extends Block<Props> {
   }
 
   onSubmit() {
-    const data = handleFormSubmit(this.children.chatNameInput);
-    console.log("DATA", data);
+    const chatNameInputBlock = this.children.chatNameInput;
+    // Check if chatNameInputBlock is a single Block instance
+    if (!Array.isArray(chatNameInputBlock)) {
+      const data = handleFormSubmit(chatNameInputBlock as FormCommonInput);
 
-    ChatsController.create(data.title);
+      ChatsController.create(data.title);
 
-    store.set("isModalCreateNewChatOpen", false); // close modal after we add new user
-    this.children.chatNameInput.children.formInput.clearInputValue();
+      store.set("isModalCreateNewChatOpen", false); // close modal after we add new user
+
+      const formInputBlock = chatNameInputBlock.children.formInput as FormInput;
+      // Check if formInputBlock is a single Block instance
+      if (!Array.isArray(formInputBlock)) {
+        formInputBlock.clearInputValue();
+      }
+    }
   }
 
   render() {

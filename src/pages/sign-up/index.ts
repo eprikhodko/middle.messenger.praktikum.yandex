@@ -102,7 +102,7 @@ export class SignUpPage extends Block {
   }
 
   onSubmit() {
-    const data = handleFormSubmit(this.children.formInputs);
+    const data = handleFormSubmit(this.children.formInputs as FormCommonInput[]);
 
     AuthController.signup(data as SignupData);
   }

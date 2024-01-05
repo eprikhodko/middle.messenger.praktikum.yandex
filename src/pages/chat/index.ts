@@ -1,11 +1,7 @@
 import Block from "../../utils/Block";
 import template from "./chat.hbs";
 import "./chat.css";
-import { InputType, InputName, ValidationPattern, ROUTE } from "../../utils/enums";
-import { FormInput } from "../../components/FormInput";
-// import { ChatListItem } from "../../modules/Chat/components/ChatListItem";
-// import { ChatAvatar } from "../../modules/Chat/components/ChatAvatar";
-import { ButtonArrow } from "../../components/ButtonArrow";
+import { ROUTE } from "../../utils/enums";
 import ChatsController from "../../controllers/ChatsController";
 import { ChatsList } from "../../modules/Chat/components/ChatsList";
 import { Messenger } from "../../modules/Chat/components/Messenger";
@@ -17,32 +13,13 @@ import { ChatHeader } from "../../modules/Chat/components/ChatHeader";
 import { ModalAddUserToChat } from "../../modules/Modal/ModalAddUserToChat";
 import { ModalRemoveUserFromChat } from "../../modules/Modal/ModalRemoveUserFromChat";
 import { ModalChangeChatAvatar } from "../../modules/Modal/ModalChangeChatAvatar";
-import MessagesController from "../../controllers/MessagesController";
 import { ChatFooter } from "../../modules/Chat/components/ChatFooter";
 import { Link } from "../../components/Link";
-
-// const searchInputProps = {
-//   type: InputType.SEARCH,
-//   name: InputName.SEARCH,
-//   id: "search",
-//   placeholder: "Search",
-//   pattern: ValidationPattern.SEARCH,
-//   inputClassName: "search-form__input",
-// };
-
-const sendMessageInputProps = {
-  type: InputType.TEXT,
-  name: InputName.MESSAGE,
-  id: "message",
-  placeholder: "Message",
-  pattern: ValidationPattern.MESSAGE,
-  inputClassName: "send-message-form__input",
-};
 
 const linkProfileProps = {
   text: "Profile",
   to: ROUTE.SETTINGS,
-  styles: "button button-link"
+  styles: "button button-link",
 };
 
 export class ChatPage extends Block {
@@ -52,9 +29,9 @@ export class ChatPage extends Block {
 
   init() {
     this.children.chatHeader = new ChatHeader({});
-    this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
+    this.children.buttonOpenChatMenu = new ButtonOpenChatMenu();
 
-    this.children.linkProfile = new Link(linkProfileProps)
+    this.children.linkProfile = new Link(linkProfileProps);
 
     this.children.buttonCreateNewChat = new ButtonCommon({
       text: "Create new chat",
@@ -65,9 +42,7 @@ export class ChatPage extends Block {
       },
     });
 
-    this.children.modalCreateNewChat = new ModalCreateNewChat({
-      isOpen: false,
-    });
+    this.children.modalCreateNewChat = new ModalCreateNewChat({});
     this.children.modalAddUserToChat = new ModalAddUserToChat({});
     this.children.modalRemoveUserFromChat = new ModalRemoveUserFromChat({});
     this.children.modalChangeChatAvatar = new ModalChangeChatAvatar({});
@@ -85,7 +60,7 @@ export class ChatPage extends Block {
   }
 
   openModalCreateNewChat() {
-    this.children.modalCreateNewChat.setProps({ isOpen: true });
+    store.set("isModalCreateNewChatOpen", true);
   }
 
   deleteChat = () => {

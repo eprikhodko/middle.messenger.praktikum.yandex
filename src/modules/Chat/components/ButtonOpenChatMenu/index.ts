@@ -2,17 +2,9 @@ import Block from "../../../../utils/Block";
 import template from "./ButtonOpenChatMenu.hbs";
 import "./ButtonOpenChatMenu.css";
 
-interface Props {
-  onClick: () => void;
-  events: {
-    mouseenter: () => void;
-  };
-}
-
-export class ButtonOpenChatMenu extends Block<Props> {
-  constructor(props: Props) {
+export class ButtonOpenChatMenu extends Block {
+  constructor() {
     super({
-      ...props,
       events: {
         mouseenter: () => {
           this.openDropdownMenu();

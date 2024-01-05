@@ -16,8 +16,6 @@ export class Error500Page extends Block {
     this.children.errorPageContent = new ErrorPageContent(
       errorPageContentProps
     );
-
-    console.log(this.children);
   }
 
   render() {

@@ -12,6 +12,7 @@ interface Props {
   pattern?: ValidationPattern;
   placeholder?: string;
   onClick?: () => void;
+  onKeypress?: (event: KeyboardEvent) => void;
   events?: {
     click: () => void;
   };
@@ -24,6 +25,7 @@ export class FormInput extends Block {
       events: {
         click: props.onClick,
         blur: (event: FocusEvent) => this.handleBlur(event, props),
+        keypress: props.onKeypress,
       },
     });
   }
@@ -41,7 +43,7 @@ export class FormInput extends Block {
   }
 
   public clearInputValue() {
-    return (this.element as HTMLInputElement).value = "";
+    return ((this.element as HTMLInputElement).value = "");
   }
 
   render() {

@@ -1,5 +1,5 @@
 import Block from "../../../../utils/Block";
-import template from "./chat.hbs";
+import template from "./Chat.hbs";
 import { withStore } from "../../../../utils/Store";
 import { ChatInfo } from "../../../../api/ChatsAPI";
 import { ChatAvatar } from "../ChatAvatar";
@@ -10,6 +10,7 @@ interface ChatProps {
   title: string;
   unread_count: number;
   selectedChat: ChatInfo;
+  avatar: string;
   events: {
     click: () => void;
   };

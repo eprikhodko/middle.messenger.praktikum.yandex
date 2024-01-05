@@ -9,10 +9,12 @@ import Block from "../../../utils/Block";
 import { ImageUpload } from "../../../components/ImageUpload";
 
 interface Props {
-  onClick: () => void;
   events?: {
-    click: () => void;
+    click: (event: Event) => void;
   };
+  title?: string;
+  selectedChat: number;
+  isOpen: boolean;
 }
 
 export class ModalChangeChatAvatarBase extends Block<Props> {
@@ -22,9 +24,8 @@ export class ModalChangeChatAvatarBase extends Block<Props> {
       title: "Upload new chat avatar",
 
       events: {
-        click: (event) => {
+        click: (event: Event) => {
           if (event.target === event.currentTarget) {
-            // if (event.target === this.getContent()) {
             store.set("isModalChangeChatAvatarOpen", false);
           }
         },
@@ -51,13 +52,22 @@ export class ModalChangeChatAvatarBase extends Block<Props> {
     this.children.chatUsers = new ChatUsers({});
   }
 
-  onFileUpload(event) {
+  onFileUpload(event: Event) {
     event.preventDefault();
 
-    const form = this.children.imageUpload.getContent();
-    const formData = new FormData(form);
+    const imageUploadBlock = this.children.imageUpload;
 
-    ChatsController.updateChatAvatar(formData, this.props.selectedChat);
+    if (!Array.isArray(imageUploadBlock)) {
+      const form = imageUploadBlock.getContent() as HTMLFormElement;
+      const formData = new FormData(form);
+
+      ChatsController.updateChatAvatar(formData, this.props.selectedChat);
+    } else {
+      // Handle the case where imageUploadBlock is an array
+      console.error(
+        "Expected imageUpload to be a Block instance, but got an array."
+      );
+    }
   }
 
   render() {

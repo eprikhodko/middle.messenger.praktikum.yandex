@@ -4,7 +4,6 @@ import Block from "../../../../utils/Block";
 import { ButtonOpenChatMenu } from "../ButtonOpenChatMenu";
 import { withStore } from "../../../../utils/Store";
 import { DropdownMenu } from "../DropdownMenu";
-import { ChatAvatar } from "../ChatAvatar";
 
 interface Props {
   selectedChat: number | undefined;
@@ -16,10 +15,8 @@ export class ChatHeaderBase extends Block<Props> {
   }
 
   init() {
-    this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
+    this.children.buttonOpenChatMenu = new ButtonOpenChatMenu();
     this.children.dropdownMenu = new DropdownMenu({});
-
-    // this.children.searchInput = new FormInput(searchInputProps);
   }
 
   render() {

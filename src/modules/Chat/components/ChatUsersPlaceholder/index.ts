@@ -1,32 +1,20 @@
 import template from "./ChatUsersPlaceholder.hbs";
 import "./ChatUsersPlaceholder.css";
 import Block from "../../../../utils/Block";
-// import { withStore } from "../../../../utils/Store";
+import { IChatUsers } from "../ChatUsers";
 
 interface Props {
-  text: string;
-  onClick: () => void;
-  events?: {
-    click: () => void;
-  };
+  users?: IChatUsers;
 }
 
 export class ChatUsersPlaceholder extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,
-      events: {
-        click: props.onClick,
-      },
     });
   }
 
-
-
   render() {
-    console.log("chat users placeholder props", this.props)
     return this.compile(template, { ...this.props });
   }
 }
-
-

@@ -14,25 +14,35 @@ import {
 
 interface MessengerProps {
   selectedChat: number | undefined;
-  messages: MessageInfo[];
-  userId: number;
+  messages?: MessageInfo[];
+  userId?: number;
 }
 
-const sendMessageInputProps = {
-  type: InputType.TEXT,
-  name: InputName.MESSAGE,
-  id: "message",
-  placeholder: "Message",
-  pattern: ValidationPattern.MESSAGE,
-  inputClassName: "send-message-form__input",
+const getSendMessageInputProps = (context: ChatFooterBase) => {
+  return {
+    type: InputType.TEXT,
+    name: InputName.MESSAGE,
+    id: "message",
+    placeholder: "Message",
+    pattern: ValidationPattern.MESSAGE,
+    inputClassName: "send-message-form__input",
+    onKeypress: (event: KeyboardEvent) => {
+      if (event.key === "Enter") {
+        context.sendMessage();
+      }
+    },
+  };
 };
 
 class ChatFooterBase extends Block<MessengerProps> {
   constructor(props: MessengerProps) {
     super(props);
   }
+
   protected init() {
-    this.children.sendMessageInput = new FormInput(sendMessageInputProps);
+    this.children.sendMessageInput = new FormInput(
+      getSendMessageInputProps(this)
+    );
     this.children.buttonSendMessage = new ButtonArrow({
       type: "button",
       onClick: () => {
@@ -46,6 +56,17 @@ class ChatFooterBase extends Block<MessengerProps> {
         }
       },
     });
+  }
+
+  sendMessage() {
+    const input = this.children.sendMessageInput as FormInput;
+    const message = input.getValue();
+
+    input.setValue("");
+
+    if (message) {
+      MessagesController.sendMessage(this.props.selectedChat!, message);
+    }
   }
 
   protected render(): DocumentFragment {

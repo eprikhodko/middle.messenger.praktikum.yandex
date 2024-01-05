@@ -15,13 +15,14 @@ import { ButtonBack } from "../../components/ButtonBack";
 import { FormSettingsInput } from "../../components/FormSettingsInput";
 import { withStore } from "../../utils/Store";
 import UsersController from "../../controllers/UsersController";
-import { Avatar, ProfileData } from "../../api/UsersAPI";
+import { ProfileData } from "../../api/UsersAPI";
 import { Link } from "../../components/Link";
 import { ROUTE } from "../../utils/enums";
 import Router from "../../utils/Router";
 import { ImageUpload } from "../../components/ImageUpload";
 import { UserAvatar } from "../../components/UserAvatar";
 import { API } from "../../utils/enums";
+import { FormCommonInput } from "../../components/FormCommonInput";
 
 const formInputsProps = [
   {
@@ -98,7 +99,7 @@ const buttonBackProps = {
 const linkChangePasswordProps = {
   text: "Change password",
   to: ROUTE.CHANGE_PASSWORD,
-  styles: "button button-link"
+  styles: "button button-link",
 };
 
 export class ProfilePageBase extends Block {
@@ -137,41 +138,45 @@ export class ProfilePageBase extends Block {
 
   onSubmit() {
     console.log(this.children.formInputs);
-    const data = handleFormSubmit(this.children.formInputs);
+    const data = handleFormSubmit(
+      this.children.formInputs as FormCommonInput[]
+    );
     console.log(data);
 
     UsersController.updateProfileData(data as ProfileData);
   }
 
-  onFileUpload(event) {
+  onFileUpload(event: Event) {
     event.preventDefault();
 
-    const form = this.children.imageUpload.getContent();
-    const formData = new FormData(form);
+    // this.children.imageUpload could be Block<any> | Block<any>[]
+    const imageUploadBlock = this.children.imageUpload;
 
-    UsersController.updateAvatar(formData);
+    // Type guard to check if imageUploadBlock is not an array
+    if (!Array.isArray(imageUploadBlock)) {
+      const form = imageUploadBlock.getContent() as HTMLFormElement; // Safely calling getContent
+      const formData = new FormData(form);
+
+      UsersController.updateAvatar(formData);
+    } else {
+      // Handle the case where imageUploadBlock is an array
+      console.error(
+        "Expected imageUpload to be a Block instance, but got an array."
+      );
+    }
   }
 
-  protected componentDidUpdate(oldProps, newProps): boolean {
-    /**
-     * Обновляем детей
-     */
+  protected componentDidUpdate(
+    _oldProps: {},
+    newProps: { avatar: "avatar" }
+  ): boolean {
+    const userAvatarBlock = this.children.userAvatar;
+    if (!Array.isArray(userAvatarBlock)) {
+      userAvatarBlock?.setProps({
+        imgSrc: `${API.API_URL}${API.RESOURCES}${newProps.avatar}`,
+      });
+    }
 
-    this.children.userAvatar?.setProps({
-      imgSrc: `${API.API_URL}${API.RESOURCES}${newProps.avatar}`,
-    });
-
-    /**
-     * Другой вариант — просто заново создать всех детей. Но тогда метод должен возвращать true, чтобы новые дети отрендерились
-     *
-     * this.children.fields = userFields.map(name => {
-     *   return new ProfileField({ name, value: newProps[name] });
-     * });
-     */
-
-    /**
-     * Так как мы обновили детей, этот компонент не обязательно рендерить
-     */
     return false;
   }
 

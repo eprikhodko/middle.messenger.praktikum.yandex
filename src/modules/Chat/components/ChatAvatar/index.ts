@@ -6,19 +6,12 @@ interface Props {
   sizeDefault?: boolean;
   sizeSmall?: boolean;
   imgSrc: string;
-  onClick?: () => void;
-  events: {
-    click: () => void;
-  };
 }
 
 export class ChatAvatar extends Block {
   constructor(props: Props) {
     super({
       ...props,
-      events: {
-        click: props.onClick,
-      },
     });
   }
 
