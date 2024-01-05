@@ -1,5 +1,5 @@
-import WSTransport, { WSTransportEvents } from '../utils/WSTransport';
-import store from '../utils/Store';
+import WSTransport, { WSTransportEvents } from "../utils/WSTransport";
+import store from "../utils/Store";
 
 export interface Message {
   chat_id: number;
@@ -15,7 +15,7 @@ export interface Message {
     content_type: string;
     content_size: number;
     upload_date: string;
-  }
+  };
 }
 
 class MessagesController {
@@ -28,7 +28,9 @@ class MessagesController {
 
     const userId = store.getState().user.id;
 
-    const wsTransport = new WSTransport(`wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`);
+    const wsTransport = new WSTransport(
+      `wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`
+    );
 
     this.sockets.set(id, wsTransport);
 
@@ -46,7 +48,7 @@ class MessagesController {
     }
 
     socket.send({
-      type: 'message',
+      type: "message",
       content: message,
     });
   }
@@ -58,11 +60,11 @@ class MessagesController {
       throw new Error(`Chat ${id} is not connected`);
     }
 
-    socket.send({type: 'get old', content: '0'});
+    socket.send({ type: "get old", content: "0" });
   }
 
   closeAll() {
-    Array.from(this.sockets.values()).forEach(socket => socket.close());
+    Array.from(this.sockets.values()).forEach((socket) => socket.close());
   }
 
   private onMessage(id: number, messages: Message | Message[]) {
@@ -86,15 +88,13 @@ class MessagesController {
   }
 
   private subscribe(transport: WSTransport, id: number) {
-    transport.on(WSTransportEvents.Message, (message) => this.onMessage(id, message));
+    transport.on(WSTransportEvents.Message, (message) =>
+      this.onMessage(id, message)
+    );
     transport.on(WSTransportEvents.Close, () => this.onClose(id));
   }
 }
 
-
 const controller = new MessagesController();
-
-// @ts-ignore
-window.messagesController = controller;
 
 export default controller;
