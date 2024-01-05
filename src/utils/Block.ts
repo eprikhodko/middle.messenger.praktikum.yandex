@@ -1,7 +1,6 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from "nanoid";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: "init",
