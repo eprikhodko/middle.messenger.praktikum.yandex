@@ -14,27 +14,11 @@ import {
 
 interface MessengerProps {
   selectedChat: number | undefined;
-  messages: MessageInfo[];
-  userId: number;
+  messages?: MessageInfo[];
+  userId?: number;
 }
 
-// const sendMessageInputProps = {
-//   type: InputType.TEXT,
-//   name: InputName.MESSAGE,
-//   id: "message",
-//   placeholder: "Message",
-//   pattern: ValidationPattern.MESSAGE,
-//   inputClassName: "send-message-form__input",
-//   onKeypress: (event) => {
-//     if (event.key === "Enter") {
-//       // Code to execute when Enter is pressed
-//       console.log("Enter key pressed!");
-//       this.sendMessage()
-//     }
-//   },
-// };
-
-const getSendMessageInputProps = (context) => {
+const getSendMessageInputProps = (context: ChatFooterBase) => {
   return {
     type: InputType.TEXT,
     name: InputName.MESSAGE,
@@ -42,14 +26,14 @@ const getSendMessageInputProps = (context) => {
     placeholder: "Message",
     pattern: ValidationPattern.MESSAGE,
     inputClassName: "send-message-form__input",
-    onKeypress: (event) => {
+    onKeypress: (event: KeyboardEvent) => {
       if (event.key === "Enter") {
         console.log("Enter key pressed!");
-        context.sendMessage()
+        context.sendMessage();
       }
     },
-  }
-}
+  };
+};
 
 class ChatFooterBase extends Block<MessengerProps> {
   constructor(props: MessengerProps) {
@@ -57,7 +41,9 @@ class ChatFooterBase extends Block<MessengerProps> {
   }
 
   protected init() {
-    this.children.sendMessageInput = new FormInput(getSendMessageInputProps(this));
+    this.children.sendMessageInput = new FormInput(
+      getSendMessageInputProps(this)
+    );
     this.children.buttonSendMessage = new ButtonArrow({
       type: "button",
       onClick: () => {

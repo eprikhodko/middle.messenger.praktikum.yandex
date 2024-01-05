@@ -23,7 +23,7 @@ class BaseLink extends Block<Props> {
   }
 
   navigate() {
-    this.props.router.go(this.props.to);
+    this.props.router?.go(this.props.to);
   }
 
   render() {

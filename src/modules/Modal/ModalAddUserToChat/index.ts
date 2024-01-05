@@ -15,7 +15,7 @@ interface Props {
     click: (event: Event) => void;
   };
   isOpen: boolean;
-  title: string;
+  title?: string;
   selectedChat: number;
 }
 

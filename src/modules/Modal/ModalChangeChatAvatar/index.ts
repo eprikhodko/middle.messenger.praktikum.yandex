@@ -9,11 +9,10 @@ import Block from "../../../utils/Block";
 import { ImageUpload } from "../../../components/ImageUpload";
 
 interface Props {
-  onClick: () => void;
   events?: {
     click: (event: Event) => void;
   };
-  title: string;
+  title?: string;
   selectedChat: number;
   isOpen: boolean;
 }

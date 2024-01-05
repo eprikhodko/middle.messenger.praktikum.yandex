@@ -60,7 +60,7 @@ export class ChatPage extends Block {
   }
 
   openModalCreateNewChat() {
-    this.children.modalCreateNewChat.setProps({ isOpen: true });
+    store.set("isModalCreateNewChatOpen", true);
   }
 
   deleteChat = () => {

@@ -25,8 +25,11 @@ class ChatsController {
 
       chats.map(async (chat) => {
         const token = await this.getToken(chat.id);
-
-        await MessagesController.connect(chat.id, token);
+        if (token) {
+          await MessagesController.connect(chat.id, token);
+        } else {
+          console.error("Failed to get token for chat:", chat.id);
+        }
       });
 
       store.set("chats", chats);
@@ -41,7 +44,9 @@ class ChatsController {
 
       const currentChatId = store.getSelectedChatId();
 
-      this.getChatUsers(currentChatId);
+      if (currentChatId !== null && currentChatId !== undefined) {
+        this.getChatUsers(currentChatId);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -53,7 +58,9 @@ class ChatsController {
 
       const currentChatId = store.getSelectedChatId();
 
-      this.getChatUsers(currentChatId);
+      if (currentChatId !== null && currentChatId !== undefined) {
+        this.getChatUsers(currentChatId);
+      }
     } catch (e) {
       console.error(e);
     }
