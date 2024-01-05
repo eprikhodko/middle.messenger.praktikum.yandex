@@ -5,11 +5,6 @@ import { ChatUsersPlaceholder } from "../ChatUsersPlaceholder";
 import { withStore } from "../../../../utils/Store";
 
 interface Props {
-  text: string;
-  onClick: () => void;
-  events?: {
-    click: () => void;
-  };
   chatUsers: [];
 }
 
@@ -21,9 +16,6 @@ export class ChatUsersBase extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,
-      events: {
-        click: props.onClick,
-      },
     });
   }
 
