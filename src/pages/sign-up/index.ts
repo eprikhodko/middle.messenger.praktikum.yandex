@@ -75,7 +75,7 @@ const formInputsProps = [
 
 const linkSignUpProps = {
   text: "Sign In",
-  to: ROUTE.SIGN_IN,
+  to: ROUTE.INDEX,
   styles: "button button-link",
 };
 
