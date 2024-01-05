@@ -1,9 +1,4 @@
-import API, {
-  UsersAPI,
-  ProfileData,
-  UpdatePassword,
-  Avatar,
-} from "../api/UsersAPI";
+import API, { UsersAPI, ProfileData, UpdatePassword } from "../api/UsersAPI";
 import store from "../utils/Store";
 
 export class UsersController {
@@ -44,10 +39,13 @@ export class UsersController {
   }
 
   async fetchUser() {
-    const user = await this.api.read();
+    try {
+      const user = await this.api.read();
 
-    store.set("user", user);
-    console.log("updated? user?", user);
+      store.set("user", user);
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
 
