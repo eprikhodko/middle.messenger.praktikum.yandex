@@ -97,7 +97,6 @@ class Block<P extends Record<string, any> = any> {
   protected componentDidMount() {}
 
   public dispatchComponentDidMount() {
-    // console.log("component did mount", this)
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
     Object.values(this.children).forEach((child) => {
@@ -132,7 +131,6 @@ class Block<P extends Record<string, any> = any> {
   }
 
   private _render() {
-    console.log("_render called in Block"); // Debugging line
     const fragment = this.render();
 
     this._removeEvents();
@@ -148,7 +146,6 @@ class Block<P extends Record<string, any> = any> {
     this._addEvents();
 
     if (this.afterRenderCallback) {
-      console.log("Executing callback in Block"); // Debugging line
       this.afterRenderCallback();
     }
   }
@@ -229,12 +226,7 @@ class Block<P extends Record<string, any> = any> {
   private afterRenderCallback?: () => void;
 
   public setAfterRenderCallback(callback: () => void) {
-    console.log(
-      "Setting afterRenderCallback. Current value:",
-      this.afterRenderCallback
-    );
     this.afterRenderCallback = callback;
-    console.log("New value of afterRenderCallback:", this.afterRenderCallback);
   }
 
   _createDocumentElement(tagName: string) {
