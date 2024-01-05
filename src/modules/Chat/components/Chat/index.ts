@@ -10,6 +10,7 @@ interface ChatProps {
   title: string;
   unread_count: number;
   selectedChat: ChatInfo;
+  avatar: string;
   events: {
     click: () => void;
   };

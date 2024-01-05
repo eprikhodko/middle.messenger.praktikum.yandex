@@ -15,6 +15,7 @@ import { FormSettingsInput } from "../../components/FormSettingsInput";
 import UsersController from "../../controllers/UsersController";
 import { UpdatePassword } from "../../api/UsersAPI";
 import Router from "../../utils/Router";
+import { FormCommonInput } from "../../components/FormCommonInput";
 
 const formInputsProps = [
   {
@@ -67,7 +68,7 @@ export class ChangePasswordPage extends Block {
 
   onSubmit() {
     console.log(this.children.formInputs);
-    const data = handleFormSubmit(this.children.formInputs);
+    const data = handleFormSubmit(this.children.formInputs as FormCommonInput[]);
     console.log(data);
 
     UsersController.updatePassword(data as UpdatePassword);

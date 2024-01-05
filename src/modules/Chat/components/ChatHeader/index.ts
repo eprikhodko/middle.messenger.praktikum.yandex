@@ -15,7 +15,7 @@ export class ChatHeaderBase extends Block<Props> {
   }
 
   init() {
-    this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
+    this.children.buttonOpenChatMenu = new ButtonOpenChatMenu();
     this.children.dropdownMenu = new DropdownMenu({});
   }
 

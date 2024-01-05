@@ -6,12 +6,17 @@ import ChatsController from "../../../../controllers/ChatsController";
 import store from "../../../../utils/Store";
 
 interface Props {
-  events: {
+  events?: {
     mouseleave: () => void;
   };
 }
 
-const getDropdownMenuButtonsProps = (context) => [
+interface ButtonProps {
+  text: string;
+  onClick: () => void;
+}
+
+const getDropdownMenuButtonsProps = (context: DropdownMenu) => [
   {
     text: "Add user",
     onClick: () => {
@@ -73,7 +78,6 @@ export class DropdownMenu extends Block<Props> {
   }
 
   closeDropdownMenu() {
-    // const dropdownMenu = document.querySelector(".dropdown-menu");
     const dropdownMenu = this.getContent();
 
     if (dropdownMenu) {
@@ -81,7 +85,7 @@ export class DropdownMenu extends Block<Props> {
     }
   }
 
-  private createDropdownMenuButtons(buttonsProps) {
+  private createDropdownMenuButtons(buttonsProps: ButtonProps[]) {
     return buttonsProps.map((props) => {
       return new DropdownMenuButton({
         ...props,
