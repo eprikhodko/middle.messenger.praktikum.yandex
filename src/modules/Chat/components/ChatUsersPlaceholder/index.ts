@@ -15,7 +15,6 @@ export class ChatUsersPlaceholder extends Block<Props> {
   }
 
   render() {
-    console.log("chat users placeholder props", this.props);
     return this.compile(template, { ...this.props });
   }
 }

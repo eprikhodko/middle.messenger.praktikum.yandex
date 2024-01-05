@@ -38,7 +38,6 @@ export class Store extends EventBus {
     set(this.state, keypath, data);
 
     this.emit(StoreEvents.Updated, this.getState());
-    console.log(this.state);
   }
 
   public getState() {

@@ -7,7 +7,6 @@ const handleFormSubmit = (children: FormCommonInput[] | FormCommonInput) => {
   validate();
 
   if (Array.isArray(children)) {
-    console.log(getFormData(children));
     return getFormData(children);
   } else {
     return getInputData(children);

@@ -69,7 +69,6 @@ export class SignInPage extends Block {
 
   onSubmit() {
     const storeState = store.getState();
-    console.log(storeState.user);
     if (storeState.user) {
       Router.go(ROUTE.MESSENGER);
     } else {

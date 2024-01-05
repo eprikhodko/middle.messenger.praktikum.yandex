@@ -35,8 +35,6 @@ class MessengerBase extends Block<MessengerProps> {
   ): boolean {
     this.children.messages = this.createMessages(newProps);
 
-    console.log("Messenger did update");
-
     return true;
   }
 

@@ -28,7 +28,6 @@ const getSendMessageInputProps = (context: ChatFooterBase) => {
     inputClassName: "send-message-form__input",
     onKeypress: (event: KeyboardEvent) => {
       if (event.key === "Enter") {
-        console.log("Enter key pressed!");
         context.sendMessage();
       }
     },

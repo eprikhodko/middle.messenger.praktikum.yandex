@@ -1,19 +1,18 @@
 import Block from "../../utils/Block";
 import template from "./ErrorPageContent.hbs";
 import "./ErrorPageContent.css";
-import { ButtonCommon } from "../ButtonCommon";
+import { Link } from "../Link";
+import { ROUTE } from "../../utils/enums";
 
 interface Props {
   errorCode: string;
   errorText: string;
 }
 
-const buttonBackProps = {
+const linkProfileProps = {
   text: "Go back to chats",
-  propClass: "button--primary",
-  onClick: () => {
-    console.log("go back to chats");
-  },
+  to: ROUTE.MESSENGER,
+  styles: "button button-link button--primary",
 };
 
 export class ErrorPageContent extends Block {
@@ -22,7 +21,7 @@ export class ErrorPageContent extends Block {
   }
 
   init() {
-    this.children.buttonBack = new ButtonCommon(buttonBackProps);
+    this.children.linkToMessenger = new Link(linkProfileProps);
   }
 
   render() {

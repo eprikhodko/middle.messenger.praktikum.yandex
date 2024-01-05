@@ -40,7 +40,7 @@ const formInputsProps = [
 
 const buttonBackProps = {
   onClick: () => {
-    Router.back()
+    Router.back();
   },
 };
 
@@ -67,9 +67,9 @@ export class ChangePasswordPage extends Block {
   }
 
   onSubmit() {
-    console.log(this.children.formInputs);
-    const data = handleFormSubmit(this.children.formInputs as FormCommonInput[]);
-    console.log(data);
+    const data = handleFormSubmit(
+      this.children.formInputs as FormCommonInput[]
+    );
 
     UsersController.updatePassword(data as UpdatePassword);
   }
