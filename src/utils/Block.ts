@@ -226,6 +226,7 @@ class Block<P extends Record<string, any> = any> {
   private afterRenderCallback?: () => void;
 
   public setAfterRenderCallback(callback: () => void) {
+    
     this.afterRenderCallback = callback;
   }
 

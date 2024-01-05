@@ -11,9 +11,9 @@ export enum StoreEvents {
 
 interface State {
   user: User | null;
-  chats: ChatInfo[] | null;
+  chats: ChatInfo[];
   chatUsers: any;
-  messages: Record<number, Message[]> | null;
+  messages: Record<number, Message[]>;
   selectedChat?: number | null;
   isModalAddUserToChatOpen?: boolean;
   isModalRemoveUserFromChatOpen?: boolean;
@@ -24,8 +24,8 @@ interface State {
 export class Store extends EventBus {
   private state: State = {
     user: null,
-    chats: null,
-    messages: null,
+    chats: [],
+    messages: [],
     isModalAddUserToChatOpen: false,
     isModalRemoveUserFromChatOpen: false,
     isModalChangeChatAvatarOpen: false,
