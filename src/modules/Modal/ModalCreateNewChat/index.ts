@@ -10,11 +10,19 @@ import store from "../../../utils/Store";
 import Block from "../../../utils/Block";
 import { FormInput } from "../../../components/FormInput";
 
-export class ModalCreateNewChatBase extends Block {
+interface Props {
+  events?: {
+    click: (event: Event) => void;
+  };
+  isOpen: boolean;
+  title: string;
+}
+
+export class ModalCreateNewChatBase extends Block<Props> {
   constructor() {
     super({
       title: "Enter new chat name",
-
+      isOpen: false,
       events: {
         click: (event: Event) => {
           if (event.target === event.currentTarget) {
@@ -50,7 +58,6 @@ export class ModalCreateNewChatBase extends Block {
     // Check if chatNameInputBlock is a single Block instance
     if (!Array.isArray(chatNameInputBlock)) {
       const data = handleFormSubmit(chatNameInputBlock as FormCommonInput);
-      console.log("DATA", data);
 
       ChatsController.create(data.title);
 

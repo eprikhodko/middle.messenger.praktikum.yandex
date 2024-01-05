@@ -8,13 +8,16 @@ import ChatsController from "../../../controllers/ChatsController";
 import { withStore } from "../../../utils/Store";
 import store from "../../../utils/Store";
 import { ChatUsers } from "../../Chat/components/ChatUsers";
+import { FormInput } from "../../../components/FormInput";
 import Block from "../../../utils/Block";
 
 interface Props {
-  onClick: () => void;
   events?: {
-    click: () => void;
+    click: (event: Event) => void;
   };
+  isOpen: boolean;
+  title: string;
+  selectedChat: number;
 }
 
 export class ModalRemoveUserFromChatBase extends Block<Props> {
@@ -26,7 +29,6 @@ export class ModalRemoveUserFromChatBase extends Block<Props> {
       events: {
         click: (event) => {
           if (event.target === event.currentTarget) {
-            // if (event.target === this.getContent()) {
             store.set("isModalRemoveUserFromChatOpen", false);
           }
         },
@@ -56,12 +58,21 @@ export class ModalRemoveUserFromChatBase extends Block<Props> {
   }
 
   onSubmit() {
-    const data = handleFormSubmit(this.children.chatNameInput);
+    const chatNameInputBlock = this.children.chatNameInput;
 
-    ChatsController.removeUserFromChat(this.props.selectedChat, data.user_id);
+    if (!Array.isArray(chatNameInputBlock)) {
+      const data = handleFormSubmit(chatNameInputBlock as FormCommonInput);
 
-    store.set("isModalRemoveUserFromChatOpen", false); // close modal after we remove user
-    this.children.chatNameInput.children.formInput.clearInputValue();
+      ChatsController.removeUserFromChat(this.props.selectedChat, data.user_id);
+
+      store.set("isModalRemoveUserFromChatOpen", false); // close modal after we remove user
+
+      const formInputBlock = chatNameInputBlock.children.formInput as FormInput;
+      // Check if formInputBlock is a single Block instance
+      if (!Array.isArray(formInputBlock)) {
+        formInputBlock.clearInputValue();
+      }
+    }
   }
 
   render() {

@@ -42,9 +42,7 @@ export class ChatPage extends Block {
       },
     });
 
-    this.children.modalCreateNewChat = new ModalCreateNewChat({
-      isOpen: false,
-    });
+    this.children.modalCreateNewChat = new ModalCreateNewChat({});
     this.children.modalAddUserToChat = new ModalAddUserToChat({});
     this.children.modalRemoveUserFromChat = new ModalRemoveUserFromChat({});
     this.children.modalChangeChatAvatar = new ModalChangeChatAvatar({});
