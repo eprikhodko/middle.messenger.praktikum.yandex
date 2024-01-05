@@ -42,7 +42,7 @@ const formInputsProps = [
 const linkSignUpProps = {
   text: "Sign Up",
   to: ROUTE.SIGN_UP,
-  styles: "button button-link"
+  styles: "button button-link",
 };
 
 export class SignInPage extends Block {
@@ -68,14 +68,11 @@ export class SignInPage extends Block {
   }
 
   onSubmit() {
-    const storeState = store.getState();
-    if (storeState.user) {
-      Router.go(ROUTE.MESSENGER);
-    } else {
-      const data = handleFormSubmit(this.children.formInputs as FormCommonInput[]);
+    const data = handleFormSubmit(
+      this.children.formInputs as FormCommonInput[]
+    );
 
-      AuthController.signin(data as SignupData);
-    }
+    AuthController.signin(data as SignupData);
   }
 
   render() {
