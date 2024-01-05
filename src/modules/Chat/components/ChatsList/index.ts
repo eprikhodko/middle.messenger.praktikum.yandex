@@ -1,5 +1,5 @@
 import Block from "../../../../utils/Block";
-import template from "./chatsList.hbs";
+import template from "./ChatsList.hbs";
 import "./ChatsList.css";
 import { Chat } from "../../../Chat/components/Chat";
 import { withStore } from "../../../../utils/Store";
