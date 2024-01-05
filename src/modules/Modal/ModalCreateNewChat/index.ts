@@ -1,11 +1,13 @@
 import template from "./ModalCreateNewChat.hbs";
 import "./ModalCreateNewChat.css";
-import { ModalBase } from "../ModalBase";
 import { ButtonCommon } from "../../../components/ButtonCommon";
 import { FormCommonInput } from "../../../components/FormCommonInput";
 import { InputName, InputType, ValidationPattern } from "../../../utils/enums";
 import handleFormSubmit from "../../../utils/handleFormSubmit";
 import ChatsController from "../../../controllers/ChatsController";
+import { withStore } from "../../../utils/Store";
+import store from "../../../utils/Store";
+import Block from "../../../utils/Block";
 
 interface Props {
   onClick: () => void;
@@ -14,11 +16,20 @@ interface Props {
   };
 }
 
-export class ModalCreateNewChat extends ModalBase<Props> {
+export class ModalCreateNewChatBase extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,
       title: "Enter new chat name",
+
+      events: {
+        click: (event) => {
+          if (event.target === event.currentTarget) {
+            // if (event.target === this.getContent()) {
+            store.set("isModalCreateNewChatOpen", false);
+          }
+        },
+      },
     });
   }
 
@@ -48,10 +59,17 @@ export class ModalCreateNewChat extends ModalBase<Props> {
 
     ChatsController.create(data.title);
 
-    this.props.isOpen = false; // close modal after we create new chat
+    store.set("isModalCreateNewChatOpen", false); // close modal after we add new user
+    this.children.chatNameInput.children.formInput.clearInputValue();
   }
 
   render() {
     return this.compile(template, { ...this.props });
   }
 }
+
+const withModalState = withStore((state) => ({
+  isOpen: state.isModalCreateNewChatOpen,
+}));
+
+export const ModalCreateNewChat = withModalState(ModalCreateNewChatBase);

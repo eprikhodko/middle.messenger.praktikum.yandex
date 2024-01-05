@@ -1,7 +1,7 @@
 import Block from "../../utils/Block";
 import template from "./chat.hbs";
 import "./chat.css";
-import { InputType, InputName, ValidationPattern } from "../../utils/enums";
+import { InputType, InputName, ValidationPattern, ROUTE } from "../../utils/enums";
 import { FormInput } from "../../components/FormInput";
 // import { ChatListItem } from "../../modules/Chat/components/ChatListItem";
 // import { ChatAvatar } from "../../modules/Chat/components/ChatAvatar";
@@ -17,6 +17,9 @@ import { ChatHeader } from "../../modules/Chat/components/ChatHeader";
 import { ModalAddUserToChat } from "../../modules/Modal/ModalAddUserToChat";
 import { ModalRemoveUserFromChat } from "../../modules/Modal/ModalRemoveUserFromChat";
 import { ModalChangeChatAvatar } from "../../modules/Modal/ModalChangeChatAvatar";
+import MessagesController from "../../controllers/MessagesController";
+import { ChatFooter } from "../../modules/Chat/components/ChatFooter";
+import { Link } from "../../components/Link";
 
 // const searchInputProps = {
 //   type: InputType.SEARCH,
@@ -36,6 +39,12 @@ const sendMessageInputProps = {
   inputClassName: "send-message-form__input",
 };
 
+const linkProfileProps = {
+  text: "Profile",
+  to: ROUTE.SETTINGS,
+  styles: "button button-link"
+};
+
 export class ChatPage extends Block {
   constructor() {
     super({});
@@ -44,6 +53,8 @@ export class ChatPage extends Block {
   init() {
     this.children.chatHeader = new ChatHeader({});
     this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
+
+    this.children.linkProfile = new Link(linkProfileProps)
 
     this.children.buttonCreateNewChat = new ButtonCommon({
       text: "Create new chat",
@@ -60,11 +71,7 @@ export class ChatPage extends Block {
     this.children.modalAddUserToChat = new ModalAddUserToChat({});
     this.children.modalRemoveUserFromChat = new ModalRemoveUserFromChat({});
     this.children.modalChangeChatAvatar = new ModalChangeChatAvatar({});
-
-    // this.children.searchInput = new FormInput(searchInputProps);
-    this.children.sendMessageInput = new FormInput(sendMessageInputProps);
-
-    this.children.buttonSendMessage = new ButtonArrow({});
+    this.children.chatFooter = new ChatFooter({});
 
     this.children.chatsList = new ChatsList({ isLoaded: false });
 

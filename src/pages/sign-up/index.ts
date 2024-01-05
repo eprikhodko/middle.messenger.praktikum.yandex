@@ -76,6 +76,7 @@ const formInputsProps = [
 const linkSignUpProps = {
   text: "Sign In",
   to: ROUTE.SIGN_IN,
+  styles: "button button-link",
 };
 
 export class SignUpPage extends Block {

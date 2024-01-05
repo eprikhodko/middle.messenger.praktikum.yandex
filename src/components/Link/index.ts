@@ -6,6 +6,7 @@ import { PropsWithRouter, withRouter } from '../../hocs/withRouter';
 interface LinkProps extends PropsWithRouter {
   to: string;
   text: string;
+  styles: string;
   events?: {
     click: () => void;
   };

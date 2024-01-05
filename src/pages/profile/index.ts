@@ -98,6 +98,7 @@ const buttonBackProps = {
 const linkChangePasswordProps = {
   text: "Change password",
   to: ROUTE.CHANGE_PASSWORD,
+  styles: "button button-link"
 };
 
 export class ProfilePageBase extends Block {
