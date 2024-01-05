@@ -10,77 +10,103 @@ class ChatsController {
   }
 
   async create(title: string) {
-    await this.api.create(title);
+    try {
+      await this.api.create(title);
 
-    this.fetchChats();
+      this.fetchChats();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   async fetchChats() {
-    const chats = await this.api.read();
+    try {
+      const chats = await this.api.read();
 
-    chats.map(async (chat) => {
-      const token = await this.getToken(chat.id);
+      chats.map(async (chat) => {
+        const token = await this.getToken(chat.id);
 
-      await MessagesController.connect(chat.id, token);
-    });
+        await MessagesController.connect(chat.id, token);
+      });
 
-    console.log(chats);
-    store.set("chats", chats);
+      store.set("chats", chats);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   async addUserToChat(id: number, userId: number) {
-    await this.api.addUsers(id, [userId]);
+    try {
+      await this.api.addUsers(id, [userId]);
 
-    const currentChatId = store.getSelectedChatId();
+      const currentChatId = store.getSelectedChatId();
 
-    this.getChatUsers(currentChatId);
+      this.getChatUsers(currentChatId);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   async removeUserFromChat(chatId: number, userId: number) {
-    await this.api.deleteUsers(chatId, [userId]);
+    try {
+      await this.api.deleteUsers(chatId, [userId]);
 
-    const currentChatId = store.getSelectedChatId();
+      const currentChatId = store.getSelectedChatId();
 
-    this.getChatUsers(currentChatId);
+      this.getChatUsers(currentChatId);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   async getChatUsers(chatId: number) {
-    const chatUsers = await this.api.getUsers(chatId);
+    try {
+      const chatUsers = await this.api.getUsers(chatId);
 
-    console.log("CHATS USERS", chatUsers);
-
-    store.set("chatUsers", chatUsers);
+      store.set("chatUsers", chatUsers);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   async updateChatAvatar(data: FormData, chatId: number) {
     try {
       // Call the API method and wait for the result
-      const response = await this.api.updateChatAvatar(data, chatId);
-
-      // Parse the response string into a JSON object
-      const result = JSON.parse(response);
+      await this.api.updateChatAvatar(data, chatId);
 
       this.fetchChats();
-      // store.set("user", result);
     } catch (e: any) {
       console.error(e);
     }
   }
 
   async delete(id: number) {
-    await this.api.delete(id);
+    try {
+      await this.api.delete(id);
 
-    this.fetchChats();
+      this.fetchChats();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
-  getToken(id: number) {
-    return this.api.getToken(id);
+  async getToken(id: number) {
+    try {
+      return await this.api.getToken(id);
+    } catch (e) {
+      console.error(e);
+      return null;
+    }
   }
 
   async selectChat(id: number) {
-    store.set("selectedChat", id);
+    try {
+      store.set("selectedChat", id);
 
-    this.getChatUsers(id);
+      this.getChatUsers(id);
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
 
