@@ -114,8 +114,8 @@ class Block<P extends Record<string, any> = any> {
     }
   }
 
-  // @ts-ignore
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected componentDidUpdate(_oldProps: P, _newProps: P) {
     return true;
   }
 
@@ -155,6 +155,7 @@ class Block<P extends Record<string, any> = any> {
     return new DocumentFragment();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   protected compile(template: (context: any) => string, context: any) {
     const contextAndStubs = { ...context };
 
@@ -227,7 +228,6 @@ class Block<P extends Record<string, any> = any> {
   private afterRenderCallback?: () => void;
 
   public setAfterRenderCallback(callback: () => void) {
-    
     this.afterRenderCallback = callback;
   }
 
