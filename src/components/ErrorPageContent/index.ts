@@ -1,33 +1,27 @@
 import Block from "../../utils/Block";
 import template from "./ErrorPageContent.hbs";
 import "./ErrorPageContent.css";
-import { ButtonCommon } from "../ButtonCommon";
+import { Link } from "../Link";
+import { ROUTE } from "../../utils/enums";
 
 interface Props {
-  errorCode: number;
+  errorCode: string;
   errorText: string;
-  onClick?: () => void;
-  events: {
-    click: () => void;
-  };
 }
 
-const buttonBackProps = {
+const linkProfileProps = {
   text: "Go back to chats",
-  propClass: "button--primary",
-  onClick: () => {
-    console.log("go back to chats");
-  },
+  to: ROUTE.MESSENGER,
+  styles: "button button-link button--primary",
 };
 
 export class ErrorPageContent extends Block {
   constructor(props: Props) {
-    super({ props }); // this is props from the parent component, we're set them in the 404/500 page components in the errorPageContentProps constant
+    super({ props });
   }
 
   init() {
-    this.children.buttonBack = new ButtonCommon(buttonBackProps);
-    // console.log(this.props); // props from the parent component
+    this.children.linkToMessenger = new Link(linkProfileProps);
   }
 
   render() {

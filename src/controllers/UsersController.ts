@@ -1,9 +1,4 @@
-import API, {
-  UsersAPI,
-  ProfileData,
-  UpdatePassword,
-  Avatar,
-} from "../api/UsersAPI";
+import API, { UsersAPI, ProfileData, UpdatePassword } from "../api/UsersAPI";
 import store from "../utils/Store";
 
 export class UsersController {
@@ -16,7 +11,7 @@ export class UsersController {
   async updateProfileData(data: ProfileData) {
     try {
       await this.api.updateProfileData(data);
-    } catch (e: any) {
+    } catch (e) {
       console.error(e);
     }
   }
@@ -24,7 +19,7 @@ export class UsersController {
   async updatePassword(data: UpdatePassword) {
     try {
       await this.api.updatePassword(data);
-    } catch (e: any) {
+    } catch (e) {
       console.error(e);
     }
   }
@@ -35,19 +30,22 @@ export class UsersController {
       const response = await this.api.updateAvatar(data);
 
       // Parse the response string into a JSON object
-      const result = JSON.parse(response);
+      const result = JSON.parse(response as string);
 
       store.set("user", result);
-    } catch (e: any) {
+    } catch (e) {
       console.error(e);
     }
   }
 
   async fetchUser() {
-    const user = await this.api.read();
+    try {
+      const user = await this.api.read();
 
-    store.set("user", user);
-    console.log("updated? user?", user);
+      store.set("user", user);
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
 

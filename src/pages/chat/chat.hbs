@@ -1,17 +1,22 @@
 <div class="chat-container">
+  {{{modalCreateNewChat}}}
+  {{{modalAddUserToChat}}}
+  {{{modalRemoveUserFromChat}}}
+  {{{modalChangeChatAvatar}}}
+
   <aside class="chat-sidebar">
     <div class="chat-link-profile">
-      <a class="link-profile" href="#">
-        <p>Профиль</p>
+      <span class="link-profile" href="#">
+        {{{linkProfile}}}
         <img
           class="link-profile__icon"
           src="/icons/icon-chevron.svg"
           alt="user profile"
         />
-      </a>
+      </span>
     </div>
 
-    <form class="search-form">
+    {{!-- <form class="search-form">
       <label class="search-form__label" for="search">
         <img
           class="search-form__icon"
@@ -21,63 +26,18 @@
       </label>
 
       {{{searchInput}}}
-    </form>
+    </form> --}}
 
-    <ul class="chat-list">
-      {{#each chatListItems}}
-        {{{this}}}
-      {{/each}}
-    </ul>
+    {{{buttonCreateNewChat}}}
+
+    {{{chatsList}}}
   </aside>
 
   <div class="chat-body">
-    <header class="chat-header">
-      <div class="chat-header__description">
-        {{{chatAvatar}}}
-        <p class="chat-name">Chat name</p>
-      </div>
+    {{{chatHeader}}}
 
-      <button class="chat-header__menu-button" type="button">
-        <img class="" src="/icons/icon-three-dots.svg" alt="" />
-      </button>
-    </header>
+    {{{messenger}}}
 
-    <div class="chat-messages">
-      <div class="chat-messages__date-separator">
-        <p class="chat-messages__date-text">June 19</p>
-      </div>
-
-      <div class="chat-message chat-message--received">
-        <div class="chat-message__text">
-          Hi! Look, an interesting piece of lunar space history has surfaced -
-          NASA at some point asked Hasselblad to adapt the SWC model for lunar
-          missions. Now we all know that the astronauts flew with the 500 EL
-          model - and by the way, all of those camera bodies are still on the
-          lunar surface, as the astronauts only took the film cassettes with
-          them. Hasselblad eventually adapted the SWC for space, but something
-          went wrong and they never made it onto the rocket. Only 25 of them
-          were produced, one of them was recently sold at auction for 45,000
-          euros.
-        </div>
-        <div
-          class="chat-message__timestamp chat-message__timestamp--received"
-        >11:56</div>
-      </div>
-
-      <div class="chat-message chat-message--sent">
-        <div class="chat-message__text">Cool! Thanks for sharing.</div>
-        <div
-          class="chat-message__timestamp chat-message__timestamp--sent"
-        >12:00</div>
-      </div>
-    </div>
-
-    <footer class="chat-footer">
-      <form class="send-message-form">
-        {{{sendMessageInput}}}
-
-        {{{buttonSendMessage}}}
-      </form>
-    </footer>
+    {{{chatFooter}}}
   </div>
 </div>

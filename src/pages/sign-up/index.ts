@@ -76,6 +76,7 @@ const formInputsProps = [
 const linkSignUpProps = {
   text: "Sign In",
   to: ROUTE.SIGN_IN,
+  styles: "button button-link",
 };
 
 export class SignUpPage extends Block {
@@ -101,7 +102,7 @@ export class SignUpPage extends Block {
   }
 
   onSubmit() {
-    const data = handleFormSubmit(this.children.formInputs);
+    const data = handleFormSubmit(this.children.formInputs as FormCommonInput[]);
 
     AuthController.signup(data as SignupData);
   }

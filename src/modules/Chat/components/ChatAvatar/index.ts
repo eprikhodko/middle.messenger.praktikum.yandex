@@ -5,20 +5,13 @@ import "./ChatAvatar.css";
 interface Props {
   sizeDefault?: boolean;
   sizeSmall?: boolean;
-  src: string;
-  onClick?: () => void;
-  events: {
-    click: () => void;
-  };
+  imgSrc: string;
 }
 
 export class ChatAvatar extends Block {
   constructor(props: Props) {
     super({
       ...props,
-      events: {
-        click: props.onClick,
-      },
     });
   }
 

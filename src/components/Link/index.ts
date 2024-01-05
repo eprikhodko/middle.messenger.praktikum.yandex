@@ -3,16 +3,17 @@ import template from "./Link.hbs";
 import "./Link.css";
 import { PropsWithRouter, withRouter } from '../../hocs/withRouter';
 
-interface LinkProps extends PropsWithRouter {
+interface Props extends PropsWithRouter {
   to: string;
   text: string;
+  styles: string;
   events?: {
     click: () => void;
   };
 }
 
-class BaseLink extends Block<LinkProps> {
-  constructor(props: LinkProps) {
+class BaseLink extends Block<Props> {
+  constructor(props: Props) {
     super({
       ...props,
       events: {
@@ -22,7 +23,7 @@ class BaseLink extends Block<LinkProps> {
   }
 
   navigate() {
-    this.props.router.go(this.props.to);
+    this.props.router?.go(this.props.to);
   }
 
   render() {

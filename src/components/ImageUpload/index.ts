@@ -6,9 +6,9 @@ interface Props {
   text?: string;
   type?: "submit" | "button";
   propClass?: string;
-  onSubmit: (event) => void;
+  onSubmit: (event: Event) => void;
   events?: {
-    submit: (event) => void;
+    submit: (event: Event) => void;
   };
 }
 

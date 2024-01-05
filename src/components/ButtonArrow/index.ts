@@ -3,11 +3,10 @@ import template from "./ButtonArrow.hbs";
 import "./ButtonArrow.css";
 
 interface Props {
-  text: string;
   type?: "submit" | "button";
   propClass?: string,
   onClick?: () => void;
-  events: {
+  events?: {
     click: () => void;
   };
 }

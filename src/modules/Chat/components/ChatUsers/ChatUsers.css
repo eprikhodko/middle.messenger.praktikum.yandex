@@ -1,0 +1,9 @@
+.modal-create-new-chat {
+  display: flex;
+  gap: 64px;
+  min-width: 340px;
+}
+
+.modal-chat-users-text {
+  margin: 32px 0 4px;
+}

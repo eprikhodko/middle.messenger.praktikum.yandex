@@ -1,13 +1,6 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from "nanoid";
 
-type ContextAndStubs = {
-  __refs: Record<string, Block>;
-  __children?: Array<{
-    embed: (fragment: DocumentFragment) => void;
-  }>;
-};
-
 class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: "init",
@@ -121,6 +114,7 @@ class Block<P extends Record<string, any> = any> {
     }
   }
 
+  // @ts-ignore
   protected componentDidUpdate(oldProps: P, newProps: P) {
     return true;
   }
@@ -151,6 +145,10 @@ class Block<P extends Record<string, any> = any> {
     this._element = newElement;
 
     this._addEvents();
+
+    if (this.afterRenderCallback) {
+      this.afterRenderCallback();
+    }
   }
 
   protected render(): DocumentFragment {
@@ -224,6 +222,13 @@ class Block<P extends Record<string, any> = any> {
         throw new Error("Нет доступа");
       },
     });
+  }
+
+  private afterRenderCallback?: () => void;
+
+  public setAfterRenderCallback(callback: () => void) {
+    
+    this.afterRenderCallback = callback;
   }
 
   _createDocumentElement(tagName: string) {

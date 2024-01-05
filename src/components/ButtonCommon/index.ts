@@ -4,7 +4,7 @@ import "./ButtonCommon.css";
 
 interface Props {
   text: string;
-  type?: "submit" | "button";
+  type?: string;
   propClass?: string;
   onClick: () => void;
   events?: {
