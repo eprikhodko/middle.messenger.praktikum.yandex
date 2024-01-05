@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   switch (window.location.pathname) {
     case ROUTE.INDEX:
-    // case ROUTE.SIGN_UP:
+      // case ROUTE.SIGN_UP:
       isProtectedRoute = false;
       break;
   }
