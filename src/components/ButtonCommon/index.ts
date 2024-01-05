@@ -4,15 +4,15 @@ import "./ButtonCommon.css";
 
 interface Props {
   text: string;
-  type?: "submit" | "button";
-  propClass?: string,
-  onClick?: () => void;
-  events: {
+  type?: string;
+  propClass?: string;
+  onClick: () => void;
+  events?: {
     click: () => void;
   };
 }
 
-export class ButtonCommon extends Block {
+export class ButtonCommon extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,
@@ -23,6 +23,6 @@ export class ButtonCommon extends Block {
   }
 
   render() {
-    return this.compile(template, this.props);
+    return this.compile(template, { ...this.props });
   }
 }

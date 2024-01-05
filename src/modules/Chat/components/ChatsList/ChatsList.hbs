@@ -1,0 +1,12 @@
+<ul class="chats-list">
+  {{#if isLoaded}}
+    {{#each chats}}
+      <li class="chat-list-item">
+        {{{this}}}
+      </li>
+    {{/each}}
+    
+  {{else}}
+    <li>Loading...</li>
+  {{/if}}
+</ul>

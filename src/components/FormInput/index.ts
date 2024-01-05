@@ -12,7 +12,8 @@ interface Props {
   pattern?: ValidationPattern;
   placeholder?: string;
   onClick?: () => void;
-  events: {
+  onKeypress?: (event: KeyboardEvent) => void;
+  events?: {
     click: () => void;
   };
 }
@@ -24,8 +25,25 @@ export class FormInput extends Block {
       events: {
         click: props.onClick,
         blur: (event: FocusEvent) => this.handleBlur(event, props),
+        keypress: props.onKeypress,
       },
     });
+  }
+
+  public setValue(value: string) {
+    return ((this.element as HTMLInputElement).value = value);
+  }
+
+  public getName() {
+    return (this.element as HTMLInputElement).name;
+  }
+
+  public getValue() {
+    return (this.element as HTMLInputElement).value;
+  }
+
+  public clearInputValue() {
+    return ((this.element as HTMLInputElement).value = "");
   }
 
   render() {
@@ -33,7 +51,7 @@ export class FormInput extends Block {
   }
 
   handleBlur(event: FocusEvent, props: Props) {
-    const eventTarget = event.target as HTMLInputElement
+    const eventTarget = event.target as HTMLInputElement;
     if (props.pattern) {
       validateInput(props.pattern, eventTarget.value, props.id);
     }

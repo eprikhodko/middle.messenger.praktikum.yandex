@@ -1,30 +1,15 @@
 <div>
-  {{#FormAuthLayout title=this.signInForm.title}}
+  <div class="form-container">
+    <h1 class="form-title form-title_margin-large">Sign In</h1>
     <form class="form-common" action="" method="post">
       {{#each formInputs}}
-        {{#FormInputContainer label=this.label for=this.id}}
-          {{{FormInput
-            propClass=../inputClass
-            ref="forminput"
-            type=this.type
-            name=this.name
-            id=this.id
-            pattern=this.pattern
-          }}}
-          {{{FormInputError text=this.errorText for=this.id}}}
-        {{/FormInputContainer}}
+        {{{this}}}
       {{/each}}
     </form>
 
     <div class="form-buttons form-buttons_sign-in">
-      {{#each formButtons}}
-        {{{ButtonCommon
-          text=this.text
-          propClass=this.class
-          type=this.type
-          onClick=this.onClick
-        }}}
-      {{/each}}
+      {{{signInButton}}}
+      {{{link}}}
     </div>
-  {{/FormAuthLayout}}
+  </div>
 </div>

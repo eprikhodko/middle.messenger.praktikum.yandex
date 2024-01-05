@@ -1,8 +1,16 @@
 import validateInput from "./validateInput";
+import { FormInput } from "../components/FormInput";
+import { FormCommonInput } from "../components/FormCommonInput";
+import Block from "./Block";
 
-const handleFormSubmit = () => {
-  getFormData();
+const handleFormSubmit = (children: FormCommonInput[] | FormCommonInput) => {
   validate();
+
+  if (Array.isArray(children)) {
+    return getFormData(children);
+  } else {
+    return getInputData(children);
+  }
 };
 
 const getFormInputs = () => document.querySelectorAll(".form-input");
@@ -17,17 +25,33 @@ const validate = () => {
   });
 };
 
-const getFormData = () => {
-  const inputs = getFormInputs();
-  const formData: Record<string, string> = {};
-
-  inputs.forEach((el) => {
-    const inputElement = el as HTMLInputElement;
-
-    formData[inputElement.name] = inputElement.value;
+function findAllFormInputs(arr: FormCommonInput[]) {
+  const formInputs = arr.map((component) => {
+    return component.children.formInput;
   });
 
-  console.log(formData);
+  return formInputs;
+}
+
+const getFormData = (children: FormCommonInput[]) => {
+  const inputs = findAllFormInputs(children);
+  const inputsValues = inputs.map((child) => [
+    (child as FormInput).getName(),
+    (child as FormInput).getValue(),
+  ]);
+  const data = Object.fromEntries(inputsValues);
+  return data;
+};
+
+const getInputData = (component: Block) => {
+  const formInput = component.children.formInput as FormInput;
+
+  const name = formInput.getName();
+  const value = formInput.getValue();
+
+  return {
+    [name]: value,
+  };
 };
 
 export default handleFormSubmit;

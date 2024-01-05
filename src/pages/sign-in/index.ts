@@ -1,5 +1,11 @@
 import Block from "../../utils/Block";
 import template from "./sign-in.hbs";
+import { ButtonCommon } from "../../components/ButtonCommon";
+import { FormCommonInput } from "../../components/FormCommonInput";
+import { Link } from "../../components/Link";
+import { ROUTE } from "../../utils/enums";
+import handleFormSubmit from "../../utils/handleFormSubmit";
+import "../../components/FormAuthLayout/FormAuthLayout.css";
 import {
   InputType,
   InputName,
@@ -7,55 +13,72 @@ import {
   ErrorMessage,
 } from "../../utils/enums";
 import "./sign-in.css";
-import handleFormSubmit from "../../utils/handleFormSubmit";
+import AuthController from "../../controllers/AuthController";
+import { SignupData } from "../../api/AuthAPI";
+import Router from "../../utils/Router";
+import store from "../../utils/Store";
+
+const formInputsProps = [
+  {
+    type: InputType.TEXT,
+    name: InputName.LOGIN,
+    label: "Login",
+    id: "login",
+    pattern: ValidationPattern.LOGIN,
+    errorText: ErrorMessage.LOGIN,
+    inputClassName: "form-common__input",
+  },
+  {
+    type: InputType.PASSWORD,
+    name: InputName.PASSWORD,
+    label: "Password",
+    id: "password",
+    pattern: ValidationPattern.PASSWORD,
+    errorText: ErrorMessage.PASSWORD,
+    inputClassName: "form-common__input",
+  },
+];
+
+const linkSignUpProps = {
+  text: "Sign Up",
+  to: ROUTE.SIGN_UP,
+  styles: "button button-link"
+};
 
 export class SignInPage extends Block {
   constructor() {
-    super({
-      signInForm: {
-        title: "Sign In",
-      },
+    super({});
+  }
 
-      inputClass: "form-common__input",
-
-      formInputs: [
-        {
-          type: InputType.TEXT,
-          name: InputName.LOGIN,
-          label: "Login",
-          id: "login",
-          pattern: ValidationPattern.LOGIN,
-          errorText: ErrorMessage.LOGIN,
-        },
-        {
-          type: InputType.PASSWORD,
-          name: InputName.PASSWORD,
-          label: "Password",
-          id: "password",
-          pattern: ValidationPattern.PASSWORD,
-          errorText: ErrorMessage.PASSWORD,
-        },
-      ],
-
-      formButtons: [
-        {
-          text: "Sign in",
-          type: "submit",
-          class: "button--primary",
-          onClick: () => {
-            handleFormSubmit();
-          },
-        },
-        {
-          text: "Sign up",
-          type: "button",
-          class: "button--link-primary",
-        },
-      ],
+  init() {
+    this.children.formInputs = formInputsProps.map((props) => {
+      return new FormCommonInput(props);
     });
+
+    this.children.signInButton = new ButtonCommon({
+      text: "Sign In",
+      type: "submit",
+      propClass: "button--primary",
+      onClick: () => {
+        this.onSubmit();
+      },
+    });
+
+    this.children.link = new Link(linkSignUpProps);
+  }
+
+  onSubmit() {
+    const storeState = store.getState();
+    if (storeState.user) {
+      Router.go(ROUTE.MESSENGER);
+    } else {
+      const data = handleFormSubmit(this.children.formInputs as FormCommonInput[]);
+
+      AuthController.signin(data as SignupData);
+    }
   }
 
   render() {
-    return this.compile(template, this.props);
+    return this.compile(template, { ...this.props });
   }
 }

@@ -13,6 +13,8 @@
   --color-ui-bg-message-received: #f8f8f8;
   --color-ui-bg-message-sent: #e4edfd;
   --color-ui-warning: #f00;
+  --color-ui-snow: #fff;
+  --color-ui-modal-overlay: rgb(0 0 0 / 40%); 
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
