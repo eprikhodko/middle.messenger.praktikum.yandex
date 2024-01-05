@@ -2,7 +2,7 @@ import Block from '../utils/Block';
 import Router from '../utils/Router';
 
 export interface PropsWithRouter {
-  router: typeof Router;
+  router?: typeof Router;
 }
 
 export function withRouter<T extends new (...args: any[]) => Block<any>>(Component: T) {

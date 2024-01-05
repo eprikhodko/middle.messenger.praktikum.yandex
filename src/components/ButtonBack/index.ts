@@ -3,11 +3,10 @@ import template from "./ButtonBack.hbs";
 import "./ButtonBack.css";
 
 interface Props {
-  text: string;
   type?: "submit" | "button";
   propClass?: string;
   onClick: () => void;
-  events: {
+  events?: {
     click: () => void;
   };
 }

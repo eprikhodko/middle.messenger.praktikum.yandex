@@ -73,7 +73,7 @@ export class SignInPage extends Block {
     if (storeState.user) {
       Router.go(ROUTE.MESSENGER);
     } else {
-      const data = handleFormSubmit(this.children.formInputs);
+      const data = handleFormSubmit(this.children.formInputs as FormCommonInput[]);
 
       AuthController.signin(data as SignupData);
     }

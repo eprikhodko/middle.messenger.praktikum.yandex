@@ -29,7 +29,7 @@ export class ChatPage extends Block {
 
   init() {
     this.children.chatHeader = new ChatHeader({});
-    this.children.buttonOpenChatMenu = new ButtonOpenChatMenu({});
+    this.children.buttonOpenChatMenu = new ButtonOpenChatMenu();
 
     this.children.linkProfile = new Link(linkProfileProps);
 
