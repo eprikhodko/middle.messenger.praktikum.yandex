@@ -51,6 +51,9 @@ export class AuthController {
 
       await this.api.logout();
 
+      store.set("user", null);
+      store.set("selectedChat", null);
+
       router.go("/");
     } catch (e) {
       console.error(e);

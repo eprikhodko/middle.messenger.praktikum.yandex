@@ -15,8 +15,6 @@ import {
 import "./sign-in.css";
 import AuthController from "../../controllers/AuthController";
 import { SignupData } from "../../api/AuthAPI";
-import Router from "../../utils/Router";
-import store from "../../utils/Store";
 
 const formInputsProps = [
   {
@@ -42,7 +40,7 @@ const formInputsProps = [
 const linkSignUpProps = {
   text: "Sign Up",
   to: ROUTE.SIGN_UP,
-  styles: "button button-link"
+  styles: "button button-link",
 };
 
 export class SignInPage extends Block {
@@ -68,14 +66,11 @@ export class SignInPage extends Block {
   }
 
   onSubmit() {
-    const storeState = store.getState();
-    if (storeState.user) {
-      Router.go(ROUTE.MESSENGER);
-    } else {
-      const data = handleFormSubmit(this.children.formInputs as FormCommonInput[]);
+    const data = handleFormSubmit(
+      this.children.formInputs as FormCommonInput[]
+    );
 
-      AuthController.signin(data as SignupData);
-    }
+    AuthController.signin(data as SignupData);
   }
 
   render() {
