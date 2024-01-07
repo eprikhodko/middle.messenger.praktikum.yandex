@@ -1,0 +1,19 @@
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 64px;
+  background: var(--color-ui-snow);
+  border-radius: 12px;
+  box-shadow: 0 0 6px 0 rgb(0 0 0 / 14%);
+  padding: 24px;
+
+  .dropdown-menu__items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.dropdown-menu--visible {
+  display: block;
+}

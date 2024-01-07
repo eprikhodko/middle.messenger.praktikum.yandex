@@ -1,62 +1,27 @@
 <div class="settings-container">
   <aside class="sidebar-back-button">
-    <button type="button" class="button-arrow button-arrow--left">
-      <img
-        class="button-arrow__icon"
-        src="/icons/icon-arrow.svg"
-        alt="arrow icon"
-      />
-    </button>
+    {{{buttonBack}}}
   </aside>
 
   <main class="settings-main-content">
     <div class="settings-avatar">
-      <label for="avatar-input" class="settings-avatar__label">
-        <img
-          class="settings-avatar__img"
-          src="/avatar-placeholder.svg"
-          alt="Avatar"
-          onerror="this.onerror=null; this.src='/avatar-placeholder.svg';"
-        />
-      </label>
-      <input
-        class="settings-avatar__file-input"
-        id="avatar-input"
-        name="avatar"
-        type="file"
-        onchange="loadFile(event)"
-      />
+      {{{userAvatar}}}
     </div>
 
-    <p class="settings__username">Ivan</p>
+    {{{imageUpload}}}
 
     <form class="settings-form" action="" method="">
       {{#each formInputs}}
-        <div class="settings-form__input-container">
-           <label for={{this.id}} class="settings-form__label">{{this.label}}</label>
-          {{{FormInput
-            ref="forminput"
-            value=this.value
-            propClass=../inputClass
-            type=this.type
-            name=this.name
-            id=this.id
-            pattern=this.pattern
-          }}}
-          {{{FormInputError text=this.errorText for=this.id propClass="form-common__input-error--settings-error"}}}
-        </div>
+        {{{this}}}
       {{/each}}
     </form>
 
     <div class="settings-buttons">
-      {{#each formButtons}}
-        {{{ButtonCommon
-          text=this.text
-          propClass=this.propClass
-          type=this.type
-          onClick=this.onClick
-        }}}
-      {{/each}}
+      {{{saveChangesButton}}}
+
+      {{{linkChangePassword}}}
+
+      {{{buttonSignOut}}}
     </div>
   </main>
 </div>

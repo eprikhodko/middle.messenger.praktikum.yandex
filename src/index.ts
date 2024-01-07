@@ -1,33 +1,49 @@
 import "./main.css";
 import "./index.css";
 
-import { registerComponent } from "./utils/registerComponent";
-import { render } from "./utils/render";
-import { Button } from "./components/Button";
-import { ButtonCommon } from "./components/ButtonCommon";
-import { FormAuthLayout } from "./components/FormAuthLayout";
-import { FormInput } from "./components/FormInput";
-import { FormInputError } from "./components/FormInputError";
-import { FormInputContainer } from "./components/FormInputContainer";
-import { ErrorPageContent } from "./components/ErrorPageContent";
-import { ChatAvatar } from "./modules/Chat/components/ChatAvatar";
-import { ChatListItem } from "./modules/Chat/components/ChatListItem";
-import { ButtonArrow } from "./components/ButtonArrow";
-import { Link } from "./components/Link";
-import { ROUTE } from "./utils/render";
+import Router from "./utils/Router";
+import { ROUTE } from "./utils/enums";
+import { SignInPage } from "./pages/sign-in";
+import { SignUpPage } from "./pages/sign-up";
+import { ChatPage } from "./pages/chat";
+import { ProfilePage } from "./pages/profile";
+import { ChangePasswordPage } from "./pages/change-password";
+import { Error404Page } from "./pages/404";
+import { Error500Page } from "./pages/500";
+import AuthController from "./controllers/AuthController";
 
-registerComponent("Button", Button);
-registerComponent("ButtonCommon", ButtonCommon);
-registerComponent("FormAuthLayout", FormAuthLayout);
-registerComponent("FormInput", FormInput);
-registerComponent("FormInputError", FormInputError);
-registerComponent("FormInputContainer", FormInputContainer);
-registerComponent("ErrorPageContent", ErrorPageContent);
-registerComponent("ChatAvatar", ChatAvatar);
-registerComponent("ChatListItem", ChatListItem);
-registerComponent("ButtonArrow", ButtonArrow);
-registerComponent("Link", Link);
+window.addEventListener("DOMContentLoaded", async () => {
+  Router.use(ROUTE.INDEX, SignInPage)
+    .use(ROUTE.SIGN_UP, SignUpPage)
+    .use(ROUTE.SETTINGS, ProfilePage)
+    .use(ROUTE.MESSENGER, ChatPage)
+    .use(ROUTE.CHANGE_PASSWORD, ChangePasswordPage)
+    .use(ROUTE.ERROR_404, Error404Page)
+    .use(ROUTE.ERROR_500, Error500Page);
 
-window.addEventListener("DOMContentLoaded", () => {
-  render(ROUTE.HOME);
+  let isProtectedRoute = true;
+
+  switch (window.location.pathname) {
+    case ROUTE.INDEX:
+      // case ROUTE.SIGN_UP:
+      isProtectedRoute = false;
+      break;
+  }
+
+  try {
+    await AuthController.fetchUser();
+
+    Router.start();
+
+    if (!isProtectedRoute) {
+      Router.go(ROUTE.SETTINGS);
+      Router.go(ROUTE.INDEX);
+    }
+  } catch (e) {
+    Router.start();
+
+    if (isProtectedRoute) {
+      Router.go(ROUTE.INDEX);
+    }
+  }
 });

@@ -1,0 +1,13 @@
+.avatar-upload-form {
+  margin-top: 56px;
+}
+
+.avatar-upload-form__submit-input {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-snow);
+  cursor: pointer;
+  background-color: var(--color-ui-primary);
+  padding: 8px 16px;
+  border-radius: 8px;
+}

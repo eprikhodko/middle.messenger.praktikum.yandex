@@ -1,33 +1,27 @@
 import Block from "../../utils/Block";
 import template from "./ErrorPageContent.hbs";
 import "./ErrorPageContent.css";
+import { Link } from "../Link";
+import { ROUTE } from "../../utils/enums";
 
 interface Props {
-  errorCode: number;
+  errorCode: string;
   errorText: string;
-  onClick?: () => void;
-  events: {
-    click: () => void;
-  };
 }
+
+const linkProfileProps = {
+  text: "Go back to chats",
+  to: ROUTE.MESSENGER,
+  styles: "button button-link button--primary",
+};
 
 export class ErrorPageContent extends Block {
   constructor(props: Props) {
-    super({
-      ...props,
-      events: {
-        click: props.onClick,
-      },
+    super({ props });
+  }
 
-      buttonGoBack: {
-        text: "Go back to chats",
-        type: "button",
-        propClass: "button--primary",
-        onClick: () => {
-          console.log("clicked")
-        },
-      },
-    });
+  init() {
+    this.children.linkToMessenger = new Link(linkProfileProps);
   }
 
   render() {

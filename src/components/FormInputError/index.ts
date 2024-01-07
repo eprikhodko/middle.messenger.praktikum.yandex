@@ -4,8 +4,8 @@ import "./FormInputError.css";
 
 interface Props {
   text: string;
-  for: string;
-  propClass: string;
+  id: string;
+  propClass?: string;
   onClick?: () => void;
   events: {
     click: () => void;
