@@ -1,6 +1,6 @@
-import { API } from "./enums";
+import { API } from "./enums.js";
 
-enum METHOD {
+export enum METHOD {
   GET = "GET",
   POST = "POST",
   PUT = "PUT",

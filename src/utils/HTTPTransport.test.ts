@@ -1,5 +1,5 @@
 import sinon, { SinonFakeXMLHttpRequest, SinonFakeXMLHttpRequestStatic } from 'sinon';
-import HTTPTransport from './HTTPTransport';
+import HTTPTransport, { METHOD } from './HTTPTransport.js';
 import { expect } from 'chai';
 
 describe('HTTPTransport', () => {
@@ -29,6 +29,6 @@ describe('HTTPTransport', () => {
 
     const [request] = requests;
 
-    expect(request.method).to.eq('Get');
+    expect(request.method).to.eq(METHOD.GET);
   });
 });

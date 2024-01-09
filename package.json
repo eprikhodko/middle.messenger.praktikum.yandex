@@ -12,7 +12,7 @@
     "typecheck": "tsc --noEmit",
     "stylelint": "stylelint '**/*.css'",
     "stylelintfix": "stylelint '**/*.css' --fix",
-    "test": "./node_modules/.bin/mocha"
+    "test": "node --loader ts-node/esm ./node_modules/.bin/mocha"
   },
   "devDependencies": {
     "@types/chai": "4.3.11",
@@ -23,9 +23,11 @@
     "@typescript-eslint/parser": "6.13.2",
     "chai": "5.0.0",
     "eslint": "8.55.0",
+    "esmock": "2.6.0",
     "express": "4.18.2",
     "jsdom": "23.2.0",
     "mocha": "10.2.0",
+    "node-esm-loader": "0.3.0",
     "postcss-nesting": "12.0.1",
     "prettier": "3.1.0",
     "sinon": "17.0.1",
