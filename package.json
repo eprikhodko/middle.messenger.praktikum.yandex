@@ -11,17 +11,27 @@
     "lint": "eslint . && tsc --noEmit && stylelint '**/*.css'",
     "typecheck": "tsc --noEmit",
     "stylelint": "stylelint '**/*.css'",
-    "stylelintfix": "stylelint '**/*.css' --fix"
+    "stylelintfix": "stylelint '**/*.css' --fix",
+    "test": "./node_modules/.bin/mocha"
   },
   "devDependencies": {
+    "@types/chai": "4.3.11",
+    "@types/jsdom": "21.1.6",
+    "@types/mocha": "10.0.6",
+    "@types/sinon": "17.0.2",
     "@typescript-eslint/eslint-plugin": "6.13.2",
     "@typescript-eslint/parser": "6.13.2",
+    "chai": "5.0.0",
     "eslint": "8.55.0",
     "express": "4.18.2",
+    "jsdom": "23.2.0",
+    "mocha": "10.2.0",
     "postcss-nesting": "12.0.1",
     "prettier": "3.1.0",
+    "sinon": "17.0.1",
     "stylelint": "15.11.0",
     "stylelint-config-standard": "34.0.0",
+    "ts-node": "10.9.2",
     "typescript": "5.3.3",
     "vite": "5.0.0",
     "vite-plugin-handlebars": "1.6.0"
