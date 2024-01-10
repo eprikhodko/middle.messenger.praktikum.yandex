@@ -56,5 +56,30 @@ describe("HTTPTransport", () => {
         API.API_URL + AUTH_API.BASE_URL + AUTH_API.SIGN_UP
       );
     });
+
+    it(`.post(${
+      AUTH_API.BASE_URL + AUTH_API.SIGN_UP
+    }, data) should send POST request with correct signup url and payload`, () => {
+      const mockDataPayload = {
+        first_name: "user_first-name",
+        second_name: "user_second-name",
+        login: "test-login",
+        email: "testemail@gmail.com",
+        password: "123456",
+        phone: "123321123",
+      };
+
+      instance.post(AUTH_API.SIGN_UP, mockDataPayload);
+
+      const [request] = requests;
+
+      console.log(request);
+
+      expect(request.url).to.eq(
+        API.API_URL + AUTH_API.BASE_URL + AUTH_API.SIGN_UP
+      );
+
+      expect(JSON.parse(request.requestBody)).to.deep.equal(mockDataPayload);
+    });
   });
 });

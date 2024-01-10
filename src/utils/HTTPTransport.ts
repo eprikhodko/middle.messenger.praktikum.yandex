@@ -25,7 +25,7 @@ export default class HTTPTransport {
     return this.request(this.endpoint + path);
   };
 
-  public post: RequestMethod = (path, data) => {
+  public post: RequestMethod = (path, data?) => {
     return this.request(this.endpoint + path, {
       data,
       method: METHOD.POST,
