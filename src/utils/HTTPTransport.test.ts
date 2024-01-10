@@ -47,18 +47,6 @@ describe("HTTPTransport", () => {
   describe("Auth handling", () => {
     it(`.post(${
       AUTH_API.BASE_URL + AUTH_API.SIGN_UP
-    }) should send POST request to the correct sign up url`, () => {
-      instance.post(AUTH_API.SIGN_UP);
-
-      const [request] = requests;
-
-      expect(request.url).to.eq(
-        API.API_URL + AUTH_API.BASE_URL + AUTH_API.SIGN_UP
-      );
-    });
-
-    it(`.post(${
-      AUTH_API.BASE_URL + AUTH_API.SIGN_UP
     }, data) should send POST request with correct signup url and payload`, () => {
       const mockDataPayload = {
         first_name: "user_first-name",
