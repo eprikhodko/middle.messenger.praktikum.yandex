@@ -37,37 +37,93 @@ describe("HTTPTransport", () => {
   });
 
   it(".post() should send POST request", () => {
-    instance.post(AUTH_API.SIGN_UP);
+    instance.post(AUTH_API.USER);
 
     const [request] = requests;
 
     expect(request.method).to.eq(METHOD.POST);
   });
 
-  describe("Auth handling", () => {
-    it(`.post(${
-      AUTH_API.BASE_URL + AUTH_API.SIGN_UP
-    }, data) should send POST request with correct signup url and payload`, () => {
-      const mockDataPayload = {
-        first_name: "user_first-name",
-        second_name: "user_second-name",
-        login: "test-login",
-        email: "testemail@gmail.com",
-        password: "123456",
-        phone: "123321123",
-      };
+  it(".put() should send PUT request", () => {
+    instance.put(AUTH_API.USER);
 
-      instance.post(AUTH_API.SIGN_UP, mockDataPayload);
+    const [request] = requests;
 
-      const [request] = requests;
+    expect(request.method).to.eq(METHOD.PUT);
+  });
 
-      console.log(request);
+  it(".delete() should send DELETE request", () => {
+    instance.delete(AUTH_API.USER);
 
-      expect(request.url).to.eq(
-        API.API_URL + AUTH_API.BASE_URL + AUTH_API.SIGN_UP
-      );
+    const [request] = requests;
 
-      expect(JSON.parse(request.requestBody)).to.deep.equal(mockDataPayload);
-    });
+    expect(request.method).to.eq(METHOD.DELETE);
+  });
+
+  it("should send a request to a correct passed url", () => {
+    instance.get(AUTH_API.USER);
+
+    const [request] = requests;
+
+    expect(request.url).to.eq(API.API_URL + AUTH_API.BASE_URL + AUTH_API.USER);
+  });
+
+  it("should send a request with the correct request body", () => {
+    const mockDataPayload = {
+      first_name: "user_first-name",
+      second_name: "user_second-name",
+      login: "test-login",
+      email: "testemail@gmail.com",
+      password: "123456",
+      phone: "123321123",
+    };
+
+    instance.post(AUTH_API.USER + AUTH_API.SIGN_UP, mockDataPayload);
+
+    const [request] = requests;
+
+    expect(JSON.parse(request.requestBody)).to.deep.equal(mockDataPayload);
+  });
+
+  it("should send a request with 'Content-Type: application/json' headers", () => {
+    instance.get(AUTH_API.USER);
+
+    const [request] = requests;
+
+    expect(request.requestHeaders["Content-Type"]).to.include(
+      "application/json",
+      "Request does not have 'Content-Type: application/json' header"
+    );
+  });
+
+  it("should return the correct response", async () => {
+    xhr.onCreate = (request: SinonFakeXMLHttpRequest) => {
+      // console.log(request);
+      setTimeout(() => {
+        request.respond(
+          200,
+          { "Content-Type": "application/json" },
+          '{ "id": 123, "first_name": "Petya", "second_name": "Pupkin", "display_name": "Petya Pupkin", "phone": "+79001001100", "login": "userLogin", "avatar": "/path/to/avatar.jpg", "email": "string@ya.ru" }'
+        );
+      }, 50);
+    };
+
+    const response = await instance.get(AUTH_API.USER);
+
+    // console.log(response);
+
+    expect(response).to.deep.equal(
+      {
+        id: 123,
+        first_name: "Petya",
+        second_name: "Pupkin",
+        display_name: "Petya Pupkin",
+        phone: "+79001001100",
+        login: "userLogin",
+        avatar: "/path/to/avatar.jpg",
+        email: "string@ya.ru",
+      },
+      "Response does not match the expected value"
+    );
   });
 });

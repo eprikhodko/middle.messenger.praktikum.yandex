@@ -64,3 +64,8 @@ export enum AUTH_API {
   USER = "/user",
   SIGN_UP = "/signup"
 }
+
+export enum USERS_API {
+  BASE_URL = "/user",
+  AVATAR = "/profile/avatar",
+}
