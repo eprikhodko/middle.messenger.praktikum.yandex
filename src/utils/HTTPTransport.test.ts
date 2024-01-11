@@ -98,7 +98,6 @@ describe("HTTPTransport", () => {
 
   it("should return the correct response", async () => {
     xhr.onCreate = (request: SinonFakeXMLHttpRequest) => {
-      // console.log(request);
       setTimeout(() => {
         request.respond(
           200,
@@ -109,8 +108,6 @@ describe("HTTPTransport", () => {
     };
 
     const response = await instance.get(AUTH_API.USER);
-
-    // console.log(response);
 
     expect(response).to.deep.equal(
       {
