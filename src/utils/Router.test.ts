@@ -40,6 +40,21 @@ describe("Router", () => {
     });
   });
 
+  describe(".forward()", () => {
+    it("should render a page on history forward action", () => {
+      Router.use("/", BlockMock).use("/another-route", BlockMock).start();
+
+      Router.go("/");
+      Router.go("/another-route");
+
+      Router.back();
+
+      Router.forward();
+
+      expect(getContentFake.callCount).to.eq(2);
+    });
+  });
+
   it("should render a page on start", () => {
     Router.use("/", BlockMock).start();
 
