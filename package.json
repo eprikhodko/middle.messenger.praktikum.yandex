@@ -19,26 +19,26 @@
     "@types/chai": "4.3.11",
     "@types/jsdom": "21.1.6",
     "@types/mocha": "10.0.6",
-    "@types/sinon": "17.0.2",
-    "@typescript-eslint/eslint-plugin": "6.13.2",
-    "@typescript-eslint/parser": "6.13.2",
+    "@types/sinon": "17.0.3",
+    "@typescript-eslint/eslint-plugin": "6.19.0",
+    "@typescript-eslint/parser": "6.19.0",
     "chai": "5.0.0",
-    "eslint": "8.55.0",
-    "esmock": "2.6.0",
+    "eslint": "8.56.0",
+    "esmock": "2.6.2",
     "express": "4.18.2",
     "jsdom": "23.2.0",
     "mocha": "10.2.0",
     "node-esm-loader": "0.3.0",
     "husky": "8.0.3",
-    "postcss-nesting": "12.0.1",
-    "prettier": "3.1.0",
+    "postcss-nesting": "12.0.2",
+    "prettier": "3.2.4",
     "sinon": "17.0.1",
-    "stylelint": "15.11.0",
-    "stylelint-config-standard": "34.0.0",
+    "stylelint": "16.1.0",
+    "stylelint-config-standard": "36.0.0",
     "ts-node": "10.9.2",
     "typescript": "5.3.3",
-    "vite": "5.0.0",
-    "vite-plugin-handlebars": "1.6.0"
+    "vite": "5.0.11",
+    "vite-plugin-handlebars": "2.0.0"
   },
   "dependencies": {
     "express-history-api-fallback": "2.2.1",
@@ -46,6 +46,6 @@
     "stylelint-selector-bem-pattern": "3.0.1"
   },
   "engines": {
-    "node": ">=18.7.0"
+    "node": ">=18.12.0"
   }
 }
