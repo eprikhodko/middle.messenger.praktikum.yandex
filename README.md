@@ -10,6 +10,7 @@
 - Vite
 - TypeScript
 - Express
+- Mocha/Chai/Sinon
 
 ### Установка и запуск
 
@@ -40,3 +41,6 @@ npm install
 Линтинг осуществляется при помощи команды:
 `npm run lint`
 При этом будет запущен eslint, тайпчекинг, а так же stylelint.
+
+Запуск тестов:
+`npm run test`
