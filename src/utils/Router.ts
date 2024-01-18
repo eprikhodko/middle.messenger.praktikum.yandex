@@ -1,6 +1,7 @@
 import Block from "./Block";
 
 export interface BlockConstructable<
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   P extends Record<string, any> = Record<string, any>,
 > {
   new (props: P): Block<P>;

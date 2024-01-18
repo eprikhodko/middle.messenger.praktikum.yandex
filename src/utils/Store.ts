@@ -51,6 +51,7 @@ export class Store extends EventBus {
 
 const store = new Store();
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function withStore<SP extends Partial<Record<string, any>>>(
   mapStateToProps: (state: State) => SP
 ) {
