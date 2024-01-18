@@ -12,7 +12,9 @@ export enum StoreEvents {
 interface State {
   user: User | null;
   chats: ChatInfo[];
-  chatUsers: any;
+  chatUsers: (User & {
+    role: string;
+  })[];
   messages: Record<number, Message[]>;
   selectedChat?: number | null;
   isModalAddUserToChatOpen?: boolean;
