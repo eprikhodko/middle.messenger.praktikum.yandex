@@ -1,4 +1,6 @@
-enum METHOD {
+import { API } from "./enums.js";
+
+export enum METHOD {
   GET = "GET",
   POST = "POST",
   PUT = "PUT",
@@ -12,7 +14,7 @@ type RequestMethod = <R = unknown>(
 ) => Promise<R>;
 
 export default class HTTPTransport {
-  static API_URL = "https://ya-praktikum.tech/api/v2";
+  static API_URL = API.API_URL;
   protected endpoint: string;
 
   constructor(endpoint: string) {
@@ -23,7 +25,7 @@ export default class HTTPTransport {
     return this.request(this.endpoint + path);
   };
 
-  public post: RequestMethod = (path: string, data) => {
+  public post: RequestMethod = (path, data?) => {
     return this.request(this.endpoint + path, {
       data,
       method: METHOD.POST,
@@ -34,13 +36,6 @@ export default class HTTPTransport {
     return this.request(this.endpoint + path, {
       data,
       method: METHOD.PUT,
-    });
-  };
-
-  public patch: RequestMethod = (path, data) => {
-    return this.request(this.endpoint + path, {
-      data,
-      method: METHOD.PATCH,
     });
   };
 

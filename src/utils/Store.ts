@@ -12,7 +12,9 @@ export enum StoreEvents {
 interface State {
   user: User | null;
   chats: ChatInfo[];
-  chatUsers: any;
+  chatUsers: (User & {
+    role: string;
+  })[];
   messages: Record<number, Message[]>;
   selectedChat?: number | null;
   isModalAddUserToChatOpen?: boolean;
@@ -51,6 +53,7 @@ export class Store extends EventBus {
 
 const store = new Store();
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function withStore<SP extends Partial<Record<string, any>>>(
   mapStateToProps: (state: State) => SP
 ) {

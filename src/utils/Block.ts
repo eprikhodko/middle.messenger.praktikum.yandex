@@ -1,6 +1,7 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from "nanoid";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 class Block<P extends Record<string, any> = any> {
   static EVENTS = {
     INIT: "init",
@@ -187,6 +188,7 @@ class Block<P extends Record<string, any> = any> {
       stub.replaceWith(component.getContent()!);
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     Object.entries(this.children).forEach(([_, component]) => {
       if (Array.isArray(component)) {
         component.forEach(replaceStub);

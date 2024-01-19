@@ -58,3 +58,14 @@ export enum API {
   API_URL = "https://ya-praktikum.tech/api/v2",
   RESOURCES = "/resources",
 }
+
+export enum AUTH_API {
+  BASE_URL = "/auth",
+  USER = "/user",
+  SIGN_UP = "/signup"
+}
+
+export enum USERS_API {
+  BASE_URL = "/user",
+  AVATAR = "/profile/avatar",
+}
